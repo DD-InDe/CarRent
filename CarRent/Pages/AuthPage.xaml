@@ -24,24 +24,37 @@
                 Авторизируйтесь в системе или войдите как гость.
                 <LineBreak />
                 Если у Вас нет акккаунта, вы можете его
-                <Hyperlink>создать</Hyperlink>.
+                <Hyperlink NavigateUri="RegPage.xaml">создать</Hyperlink>.
             </TextBlock>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">
-                <StackPanel Orientation="Vertical">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+
                     <TextBlock Text="Логин:"
                                Style="{StaticResource MainDarkText}" />
-                    <TextBlock Text="Пароль:"
-                               Style="{StaticResource MainDarkText}" />
-                </StackPanel>
-                <StackPanel Orientation="Vertical">
                     <TextBox x:Name="LoginTextBox"
+                             Grid.Column="1"
                              Width="200"
                              Style="{StaticResource MainTextBox}" />
+
+                    <TextBlock Text="Пароль:"
+                               Grid.Row="1"
+                               Style="{StaticResource MainDarkText}" />
                     <PasswordBox x:Name="PasswordBox"
+                                 Grid.Column="1"
+                                 Grid.Row="1"
                                  Width="200"
                                  Style="{StaticResource PassBox}" />
-                </StackPanel>
+                </Grid>
             </StackPanel>
             <Button x:Name="LoginButton"
                     Click="LoginButton_OnClick"

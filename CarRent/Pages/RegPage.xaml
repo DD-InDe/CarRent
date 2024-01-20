@@ -10,13 +10,13 @@
 
     <Page.Resources>
         <Style TargetType="ToolTip">
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
         </Style>
-        
+
         <Style TargetType="TextBox" x:Key="RequiredTextBox" BasedOn="{StaticResource MainTextBox}">
-            <Setter Property="ToolTip.Placement" Value="Right"/>
+            <Setter Property="ToolTip.Placement" Value="Right" />
             <Setter Property="Width" Value="300" />
             <Setter Property="ToolTip">
                 <Setter.Value>
@@ -35,7 +35,7 @@
 
         <Style TargetType="olen:MaskedTextBox" x:Key="RequiredMaskTextBox" BasedOn="{StaticResource MaskTextBox}">
             <Setter Property="Width" Value="300" />
-            <Setter Property="ToolTip.Placement" Value="Right"/>
+            <Setter Property="ToolTip.Placement" Value="Right" />
             <Setter Property="ToolTip">
                 <Setter.Value>
                     <ToolTip>
@@ -53,10 +53,10 @@
 
         <Style TargetType="PasswordBox" x:Key="PassBox" BasedOn="{StaticResource MainPassBox}">
             <Setter Property="Width" Value="300" />
-            <Setter Property="ToolTip.Placement" Value="Right"/>
+            <Setter Property="ToolTip.Placement" Value="Right" />
             <Setter Property="ToolTip">
                 <Setter.Value>
-                    <ToolTip >
+                    <ToolTip>
                         <ToolTip.Content>
                             <TextBlock Style="{StaticResource NotificationText}"
                                        VerticalAlignment="Center"
@@ -68,85 +68,137 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
-        
+
+
     </Page.Resources>
 
     <Grid>
         <StackPanel Orientation="Vertical"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center">
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Center">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Имя:*"
-                               Style="{StaticResource MainDarkText}" />
-                    <TextBlock Text="Фамилия:*"
-                               Style="{StaticResource MainDarkText}" />
-                    <TextBlock Text="Отчество:"
-                               Style="{StaticResource MainDarkText}" />
-                    <TextBlock Text="Почта:"
-                               Style="{StaticResource MainDarkText}" />
-                    <TextBlock Text="Телефон:*"
-                               Style="{StaticResource MainDarkText}" />
-                    <TextBlock Text="Логин:*"
-                               Style="{StaticResource MainDarkText}" />
-                    <TextBlock Text="Пароль:*"
-                               Style="{StaticResource MainDarkText}" />
-                </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <TextBox x:Name="FNameTextBox"
-                             Style="{StaticResource RequiredTextBox}"
-                             PreviewTextInput="RusTextBox_OnPreviewTextInput"
-                             LostFocus="TextBox_OnLostFocus">
-                    </TextBox>
-                    <TextBox x:Name="LNameTextBox"
-                             PreviewTextInput="RusTextBox_OnPreviewTextInput"
+            <TextBlock Text="Регистрация"
+                       Style="{StaticResource MainDarkText}"
+                       FontSize="24"
+                       Margin="10"
+                       HorizontalAlignment="Center" />
+            <TextBlock Style="{StaticResource MainDarkText}"
+                       TextWrapping="Wrap"
+                       FontSize="16"
+                       Margin="10"
+                       Height="auto"
+                       Text="Заполните все поля, отмеченные звездочкой"
+                       HorizontalAlignment="Center"/>
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Имя:*"
+                           Grid.Column="0"
+                           Grid.Row="0"
+                           Style="{StaticResource MainDarkText}" />
+                <TextBlock Text="Фамилия:*"
+                           Grid.Column="0"
+                           Grid.Row="1"
+                           Style="{StaticResource MainDarkText}" />
+                <TextBlock Text="Отчество:"
+                           Grid.Column="0"
+                           Grid.Row="2"
+                           Style="{StaticResource MainDarkText}" />
+                <TextBlock Text="Почта:"
+                           Grid.Column="0"
+                           Grid.Row="3"
+                           Style="{StaticResource MainDarkText}" />
+                <TextBlock Text="Телефон:*"
+                           Grid.Column="0"
+                           Grid.Row="4"
+                           Style="{StaticResource MainDarkText}" />
+                <TextBlock Text="Логин:*"
+                           Grid.Column="0"
+                           Grid.Row="5"
+                           Style="{StaticResource MainDarkText}" />
+                <TextBlock Text="Пароль:*"
+                           Grid.Column="0"
+                           Grid.Row="6"
+                           Style="{StaticResource MainDarkText}" />
+
+                <TextBox x:Name="FNameTextBox"
+                         Grid.Column="1"
+                         Grid.Row="0"
+                         Style="{StaticResource RequiredTextBox}"
+                         PreviewTextInput="RusTextBox_OnPreviewTextInput"
+                         LostFocus="TextBox_OnLostFocus">
+                </TextBox>
+                <TextBox x:Name="LNameTextBox"
+                         Grid.Column="1"
+                         Grid.Row="1"
+                         PreviewTextInput="RusTextBox_OnPreviewTextInput"
+                         LostFocus="TextBox_OnLostFocus"
+                         Style="{StaticResource RequiredTextBox}">
+                </TextBox>
+                <TextBox x:Name="MNameTextBox"
+                         Grid.Column="1"
+                         Grid.Row="2"
+                         PreviewTextInput="RusTextBox_OnPreviewTextInput"
+                         Style="{StaticResource MainTextBox}">
+                </TextBox>
+                <TextBox x:Name="EmailTextBox"
+                         Grid.Column="1"
+                         Grid.Row="3"
+                         PreviewTextInput="NoneRusTextBox_OnPreviewTextInput"
+                         Style="{StaticResource MainTextBox}" />
+                <olen:MaskedTextBox x:Name="PhoneTextBox"
+                                    Grid.Column="1"
+                                    Grid.Row="4"
+                                    LostFocus="TextBox_OnLostFocus"
+                                    Style="{StaticResource RequiredMaskTextBox}"
+                                    Mask="+7(000)000-00-00">
+                </olen:MaskedTextBox>
+                <TextBox x:Name="LoginTextBox"
+                         Grid.Column="1"
+                         Grid.Row="5"
+                         PreviewTextInput="NoneRusTextBox_OnPreviewTextInput"
+                         LostFocus="TextBox_OnLostFocus"
+                         Style="{StaticResource RequiredTextBox}">
+                </TextBox>
+                <PasswordBox x:Name="HiddenPasswordBox"
+                             Grid.Column="1"
+                             Grid.Row="6"
                              LostFocus="TextBox_OnLostFocus"
-                             Style="{StaticResource RequiredTextBox}">
-                    </TextBox>
-                    <TextBox x:Name="MNameTextBox"
-                             PreviewTextInput="RusTextBox_OnPreviewTextInput"
-                             Style="{StaticResource MainTextBox}">
-                    </TextBox>
-                    <TextBox x:Name="EmailTextBox"
-                             PreviewTextInput="NoneRusTextBox_OnPreviewTextInput"
-                             Style="{StaticResource MainTextBox}" />
-                    <olen:MaskedTextBox x:Name="PhoneTextBox"
-                                        LostFocus="TextBox_OnLostFocus"
-                                        Style="{StaticResource RequiredMaskTextBox}"
-                                        Mask="+7(000)000-00-00">
-                    </olen:MaskedTextBox>
-                    <TextBox x:Name="LoginTextBox"
-                             PreviewTextInput="NoneRusTextBox_OnPreviewTextInput"
-                             LostFocus="TextBox_OnLostFocus"
-                             Style="{StaticResource RequiredTextBox}">
-                    </TextBox>
-                    <PasswordBox x:Name="HiddenPasswordBox"
-                                 LostFocus="TextBox_OnLostFocus"
-                                 Style="{StaticResource PassBox}">
-                    </PasswordBox>
-                    <TextBox x:Name="ShowedPasswordBox"
-                             Style="{StaticResource RequiredTextBox}"
-                             Visibility="Collapsed">
-                    </TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Vertical"
-                            VerticalAlignment="Bottom">
-                    <Image MouseLeftButtonUp="ShowPassImage_OnMouseLeftButtonUp"
-                           MouseLeftButtonDown="ShowPassImage_OnMouseLeftButtonDown"
-                           ToolTipService.InitialShowDelay="500"
-                           Source="../Resources/ShowPassword.png"
-                           Stretch="Fill"
-                           Width="30"
-                           Height="30"
-                           Margin="0,5,0,5">
-                        <Image.ToolTip>
-                            <ToolTip Content="Зажмите чтобы увидеть пароль" />
-                        </Image.ToolTip>
-                    </Image>
-                </StackPanel>
-            </StackPanel>
+                             Style="{StaticResource PassBox}">
+                </PasswordBox>
+                <TextBox x:Name="ShowedPasswordBox"
+                         Grid.Column="1"
+                         Grid.Row="6"
+                         Style="{StaticResource RequiredTextBox}"
+                         Visibility="Collapsed">
+                </TextBox>
+
+                <Image MouseLeftButtonUp="ShowPassImage_OnMouseLeftButtonUp"
+                       MouseLeftButtonDown="ShowPassImage_OnMouseLeftButtonDown"
+                       Source="../Resources/ShowPassword.png"
+                       Stretch="Fill"
+                       Grid.Column="2"
+                       Grid.Row="6"
+                       Width="30"
+                       Height="30">
+                    <Image.ToolTip>
+                        <ToolTip Content="Зажмите чтобы увидеть пароль" />
+                    </Image.ToolTip>
+                </Image>
+            </Grid>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">
                 <Button x:Name="BackButton"
