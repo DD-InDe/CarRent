@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace CarRent.Models;
+﻿namespace CarRent.Models;
 
 public partial class Account
 {

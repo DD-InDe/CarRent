@@ -22,7 +22,7 @@ public partial class AuthPage : Page
 
         if (!String.IsNullOrWhiteSpace(login) && !String.IsNullOrWhiteSpace(pass))
         {
-            User? user = DB._context.Users.Include(c=>c.UserNavigation).FirstOrDefault(c => c.UserNavigation.Login == login);
+            User? user = DB._context.Users.Include(c => c.UserNavigation).FirstOrDefault(c => c.UserNavigation.Login == login);
             if (user != null && user.UserNavigation.Password != pass)
                 MessageBox.Show("Вы ввели неверный пароль. Проверьте корректность Ваших данных!");
             else if (user != null & user.UserNavigation.Password == pass)

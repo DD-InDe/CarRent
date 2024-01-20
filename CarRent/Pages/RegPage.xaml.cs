@@ -5,24 +5,28 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Threading;
-using Aspose.Email;
-using Aspose.Email.Tools.Verifications;
 using CarRent.Entities;
 using CarRent.Models;
 using Xceed.Wpf.Toolkit;
-using MessageBox = Xceed.Wpf.Toolkit.MessageBox;
 
 namespace CarRent.Pages;
 
 public partial class RegPage : Page
 {
-    private DispatcherTimer _timer;
-    private DateTime _time;
+    private readonly List<Object> _requiredFields;
 
     public RegPage()
     {
         InitializeComponent();
+
+        _requiredFields = new List<object>
+        {
+            FNameTextBox,
+            LNameTextBox,
+            PhoneTextBox,
+            LoginTextBox,
+            HiddenPasswordBox
+        };
     }
 
     private void RegButton_OnClick(object sender, RoutedEventArgs e)
@@ -34,25 +38,81 @@ public partial class RegPage : Page
         string login = LoginTextBox.Text;
         string password = HiddenPasswordBox.Password;
 
+        if (CheckFields(firstName, lastName, middleName, email, login, password))
+            if (CheckLogin(login) && CheckEmail(email))
+            {
+                try
+                {
+                    Account account = new Account { Login = login, Password = password };
+                    DB._context.Accounts.Add(account);
+                    DB._context.SaveChanges();
+
+                    int id = DB._context.Accounts.First(c => c.Login == login && c.Password == password).AccountId;
+                    User user = new User
+                    {
+                        FirstName = firstName,
+                        LastName = lastName,
+                        MiddleName = middleName,
+                        Email = email,
+                        Phone = PhoneTextBox.Text,
+                        RoleId = 3,
+                        UserId = id
+                    };
+                    DB._context.Users.Add(user);
+                    DB._context.SaveChanges();
+
+                    CustomMessageBox messageBox = new CustomMessageBox("Вы зарегистрировались!", "Ok");
+                    messageBox.ShowDialog();
+                }
+                catch (Exception exception)
+                {
+                    CustomMessageBox messageBox = new CustomMessageBox(exception.Message, "Ok");
+                    messageBox.ShowDialog();
+                }
+            }
+    }
+
+    private bool CheckFields(string firstName, string lastName, string middleName, string email, string login, string password)
+    {
         if (!String.IsNullOrWhiteSpace(firstName) &&
             !String.IsNullOrWhiteSpace(lastName) &&
             !String.IsNullOrWhiteSpace(middleName) &&
-            !String.IsNullOrWhiteSpace(lastName) &&
+            !String.IsNullOrWhiteSpace(email) &&
             !String.IsNullOrWhiteSpace(login) &&
             !String.IsNullOrWhiteSpace(password) &&
             PhoneTextBox.IsMaskCompleted)
-        {
-        }
-        else
-        {
-            CustomMessageBox messageBox = new CustomMessageBox("Поля, отмеченные звездочкой, не могут быть пустыми!", "Ok");
-            messageBox.Show();
-        }
+            return true;
+
+        CustomMessageBox messageBox = new CustomMessageBox("Пожалуйста, заполните все поля!", "Ok");
+        messageBox.ShowDialog();
+
+        foreach (var field in _requiredFields)
+            HighlightingFields(field);
+
+        return false;
     }
 
-    private bool CheckLogin(string login)
+    private static bool CheckLogin(string login)
     {
-        return DB._context.Accounts.Any(c => c.Login == login);
+        bool exist = DB._context.Accounts.Any(c => c.Login == login);
+        if (exist)
+        {
+            CustomMessageBox messageBox = new CustomMessageBox("Этот логин уже занят, придумайте другой.", "Ok");
+            messageBox.Show();
+            return false;
+        }
+
+        return true;
+    }
+
+    private static bool CheckEmail(string email)
+    {
+        var addr = new System.Net.Mail.MailAddress(email);
+        if (addr.Address == email)
+            return true;
+        CustomMessageBox messageBox = new CustomMessageBox("Почта не соответсвует формату!", "Ok");
+        messageBox.ShowDialog();
+        return false;
     }
 
     private void RusTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e) =>
@@ -61,24 +121,6 @@ public partial class RegPage : Page
     private void NoneRusTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e) =>
         e.Handled = "ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ".IndexOf(e.Text.ToUpper()) > 0;
 
-    private void ShowPassImage_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-    {
-        if (HiddenPasswordBox.IsVisible)
-        {
-            HiddenPasswordBox.Visibility = Visibility.Collapsed;
-            ShowedPasswordBox.Visibility = Visibility.Visible;
-            ShowedPasswordBox.Text = HiddenPasswordBox.Password;
-            _time = DateTime.Now;
-            _timer = new DispatcherTimer();
-            _timer.Tick += TickTimer;
-            _timer.Start();
-        }
-        else
-        {
-            ChangeVisibility();
-            _timer.Stop();
-        }
-    }
 
     private void ChangeVisibility()
     {
@@ -87,17 +129,7 @@ public partial class RegPage : Page
         HiddenPasswordBox.Password = ShowedPasswordBox.Text;
     }
 
-    private void TickTimer(object sender, EventArgs e)
-    {
-        var f = DateTime.Now - _time;
-        if (f.Seconds >= 5)
-        {
-            ChangeVisibility();
-            _timer.Stop();
-        }
-    }
-
-    private void TextBox_OnLostFocus(object sender, RoutedEventArgs e)
+    private void HighlightingFields(object sender)
     {
         string[] senderType = sender.GetType().ToString().Split(".");
         switch (senderType[senderType.Length - 1])
@@ -128,4 +160,17 @@ public partial class RegPage : Page
                 break;
         }
     }
+
+    private void TextBox_OnLostFocus(object sender, RoutedEventArgs e) => HighlightingFields(sender);
+
+    private void ShowPassImage_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        HiddenPasswordBox.Visibility = Visibility.Collapsed;
+        ShowedPasswordBox.Visibility = Visibility.Visible;
+        ShowedPasswordBox.Text = HiddenPasswordBox.Password;
+    }
+
+    private void ShowPassImage_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e) => ChangeVisibility();
+
+    private void BackButton_OnClick(object sender, RoutedEventArgs e) => NavigationService.GoBack();
 }
