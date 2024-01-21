@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:olen="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:local="clr-namespace:CarRent"
-             StartupUri="MainWindow.xaml">
+             StartupUri="/Windows/MainWindow.xaml">
     <Application.Resources>
         <Brush x:Key="WhiteBrush">#FFFFFF</Brush>
         <Brush x:Key="DarkBrush">#36393B</Brush>
@@ -11,12 +11,27 @@
         <Brush x:Key="RedBrush">#FF6347  </Brush>
         <Brush x:Key="DimGreenBrush">#2E8B57 </Brush>
         <Brush x:Key="BlueBrush">#1E90FF </Brush>
+        
+        <BitmapImage x:Key="Loading"
+                     UriSource="../Resources/loading.gif"/>
+        <BitmapImage x:Key="ErrorIcon"
+                     UriSource="/Resources/MessageBoxIcons/ErrorIcon.png"/>
+        <BitmapImage x:Key="QuestionIcon"
+                     UriSource="/Resources/MessageBoxIcons/QuestionIcon.png"/>
+        <BitmapImage x:Key="SuccessIcon"
+                     UriSource="/Resources/MessageBoxIcons/SuccessIcon.png"/>
+        <BitmapImage x:Key="UserNotFoundIcon"
+                     UriSource="/Resources/MessageBoxIcons/UserNotFoundIcon.png"/>
+        <BitmapImage x:Key="WarningIcon"
+                     UriSource="/Resources/MessageBoxIcons/WarningIcon.png"/>
+        <BitmapImage x:Key="WrongPassIcon"
+                     UriSource="/Resources/MessageBoxIcons/WrongPassIcon.png"/>
+        
 
         <Style TargetType="TextBlock" x:Key="MainDarkText">
             <Setter Property="Margin" Value="5" />
             <Setter Property="FontSize" Value="20" />
-            <Setter Property="Height" Value="30" />
-            <Setter Property="Padding" Value="5" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontFamily" Value="Resources/./#Fregat-Bold" />
             <Setter Property="Foreground" Value="{StaticResource DarkBrush}" />
         </Style>
@@ -38,6 +53,7 @@
             <Setter Property="Padding" Value="2" />
             <Setter Property="MinWidth" Value="150" />
             <Setter Property="Height" Value="30" />
+            <Setter Property="BorderBrush" Value="DarkGray"/>
             <Setter Property="VerticalContentAlignment" Value="Center" />
             <Setter Property="FontSize" Value="20" />
             <Setter Property="FontFamily" Value="Resources/./#Fregat-Bold" />

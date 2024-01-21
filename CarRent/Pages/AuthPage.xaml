@@ -3,36 +3,74 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:gif="http://wpfanimatedgif.codeplex.com"
       xmlns:local="clr-namespace:CarRent.Pages"
       mc:Ignorable="d"
       Title="AuthPage">
     <Grid>
-        <Border Style="{StaticResource DefaultBorder}">
-            <StackPanel Orientation="Vertical">
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="Логин:"
-                                   Style="{StaticResource MainDarkText}" />
-                        <TextBlock Text="Пароль:"
-                                   Style="{StaticResource MainDarkText}" />
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical">
-                        <TextBox x:Name="LoginTextBox"
-                                 Width="150"
-                                 Style="{StaticResource MainTextBox}" />
-                        <PasswordBox x:Name="PasswordBox"
-                                     Width="150"
-                                     Style="{StaticResource PassBox}" />
-                    </StackPanel>
-                </StackPanel>
-                <Button x:Name="LoginButton"
-                        Click="LoginButton_OnClick"
-                        Width="150"
-                        Background="#36393B"
-                        Foreground="White"
-                        Style="{StaticResource DefaultButton}"
-                        Content="Войти" />
+
+        <StackPanel Orientation="Vertical"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+            <TextBlock Text="Добро пожаловать!"
+                       Style="{StaticResource MainDarkText}"
+                       FontSize="24"
+                       Margin="10"
+                       HorizontalAlignment="Center" />
+            <TextBlock Style="{StaticResource MainDarkText}"
+                       TextWrapping="Wrap"
+                       FontSize="16"
+                       Margin="10"
+                       Height="auto"
+                       HorizontalAlignment="Center">
+                Авторизируйтесь в системе или войдите как гость.
+                <LineBreak />
+                Если у Вас нет акккаунта, вы можете его
+                <Hyperlink NavigateUri="RegPage.xaml">создать</Hyperlink>.
+            </TextBlock>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <TextBlock Text="Логин:"
+                               Style="{StaticResource MainDarkText}" />
+                    <TextBox x:Name="LoginTextBox"
+                             Grid.Column="1"
+                             Width="200"
+                             Style="{StaticResource MainTextBox}" />
+
+                    <TextBlock Text="Пароль:"
+                               Grid.Row="1"
+                               Style="{StaticResource MainDarkText}" />
+                    <PasswordBox x:Name="PasswordBox"
+                                 Grid.Column="1"
+                                 Grid.Row="1"
+                                 Width="200"
+                                 Style="{StaticResource PassBox}" />
+                </Grid>
             </StackPanel>
-        </Border>
+            <Button x:Name="LoginButton"
+                    Click="LoginButton_OnClick"
+                    Width="150"
+                    Background="#36393B"
+                    Foreground="White"
+                    Style="{StaticResource DefaultButton}"
+                    Content="Войти" />
+        </StackPanel>
+        
+        <Image x:Name="LoadingImage"
+               Width="50"
+               Height="50"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center" />
     </Grid>
 </Page>

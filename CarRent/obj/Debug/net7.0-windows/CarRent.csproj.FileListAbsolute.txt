@@ -4,12 +4,10 @@ C:\Users\deer\Курсовая\CarRent\CarRent\bin\Debug\net7.0-windows\CarRent.
 C:\Users\deer\Курсовая\CarRent\CarRent\bin\Debug\net7.0-windows\CarRent.dll
 C:\Users\deer\Курсовая\CarRent\CarRent\bin\Debug\net7.0-windows\CarRent.pdb
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\CarRent.csproj.AssemblyReference.cache
-C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\MainWindow.g.cs
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\App.g.cs
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\CarRent_MarkupCompile.cache
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\CarRent_MarkupCompile.lref
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\App.baml
-C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\MainWindow.baml
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\CarRent.g.resources
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\CarRent.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\CarRent.AssemblyInfoInputs.cache
@@ -87,5 +85,10 @@ C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\Re
 C:\Users\deer\Курсовая\CarRent\CarRent\bin\Debug\net7.0-windows\Aspose.Email.dll
 C:\Users\deer\Курсовая\CarRent\CarRent\bin\Debug\net7.0-windows\System.Security.Cryptography.Pkcs.dll
 C:\Users\deer\Курсовая\CarRent\CarRent\bin\Debug\net7.0-windows\runtimes\win\lib\net7.0\System.Security.Cryptography.Pkcs.dll
-C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\CustomMessageBox.g.cs
-C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\CustomMessageBox.baml
+C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\CatalogAutoPage.g.cs
+C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\CatalogAutoPage.baml
+C:\Users\deer\Курсовая\CarRent\CarRent\bin\Debug\net7.0-windows\WpfAnimatedGif.dll
+C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Windows\CustomMessageBox.g.cs
+C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Windows\MainWindow.g.cs
+C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Windows\CustomMessageBox.baml
+C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Windows\MainWindow.baml

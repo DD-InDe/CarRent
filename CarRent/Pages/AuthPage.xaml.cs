@@ -2,9 +2,11 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using CarRent.Entities;
 using CarRent.Models;
 using Microsoft.EntityFrameworkCore;
+using WpfAnimatedGif;
 
 namespace CarRent.Pages;
 
@@ -15,20 +17,47 @@ public partial class AuthPage : Page
         InitializeComponent();
     }
 
-    private void LoginButton_OnClick(object sender, RoutedEventArgs e)
+    private CustomMessageBox _messageBox;
+
+    private async void LoginButton_OnClick(object sender, RoutedEventArgs e)
     {
         string login = LoginTextBox.Text;
         string pass = PasswordBox.Password;
 
         if (!String.IsNullOrWhiteSpace(login) && !String.IsNullOrWhiteSpace(pass))
         {
-            User? user = DB._context.Users.Include(c=>c.UserNavigation).FirstOrDefault(c => c.UserNavigation.Login == login);
+            ImageBehavior.SetAnimatedSource(LoadingImage, (BitmapImage)FindResource("Loading"));
+            User? user = await DB._context.Users.Include(c => c.UserNavigation).FirstOrDefaultAsync(c => c.UserNavigation.Login == login);
+            ImageBehavior.SetAnimatedSource(LoadingImage, null);
+
             if (user != null && user.UserNavigation.Password != pass)
-                MessageBox.Show("Вы ввели неверный пароль. Проверьте корректность Ваших данных!");
+            {
+                _messageBox = new CustomMessageBox(Icon.WrongPassIcon,
+                    "Вы ввели неверный пароль. Проверьте корректность Ваших данных!",
+                    Button.Ok);
+                _messageBox.ShowDialog();
+            }
             else if (user != null & user.UserNavigation.Password == pass)
-                MessageBox.Show("Вы успешно авторизировались в системе!", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            {
+                _messageBox = new CustomMessageBox(Icon.SuccessIcon,
+                    "Вы успешно авторизировались в системе!",
+                    Button.Ok);
+                _messageBox.ShowDialog();
+            }
             else
-                MessageBox.Show("Пользователь с такими данными не найден. Проверьте корректность Ваших данных!");
+            {
+                _messageBox = new CustomMessageBox(Icon.UserNotFoundIcon,
+                    "Пользователь с такими данными не найден. Проверьте корректность Ваших данных!",
+                    Button.Ok);
+                _messageBox.ShowDialog();
+            }
+        }
+        else
+        {
+            _messageBox = new CustomMessageBox(Icon.WarningIcon,
+                "Поля не могут быть пустыми!",
+                Button.Ok);
+            _messageBox.ShowDialog();
         }
     }
 }
