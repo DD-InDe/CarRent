@@ -4,12 +4,13 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Navigation;
+using CarRent.Models;
 
 namespace CarRent.Pages;
 
 public partial class MainMenuPage : Page
 {
-    public MainMenuPage()
+    public MainMenuPage(User user)
     {
         InitializeComponent();
         // PageFrame.Navigate(new AuthPage());

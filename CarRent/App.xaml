@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:olen="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:local="clr-namespace:CarRent"
-             StartupUri="MainWindow.xaml">
+             StartupUri="/Windows/MainWindow.xaml">
     <Application.Resources>
         <Brush x:Key="WhiteBrush">#FFFFFF</Brush>
         <Brush x:Key="DarkBrush">#36393B</Brush>
@@ -11,6 +11,22 @@
         <Brush x:Key="RedBrush">#FF6347  </Brush>
         <Brush x:Key="DimGreenBrush">#2E8B57 </Brush>
         <Brush x:Key="BlueBrush">#1E90FF </Brush>
+        
+        <BitmapImage x:Key="Loading"
+                     UriSource="../Resources/loading.gif"/>
+        <BitmapImage x:Key="ErrorIcon"
+                     UriSource="/Resources/MessageBoxIcons/ErrorIcon.png"/>
+        <BitmapImage x:Key="QuestionIcon"
+                     UriSource="/Resources/MessageBoxIcons/QuestionIcon.png"/>
+        <BitmapImage x:Key="SuccessIcon"
+                     UriSource="/Resources/MessageBoxIcons/SuccessIcon.png"/>
+        <BitmapImage x:Key="UserNotFoundIcon"
+                     UriSource="/Resources/MessageBoxIcons/UserNotFoundIcon.png"/>
+        <BitmapImage x:Key="WarningIcon"
+                     UriSource="/Resources/MessageBoxIcons/WarningIcon.png"/>
+        <BitmapImage x:Key="WrongPassIcon"
+                     UriSource="/Resources/MessageBoxIcons/WrongPassIcon.png"/>
+        
 
         <Style TargetType="TextBlock" x:Key="MainDarkText">
             <Setter Property="Margin" Value="5" />

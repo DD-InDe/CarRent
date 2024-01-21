@@ -3,9 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:CarRent"
         mc:Ignorable="d"
         Height="150" Width="400"
+        WindowStyle="None"
+        BorderBrush="{StaticResource DarkBrush}"
+        BorderThickness="0.5"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner">
 
@@ -15,8 +17,8 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
 
         <TextBlock x:Name="MessageTextBlock"

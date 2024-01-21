@@ -8,16 +8,14 @@ public partial class CustomMessageBox : Window
 {
     public string Result { get; private set; }
     
-    public CustomMessageBox(string message, string buttons, string title = "Сообщение")
+    public CustomMessageBox(Icon icon, string message, Button button, string title = "Сообщение")
     {
         InitializeComponent();
 
-        IconImage.Source = new BitmapImage(new Uri(@"C:\\Users\\deer\\Курсовая\\CarRent\\CarRent\\Resources\\Exit.png"));
-        
         Title = title;
         MessageTextBlock.Text = message;
 
-        switch (buttons)
+        switch (button.ToString())
         {
             case "YesNo":   
                 YesButton.Visibility = Visibility.Visible;
@@ -27,6 +25,8 @@ public partial class CustomMessageBox : Window
                 OkButton.Visibility = Visibility.Visible;
                 break;
         }
+
+        IconImage.Source = (BitmapImage)FindResource(icon.ToString());
     }
     
     private void YesButton_OnClick(object sender, RoutedEventArgs e)

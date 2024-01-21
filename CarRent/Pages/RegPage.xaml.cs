@@ -5,8 +5,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using CarRent.Entities;
 using CarRent.Models;
+using Microsoft.EntityFrameworkCore;
+using WpfAnimatedGif;
 using Xceed.Wpf.Toolkit;
 
 namespace CarRent.Pages;
@@ -29,7 +32,9 @@ public partial class RegPage : Page
         };
     }
 
-    private void RegButton_OnClick(object sender, RoutedEventArgs e)
+    private CustomMessageBox messageBox;
+
+    private async void RegButton_OnClick(object sender, RoutedEventArgs e)
     {
         string firstName = FNameTextBox.Text;
         string lastName = LNameTextBox.Text;
@@ -38,16 +43,17 @@ public partial class RegPage : Page
         string login = LoginTextBox.Text;
         string password = HiddenPasswordBox.Password;
 
-        if (CheckFields(firstName, lastName, middleName, email, login, password))
+        if (CheckFields(firstName, lastName, login, password))
             if (CheckLogin(login) && CheckEmail(email))
             {
+                ImageBehavior.SetAnimatedSource(LoadingImage, (BitmapImage)FindResource("Loading"));
                 try
                 {
                     Account account = new Account { Login = login, Password = password };
                     DB._context.Accounts.Add(account);
-                    DB._context.SaveChanges();
+                    await DB._context.SaveChangesAsync();
 
-                    int id = DB._context.Accounts.First(c => c.Login == login && c.Password == password).AccountId;
+                    account = await DB._context.Accounts.FirstAsync(c => c.Login == login && c.Password == password);
                     User user = new User
                     {
                         FirstName = firstName,
@@ -56,34 +62,35 @@ public partial class RegPage : Page
                         Email = email,
                         Phone = PhoneTextBox.Text,
                         RoleId = 3,
-                        UserId = id
+                        UserId = account.AccountId
                     };
                     DB._context.Users.Add(user);
-                    DB._context.SaveChanges();
+                    await DB._context.SaveChangesAsync();
 
-                    CustomMessageBox messageBox = new CustomMessageBox("Вы зарегистрировались!", "Ok");
+                    messageBox = new CustomMessageBox(Icon.SuccessIcon, "Вы зарегистрировались!", Button.Ok);
                     messageBox.ShowDialog();
+                    NavigationService.GoBack();
                 }
                 catch (Exception exception)
                 {
-                    CustomMessageBox messageBox = new CustomMessageBox(exception.Message, "Ok");
+                    messageBox = new CustomMessageBox(Icon.ErrorIcon, exception.Message, Button.Ok);
                     messageBox.ShowDialog();
                 }
+
+                ImageBehavior.SetAnimatedSource(LoadingImage, null);
             }
     }
 
-    private bool CheckFields(string firstName, string lastName, string middleName, string email, string login, string password)
+    private bool CheckFields(string firstName, string lastName, string login, string password)
     {
         if (!String.IsNullOrWhiteSpace(firstName) &&
             !String.IsNullOrWhiteSpace(lastName) &&
-            !String.IsNullOrWhiteSpace(middleName) &&
-            !String.IsNullOrWhiteSpace(email) &&
             !String.IsNullOrWhiteSpace(login) &&
             !String.IsNullOrWhiteSpace(password) &&
             PhoneTextBox.IsMaskCompleted)
             return true;
 
-        CustomMessageBox messageBox = new CustomMessageBox("Пожалуйста, заполните все поля!", "Ok");
+        messageBox = new CustomMessageBox(Icon.WarningIcon, "Пожалуйста, заполните все поля!", Button.Ok);
         messageBox.ShowDialog();
 
         foreach (var field in _requiredFields)
@@ -97,7 +104,7 @@ public partial class RegPage : Page
         bool exist = DB._context.Accounts.Any(c => c.Login == login);
         if (exist)
         {
-            CustomMessageBox messageBox = new CustomMessageBox("Этот логин уже занят, придумайте другой.", "Ok");
+            CustomMessageBox messageBox = new CustomMessageBox(Icon.WarningIcon, "Этот логин уже занят, придумайте другой.", Button.Ok);
             messageBox.Show();
             return false;
         }
@@ -107,10 +114,12 @@ public partial class RegPage : Page
 
     private static bool CheckEmail(string email)
     {
+        if (String.IsNullOrWhiteSpace(email))
+            return true;
         var addr = new System.Net.Mail.MailAddress(email);
         if (addr.Address == email)
             return true;
-        CustomMessageBox messageBox = new CustomMessageBox("Почта не соответсвует формату!", "Ok");
+        CustomMessageBox messageBox = new CustomMessageBox(Icon.WarningIcon, "Почта не соответсвует формату!", Button.Ok);
         messageBox.ShowDialog();
         return false;
     }

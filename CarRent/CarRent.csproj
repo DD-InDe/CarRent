@@ -18,9 +18,9 @@
     <ItemGroup>
       <None Remove="Resources\CaviarDreams.ttf" />
       <None Remove="Resources\Fregat.ttf" />
-      <Resource Include="Resources\Fregat.ttf" />
       <None Remove="Resources\MenuSwipe.png" />
       <None Remove="Resources\Menu.png" />
+      <Resource Include="Resources\Fonts\Fregat.ttf" />
       <Resource Include="Resources\Menu.png" />
       <None Remove="Resources\Exit.png" />
       <Resource Include="Resources\Exit.png" />
@@ -34,6 +34,20 @@
       <Resource Include="Resources\Info.png" />
       <None Remove="Resources\ShowPassword.png" />
       <Resource Include="Resources\ShowPassword.png" />
+      <None Remove="Resources\loading.gif" />
+      <Resource Include="Resources\loading.gif" />
+      <None Remove="Resources\MessageBoxIcons\ErrorIcon.png" />
+      <Resource Include="Resources\MessageBoxIcons\ErrorIcon.png" />
+      <None Remove="Resources\MessageBoxIcons\QuestionIcon.png" />
+      <Resource Include="Resources\MessageBoxIcons\QuestionIcon.png" />
+      <None Remove="Resources\MessageBoxIcons\SuccessIcon.png" />
+      <Resource Include="Resources\MessageBoxIcons\SuccessIcon.png" />
+      <None Remove="Resources\MessageBoxIcons\UserNotFoundIcon.png" />
+      <Resource Include="Resources\MessageBoxIcons\UserNotFoundIcon.png" />
+      <None Remove="Resources\MessageBoxIcons\WarningIcon.png" />
+      <Resource Include="Resources\MessageBoxIcons\WarningIcon.png" />
+      <None Remove="Resources\MessageBoxIcons\WrongPassIcon.png" />
+      <Resource Include="Resources\MessageBoxIcons\WrongPassIcon.png" />
     </ItemGroup>
 
     <ItemGroup>
@@ -49,6 +63,20 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+      <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Windows\MainWindow.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="Windows\CustomMessageBox.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
     </ItemGroup>
 
 </Project>

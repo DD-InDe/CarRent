@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Qjv8ni5RLWrW5eEoLMZgwXdgtPU7PrSuU45Hr7yRCFbeeSWjI5WlqRadwMNrBTxzu/y36AXNL2jz1oUZg47ecQ==",
+  "dgSpecHash": "egkWBnykGwoj+YOk2Oz0F6V3D8kPCZrP9TM4jjmcDjHD+w51QWDshuSJYMauJxUN1xPa//e7qDwqH+v3B0zC4w==",
   "success": true,
   "projectFilePath": "C:\\Users\\deer\\Курсовая\\CarRent\\CarRent\\CarRent.csproj",
   "expectedPackageFiles": [
@@ -66,7 +66,8 @@
     "C:\\Users\\deer\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\deer\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512",
     "C:\\Users\\deer\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\deer\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
+    "C:\\Users\\deer\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
+    "C:\\Users\\deer\\.nuget\\packages\\wpfanimatedgif\\2.0.2\\wpfanimatedgif.2.0.2.nupkg.sha512"
   ],
   "logs": []
 }

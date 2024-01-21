@@ -216,5 +216,11 @@
                         Content="Зарегистрироваться" />
             </StackPanel>
         </StackPanel>
+        
+        <Image x:Name="LoadingImage"
+               Width="50"
+               Height="50"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center" />
     </Grid>
 </Page>
