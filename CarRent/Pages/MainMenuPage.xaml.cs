@@ -13,8 +13,13 @@ public partial class MainMenuPage : Page
     public MainMenuPage(User user)
     {
         InitializeComponent();
-        // PageFrame.Navigate(new AuthPage());
-        PageFrame.Navigate(new RegPage());
+        PageFrame.Navigate(new CarViewPage());
+    }
+    
+    public MainMenuPage()
+    {
+        InitializeComponent();
+        PageFrame.Navigate(new CarViewPage());
     }
 
     private void MenuButton_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -28,6 +33,7 @@ public partial class MainMenuPage : Page
         gridAnimation.Duration = TimeSpan.FromMilliseconds(300);
         MenuGrid.BeginAnimation(Grid.WidthProperty, gridAnimation);
         gridAnimation.AccelerationRatio = 1;
+        // ((MainWindow)Application.Current.MainWindow).freeWidth = MenuGrid.ActualWidth;
     }
 
     private void ButtonBase_OnClick(object sender, RoutedEventArgs e)

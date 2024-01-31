@@ -12,6 +12,7 @@
         Title="MainWindow" SizeToContent="WidthAndHeight">
     <Grid>
         <Frame x:Name="MainFrame"
-               NavigationUIVisibility="Hidden" />
+               NavigationUIVisibility="Hidden" 
+               SizeChanged="MainFrame_OnSizeChanged"/>
     </Grid>
 </Window>

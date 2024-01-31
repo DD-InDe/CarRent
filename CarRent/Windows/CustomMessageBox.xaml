@@ -7,6 +7,7 @@
         Height="150" Width="400"
         WindowStyle="None"
         BorderBrush="{StaticResource DarkBrush}"
+        Background="{StaticResource Gradient10}"
         BorderThickness="0.5"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner">
@@ -27,7 +28,6 @@
                    Height="auto"
                    FontSize="16"
                    TextWrapping="Wrap"
-                   VerticalAlignment="Center"
                    HorizontalAlignment="Center" />
 
         <Image x:Name="IconImage"
@@ -42,7 +42,6 @@
                     Click="YesButton_OnClick"
                     Width="80"
                     Style="{StaticResource DefaultButton}"
-                    Background="SeaGreen"
                     FontSize="16"
                     Visibility="Collapsed"
                     Content="Да" />
@@ -50,7 +49,6 @@
                     Click="NoButton_OnClick"
                     Width="80"
                     Style="{StaticResource DefaultButton}"
-                    Background="IndianRed"
                     FontSize="16"
                     Visibility="Collapsed"
                     Content="Нет" />

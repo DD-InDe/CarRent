@@ -1,0 +1,59 @@
+﻿<Page x:Class="CarRent.Pages.CarViewPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:CarRent.Pages"
+      mc:Ignorable="d"
+      SizeChanged="CarViewPage_OnSizeChanged"
+      Loaded="CarViewPage_OnLoaded"
+      Title="CarViewPage">
+    <Grid>
+        <ListView x:Name="CarListView">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel x:Name="UniformGridPage" 
+                               Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <!-- <Image HorizontalAlignment="Center" -->
+                        <!--        Margin="5" -->
+                        <!--        Width="100" -->
+                        <!--        Height="80" -->
+                        <!--        Source="{Binding }"/> -->
+                        <!-- todo вместо rectangle сделать фото-->
+                        <Rectangle HorizontalAlignment="Center"
+                                   Margin="5"
+                                   Width="150"
+                                   Height="80"
+                                   Fill="Chocolate" />
+                        <TextBlock Style="{StaticResource MainDarkText}">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1} ({2})">
+                                    <Binding Path="BrendModel.Brend.Name" />
+                                    <Binding Path="BrendModel.Model.Name" />
+                                    <Binding Path="BrendModel.Class.Name" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                        <TextBlock Style="{StaticResource MainDarkText}"
+                                   Text="{Binding Price}" />
+                        <Button x:Name="InfoButton"
+                                Content="Подробнее"
+                                HorizontalAlignment="Center"
+                                Style="{StaticResource DefaultButton}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+        <Image x:Name="LoadingImage"
+               Width="50"
+               Height="50"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center" />
+    </Grid>
+</Page>

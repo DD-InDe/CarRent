@@ -19,5 +19,10 @@ namespace CarRent
         {
             
         }
+
+        private void MainFrame_OnSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            
+        }
     }
 }

@@ -43,6 +43,7 @@ public partial class AuthPage : Page
                     "Вы успешно авторизировались в системе!",
                     Button.Ok);
                 _messageBox.ShowDialog();
+                NavigationService.Navigate(new MainMenuPage(user));
             }
             else
             {
@@ -60,4 +61,6 @@ public partial class AuthPage : Page
             _messageBox.ShowDialog();
         }
     }
+
+    private void GuestButton_OnClick(object sender, RoutedEventArgs e) => NavigationService.Navigate(new MainMenuPage());
 }
