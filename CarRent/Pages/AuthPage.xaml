@@ -6,17 +6,18 @@
       xmlns:gif="http://wpfanimatedgif.codeplex.com"
       xmlns:local="clr-namespace:CarRent.Pages"
       mc:Ignorable="d"
+      Background="{StaticResource BackgroundBrush}"
       Title="AuthPage">
     <Grid>
         <StackPanel Orientation="Vertical"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center">
             <TextBlock Text="Добро пожаловать!"
-                       Style="{StaticResource MainDarkText}"
+                       Style="{StaticResource MainLightText}"
                        FontSize="24"
                        Margin="10"
                        HorizontalAlignment="Center" />
-            <TextBlock Style="{StaticResource MainDarkText}"
+            <TextBlock Style="{StaticResource MainLightText}"
                        TextWrapping="Wrap"
                        FontSize="16"
                        Margin="10"
@@ -33,6 +34,8 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -41,18 +44,32 @@
 
 
                     <TextBlock Text="Логин:"
-                               Style="{StaticResource MainDarkText}" />
+                               Grid.Row="0"
+                               Grid.Column="1"
+                               Foreground="LightGray"
+                               FontSize="16"
+                               Style="{StaticResource MainLightText}" />
+                    <Image Grid.Row="1"
+                           Source="../Resources/Light/Login.png"
+                           Width="30"/>
                     <TextBox x:Name="LoginTextBox"
+                             Grid.Row="1"
                              Grid.Column="1"
                              Width="200"
                              Style="{StaticResource MainTextBox}" />
 
                     <TextBlock Text="Пароль:"
-                               Grid.Row="1"
-                               Style="{StaticResource MainDarkText}" />
+                               Grid.Row="2"
+                               Grid.Column="1"
+                               Foreground="LightGray"
+                               FontSize="16"
+                               Style="{StaticResource MainLightText}" />
+                    <Image Grid.Row="3"
+                           Source="../Resources/Light/Password.png"
+                           Width="30"/>
                     <PasswordBox x:Name="PasswordBox"
                                  Grid.Column="1"
-                                 Grid.Row="1"
+                                 Grid.Row="3"
                                  Width="200"
                                  Style="{StaticResource PassBox}" />
                 </Grid>
@@ -62,14 +79,12 @@
                 <Button x:Name="GuestButton"
                         Click="GuestButton_OnClick"
                         Width="150"
-                        Background="#36393B"
                         Foreground="White"
                         Style="{StaticResource DefaultButton}"
                         Content="Гость" />
             <Button x:Name="LoginButton"
                     Click="LoginButton_OnClick"
                     Width="150"
-                    Background="#36393B"
                     Foreground="White"
                     Style="{StaticResource DefaultButton}"
                     Content="Войти" />

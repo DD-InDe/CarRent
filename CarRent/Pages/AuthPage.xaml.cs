@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using CarRent.Entities;
 using CarRent.Models;
+using CarRent.Windows;
 using Microsoft.EntityFrameworkCore;
 using WpfAnimatedGif;
 
@@ -62,5 +63,11 @@ public partial class AuthPage : Page
         }
     }
 
-    private void GuestButton_OnClick(object sender, RoutedEventArgs e) => NavigationService.Navigate(new MainMenuPage());
+    private void GuestButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        var window = Application.Current.MainWindow;
+        Application.Current.MainWindow = new MainWindow();
+        Application.Current.MainWindow.Show();
+        window.Close();
+    }
 }

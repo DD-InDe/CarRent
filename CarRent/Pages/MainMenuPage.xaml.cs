@@ -33,7 +33,7 @@ public partial class MainMenuPage : Page
         gridAnimation.Duration = TimeSpan.FromMilliseconds(300);
         MenuGrid.BeginAnimation(Grid.WidthProperty, gridAnimation);
         gridAnimation.AccelerationRatio = 1;
-        // ((MainWindow)Application.Current.MainWindow).freeWidth = MenuGrid.ActualWidth;
+        // ((AccessWindow)Application.Current.AccessWindow).freeWidth = MenuGrid.ActualWidth;
     }
 
     private void ButtonBase_OnClick(object sender, RoutedEventArgs e)

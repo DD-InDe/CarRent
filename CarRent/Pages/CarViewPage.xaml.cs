@@ -36,7 +36,7 @@ public partial class CarViewPage : Page
 
     private void CarViewPage_OnSizeChanged(object sender, SizeChangedEventArgs e)
     {
-        // MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+        // AccessWindow mainWindow = (AccessWindow)Application.Current.AccessWindow;
         // double freeWidth = mainWindow.ActualWidth - mainWindow.freeWidth;
         // if (freeWidth < 800)
         //     UniformGridPage.Columns = 2;

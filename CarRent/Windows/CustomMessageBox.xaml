@@ -10,7 +10,7 @@
         Background="{StaticResource Gradient10}"
         BorderThickness="0.5"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterOwner">
+        WindowStartupLocation="CenterScreen">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -24,7 +24,7 @@
 
         <TextBlock x:Name="MessageTextBlock"
                    Grid.Column="1"
-                   Style="{StaticResource MainDarkText}"
+                   Style="{StaticResource MainLightText}"
                    Height="auto"
                    FontSize="16"
                    TextWrapping="Wrap"

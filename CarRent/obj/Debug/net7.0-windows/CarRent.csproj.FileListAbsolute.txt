@@ -89,9 +89,7 @@ C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\Ca
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\CatalogAutoPage.baml
 C:\Users\deer\Курсовая\CarRent\CarRent\bin\Debug\net7.0-windows\WpfAnimatedGif.dll
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Windows\CustomMessageBox.g.cs
-C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Windows\MainWindow.g.cs
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Windows\CustomMessageBox.baml
-C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Windows\MainWindow.baml
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\CarViewPage.g.cs
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\CarViewPage.baml
 C:\Users\deer\Курсовая\CarRent\CarRent\bin\Debug\net7.0-windows\CommonServiceLocator.dll
@@ -110,10 +108,12 @@ C:\Users\deer\Курсовая\CarRent\CarRent\bin\Debug\net7.0-windows\runtimes
 C:\Users\deer\Курсовая\CarRent\CarRent\bin\Debug\net7.0-windows\runtimes\win7-arm\native\libuv.dll
 C:\Users\deer\Курсовая\CarRent\CarRent\bin\Debug\net7.0-windows\runtimes\win7-x64\native\libuv.dll
 C:\Users\deer\Курсовая\CarRent\CarRent\bin\Debug\net7.0-windows\runtimes\win7-x86\native\libuv.dll
-C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Windows\MainWindow2.g.cs
-C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Windows\MainWindow2.baml
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\UserControls\CarViewControl.g.cs
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\UserControls\CarViewControl.baml
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\UserControls\AuthControl.g.cs
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\UserControls\AuthControl.baml
+C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Windows\AccessWindow.g.cs
+C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Windows\AccessWindow.baml
+C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Windows\MainWindow.g.cs
+C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Windows\MainWindow.baml
