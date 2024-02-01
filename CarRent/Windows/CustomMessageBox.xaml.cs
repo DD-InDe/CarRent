@@ -1,12 +1,11 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media.Imaging;
 
-namespace CarRent;
+namespace CarRent.Windows;
 
 public partial class CustomMessageBox : Window
 {
-    public string Result { get; private set; }
+    public string? Result { get; private set; }
     
     public CustomMessageBox(Icon icon, string message, Button button, string title = "Сообщение")
     {

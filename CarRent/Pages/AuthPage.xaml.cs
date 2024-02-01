@@ -18,7 +18,7 @@ public partial class AuthPage : Page
         InitializeComponent();
     }
 
-    private CustomMessageBox _messageBox;
+    private CustomMessageBox? _messageBox;
 
     private async void LoginButton_OnClick(object sender, RoutedEventArgs e)
     {
@@ -38,13 +38,13 @@ public partial class AuthPage : Page
                     Button.Ok);
                 _messageBox.ShowDialog();
             }
-            else if (user != null & user.UserNavigation.Password == pass)
+            else if (user != null & user!.UserNavigation.Password == pass)
             {
                 _messageBox = new CustomMessageBox(Icon.SuccessIcon,
                     "Вы успешно авторизировались в системе!",
                     Button.Ok);
                 _messageBox.ShowDialog();
-                NavigationService.Navigate(new MainMenuPage(user));
+                AddWindow();
             }
             else
             {
@@ -63,7 +63,9 @@ public partial class AuthPage : Page
         }
     }
 
-    private void GuestButton_OnClick(object sender, RoutedEventArgs e)
+    private void GuestButton_OnClick(object sender, RoutedEventArgs e) => AddWindow();
+
+    private void AddWindow()
     {
         var window = Application.Current.MainWindow;
         Application.Current.MainWindow = new MainWindow();

@@ -7,28 +7,13 @@
         xmlns:local="clr-namespace:CarRent"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        MinWidth="800"
-        MinHeight="400"
+        Width="700"
+        Height="500"
         Background="{StaticResource Gradient12}"
-        Title="AccessWindow" SizeToContent="WidthAndHeight">
+        Title="AccessWindow">
     <Grid>
-        
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        
-        <Button x:Name="BackButton"
-                Content="Назад"
-                Width="80"
-                Style="{StaticResource DefaultButton}"
-                Click="BackButton_OnClick"
-                HorizontalAlignment="Right"/>
-        
         <Frame x:Name="MainFrame"
-               Grid.Row="1"
                Source="../Pages/AuthPage.xaml"
-               Navigated="MainFrame_OnNavigated"
                NavigationUIVisibility="Hidden" />
     </Grid>
 </Window>

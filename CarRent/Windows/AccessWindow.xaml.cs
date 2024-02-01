@@ -13,15 +13,5 @@ namespace CarRent
         {
             InitializeComponent();
         }
-
-        private void MainFrame_OnNavigated(object sender, NavigationEventArgs e)
-        {
-            if (MainFrame.CanGoBack)
-                BackButton.Visibility = Visibility.Visible;
-            else
-                BackButton.Visibility = Visibility.Hidden;
-        }
-
-        private void BackButton_OnClick(object sender, RoutedEventArgs e) => MainFrame.GoBack();
     }
 }

@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using CarRent.Entities;
 using CarRent.Models;
+using CarRent.Windows;
 using Microsoft.EntityFrameworkCore;
 using WpfAnimatedGif;
 using Xceed.Wpf.Toolkit;
@@ -32,7 +33,7 @@ public partial class RegPage : Page
         };
     }
 
-    private CustomMessageBox messageBox;
+    private CustomMessageBox? messageBox;
 
     private async void RegButton_OnClick(object sender, RoutedEventArgs e)
     {
@@ -144,7 +145,7 @@ public partial class RegPage : Page
         switch (senderType[senderType.Length - 1])
         {
             case "TextBox":
-                TextBox textBox = sender as TextBox;
+                TextBox textBox = (sender as TextBox)!;
                 if (String.IsNullOrWhiteSpace(textBox.Text))
                     textBox.BorderBrush = (Brush)TryFindResource("RedBrush");
                 else
@@ -152,7 +153,7 @@ public partial class RegPage : Page
 
                 break;
             case "MaskedTextBox":
-                MaskedTextBox maskedTextBox = sender as MaskedTextBox;
+                MaskedTextBox maskedTextBox = (sender as MaskedTextBox)!;
                 if (!maskedTextBox.IsMaskCompleted)
                     maskedTextBox.BorderBrush = (Brush)TryFindResource("RedBrush");
                 else
@@ -160,7 +161,7 @@ public partial class RegPage : Page
 
                 break;
             case "PasswordBox":
-                PasswordBox passwordBox = sender as PasswordBox;
+                PasswordBox passwordBox = (sender as PasswordBox)!;
                 if (String.IsNullOrWhiteSpace(passwordBox.Password))
                     passwordBox.BorderBrush = (Brush)TryFindResource("RedBrush");
                 else

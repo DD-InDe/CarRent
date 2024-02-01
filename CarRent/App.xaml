@@ -15,17 +15,17 @@
         <BitmapImage x:Key="Loading"
                      UriSource="../Resources/loading.gif" />
         <BitmapImage x:Key="ErrorIcon"
-                     UriSource="/Resources/MessageBoxIcons/ErrorIcon.png" />
+                     UriSource="/Resources/Light/MessageBoxIcons/ErrorIcon.png" />
         <BitmapImage x:Key="QuestionIcon"
-                     UriSource="/Resources/MessageBoxIcons/QuestionIcon.png" />
+                     UriSource="/Resources/Light/MessageBoxIcons/QuestionIcon.png" />
         <BitmapImage x:Key="SuccessIcon"
-                     UriSource="/Resources/MessageBoxIcons/SuccessIcon.png" />
+                     UriSource="/Resources/Light/MessageBoxIcons/SuccessIcon.png" />
         <BitmapImage x:Key="UserNotFoundIcon"
-                     UriSource="/Resources/MessageBoxIcons/UserNotFoundIcon.png" />
+                     UriSource="/Resources/Light/MessageBoxIcons/UserNotFoundIcon.png" />
         <BitmapImage x:Key="WarningIcon"
-                     UriSource="/Resources/MessageBoxIcons/WarningIcon.png" />
+                     UriSource="/Resources/Light/MessageBoxIcons/WarningIcon.png" />
         <BitmapImage x:Key="WrongPassIcon"
-                     UriSource="/Resources/MessageBoxIcons/WrongPassIcon.png" />
+                     UriSource="/Resources/Light/MessageBoxIcons/WrongPassIcon.png" />
 
 
         <Style TargetType="TextBlock" x:Key="MainDarkText">

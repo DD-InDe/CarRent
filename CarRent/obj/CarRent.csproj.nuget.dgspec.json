@@ -68,10 +68,6 @@
               "target": "Package",
               "version": "[7.0.14, )"
             },
-            "MvvmLight": {
-              "target": "Package",
-              "version": "[5.4.1.1, )"
-            },
             "WpfAnimatedGif": {
               "target": "Package",
               "version": "[2.0.2, )"
