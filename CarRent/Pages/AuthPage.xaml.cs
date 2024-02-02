@@ -13,12 +13,12 @@ namespace CarRent.Pages;
 
 public partial class AuthPage : Page
 {
+    private CustomMessageBox? _messageBox;
+    
     public AuthPage()
     {
         InitializeComponent();
     }
-
-    private CustomMessageBox? _messageBox;
 
     private async void LoginButton_OnClick(object sender, RoutedEventArgs e)
     {

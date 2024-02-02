@@ -66,6 +66,8 @@
       <Resource Include="Resources\Light\MessageBoxIcons\ErrorIcon.png" />
       <None Remove="Resources\Light\MessageBoxIcons\icons8-пользователь-не-найден-48.png" />
       <Resource Include="Resources\Light\MessageBoxIcons\UserNotFoundIcon.png" />
+      <None Remove="Resources\filter.png" />
+      <Resource Include="Resources\filter.png" />
     </ItemGroup>
 
     <ItemGroup>
