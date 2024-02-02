@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen"
         Width="700"
         Height="500"
-        Background="{StaticResource Gradient12}"
+        Background="{StaticResource GradientBackground}"
         Title="AccessWindow">
     <Grid>
         <Frame x:Name="MainFrame"

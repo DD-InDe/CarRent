@@ -7,7 +7,7 @@
         Height="150" Width="400"
         WindowStyle="None"
         BorderBrush="{StaticResource DarkBrush}"
-        Background="{StaticResource Gradient10}"
+        Background="{StaticResource GradientBackground}"
         BorderThickness="0.5"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">

@@ -2,5 +2,5 @@
 
 public partial class Car
 {
-    private string Price => "Цена за сутки: " + RentPrice;
+    public string Price => "Цена за сутки: " + RentPrice;
 }

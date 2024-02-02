@@ -5,6 +5,40 @@
              xmlns:local="clr-namespace:CarRent"
              StartupUri="/Windows/AccessWindow.xaml">
     <Application.Resources>
+        <LinearGradientBrush x:Key="GradientBackground"
+                             StartPoint="0,0"
+                             EndPoint="1,1">
+            <GradientStop Color="#00394D "
+                          Offset="0.5" />
+            <GradientStop Color="#036182    "
+                          Offset="0" />
+            <GradientStop Color="#D99EA9    "
+                          Offset="1" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="GradientButtonBackground"
+                             StartPoint="0,0"
+                             EndPoint="1,1">
+            <GradientStop Color="#D99EA9 "
+                          Offset="0" />
+            <GradientStop Color="#036182    "
+                          Offset="0.5" />
+            <GradientStop Color="#D99EA9    "
+                          Offset="1" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="LineGradient"
+                             StartPoint="0,0"
+                             EndPoint="1,1">
+            <GradientStop Color="White"
+                          Offset="0" />
+            <GradientStop Color="Transparent"
+                          Offset="1" />
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="BackgroundBrush"
+                         Opacity="0.5"
+                         Color="Black" />
+        <SolidColorBrush x:Key="LightBackgroundBrush"
+                         Opacity="0.5"
+                         Color="White" />
         <Brush x:Key="WhiteBrush">#FFFFFF</Brush>
         <Brush x:Key="DarkBrush">#36393B</Brush>
         <Brush x:Key="OrangeBrush">#EE982B</Brush>
@@ -59,6 +93,22 @@
             <Setter Property="FontFamily" Value="Resources/./#Fregat-Bold" />
             <Setter Property="Foreground" Value="{StaticResource DarkBrush}" />
         </Style>
+        
+        <Style TargetType="ComboBox" x:Key="MainComboBox">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="2" />
+            <Setter Property="MinWidth" Value="150" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="IsEditable" Value="True"/>
+            <Setter Property="IsTextSearchEnabled" Value="True"/>
+            <Setter Property="IsTextSearchCaseSensitive" Value="False"/>
+            <Setter Property="BorderBrush" Value="DarkGray" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Resources/./#Fregat-Bold" />
+            <Setter Property="Foreground" Value="{StaticResource DarkBrush}" />
+        </Style>
 
         <Style TargetType="olen:MaskedTextBox" x:Key="MaskTextBox">
             <Setter Property="Margin" Value="5" />
@@ -101,6 +151,12 @@
             <Setter Property="BorderBrush" Value="{StaticResource DarkBrush}" />
             <Setter Property="BorderThickness" Value="1" />
         </Style>
+        
+        <Style TargetType="Border" x:Key="MainBorder">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+            <Setter Property="CornerRadius" Value="5" />
+        </Style>
 
         <Style TargetType="Button" x:Key="DefaultButton">
             <Setter Property="Margin" Value="5" />
@@ -109,7 +165,7 @@
             <Setter Property="FontFamily" Value="Resources/./#Fregat-Bold" />
             <Setter Property="Background">
                 <Setter.Value>
-                    <SolidColorBrush Opacity="0.5"
+                    <SolidColorBrush Opacity="0.2"
                                      Color="Black" />
                 </Setter.Value>
             </Setter>
@@ -119,6 +175,8 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border CornerRadius="5"
+                                BorderBrush="{StaticResource GradientButtonBackground}"
+                                BorderThickness="1"
                                 Background="{TemplateBinding Background}">
                             <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
@@ -129,7 +187,7 @@
         </Style>
 
         <Style TargetType="Button" x:Key="MenuButton">
-            <Setter Property="Margin" Value="10" />
+            <Setter Property="Margin" Value="0,10,0,10" />
             <Setter Property="MinHeight" Value="35" />
             <Setter Property="FontFamily" Value="Resources/./#Fregat-Bold" />
             <Setter Property="Background" Value="Transparent" />
@@ -151,142 +209,5 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
-        <SolidColorBrush x:Key="BackgroundBrush"
-                         Opacity="0.5"
-                         Color="Black" />
-
-        <LinearGradientBrush x:Key="Gradient1"
-                             StartPoint="0,0"
-                             EndPoint="1,1">
-            <GradientStop Color="#0A2CDF"
-                          Offset="0" />
-            <GradientStop Color="#F63677"
-                          Offset="0.5" />
-            <GradientStop Color="#F1BA79"
-                          Offset="1" />
-        </LinearGradientBrush>
-
-        <LinearGradientBrush x:Key="Gradient2"
-                             StartPoint="0,0"
-                             EndPoint="1,1">
-            <GradientStop Color="#0D47A1"
-                          Offset="0" />
-            <GradientStop Color="#673AB7"
-                          Offset="0.5" />
-            <GradientStop Color="#AD1457"
-                          Offset="1" />
-        </LinearGradientBrush>
-
-        <LinearGradientBrush x:Key="Gradient3"
-                             StartPoint="0,0"
-                             EndPoint="1,1">
-            <GradientStop Color="#081E4B"
-                          Offset="0" />
-            <GradientStop Color="#3F1B5B"
-                          Offset="0.5" />
-            <GradientStop Color="#780F2C"
-                          Offset="1" />
-        </LinearGradientBrush>
-
-        <LinearGradientBrush x:Key="Gradient4"
-                             StartPoint="0,0"
-                             EndPoint="1,1">
-            <GradientStop Color="#210B9E"
-                          Offset="0" />
-            <GradientStop Color="#005C9D"
-                          Offset="0.5" />
-            <GradientStop Color="#567978"
-                          Offset="1" />
-        </LinearGradientBrush>
-
-        <LinearGradientBrush x:Key="Gradient5"
-                             StartPoint="0,0"
-                             EndPoint="1,1">
-            <GradientStop Color="#D935F6"
-                          Offset="0" />
-            <GradientStop Color="#00B5FF"
-                          Offset="0.5" />
-            <GradientStop Color="#91C49C"
-                          Offset="1" />
-        </LinearGradientBrush>
-
-        <LinearGradientBrush x:Key="Gradient6"
-                             StartPoint="0,0"
-                             EndPoint="1,1">
-            <GradientStop Color="#0C0537"
-                          Offset="0" />
-            <GradientStop Color="#1B4C6C"
-                          Offset="0.5" />
-            <GradientStop Color="#6C8E95"
-                          Offset="1" />
-        </LinearGradientBrush>
-
-        <LinearGradientBrush x:Key="Gradient7"
-                             StartPoint="0,0"
-                             EndPoint="1,1">
-            <GradientStop Color="#607D8B "
-                          Offset="0" />
-            <GradientStop Color="#FFC107 "
-                          Offset="0.5" />
-            <GradientStop Color="#AD1457 "
-                          Offset="1" />
-        </LinearGradientBrush>
-
-        <LinearGradientBrush x:Key="Gradient8"
-                             StartPoint="0,0"
-                             EndPoint="1,1">
-            <GradientStop Color="#221831    "
-                          Offset="0" />
-            <GradientStop Color="#465779    "
-                          Offset="0.5" />
-            <GradientStop Color=" #99b3c6   "
-                          Offset="1" />
-        </LinearGradientBrush>
-
-        <LinearGradientBrush x:Key="Gradient9"
-                             StartPoint="0,0"
-                             EndPoint="1,1">
-            <GradientStop Color="#453C41 "
-                          Offset="0" />
-            <GradientStop Color="#7B7C81    "
-                          Offset="0.5" />
-            <GradientStop Color="#D4DBE2    "
-                          Offset="1" />
-        </LinearGradientBrush>
-
-
-        <LinearGradientBrush x:Key="Gradient10"
-                             StartPoint="0,0"
-                             EndPoint="1,1">
-            <GradientStop Color="#005067 "
-                          Offset="0" />
-            <GradientStop Color="#048399    "
-                          Offset="0.5" />
-            <GradientStop Color="#FEB9C6    "
-                          Offset="1" />
-        </LinearGradientBrush>
-
-        <LinearGradientBrush x:Key="Gradient11"
-                             StartPoint="0,0"
-                             EndPoint="1,1">
-            <GradientStop Color="#263238    "
-                          Offset="0" />
-            <GradientStop Color="#607D8B      "
-                          Offset="0.5" />
-            <GradientStop Color="#E0E0E0       "
-                          Offset="1" />
-        </LinearGradientBrush>
-
-        <LinearGradientBrush x:Key="Gradient12"
-                             StartPoint="0,0"
-                             EndPoint="1,1">
-            <GradientStop Color="#00394D "
-                          Offset="0" />
-            <GradientStop Color="#036182    "
-                          Offset="0.5" />
-            <GradientStop Color="#D99EA9    "
-                          Offset="1" />
-        </LinearGradientBrush>
     </Application.Resources>
 </Application>

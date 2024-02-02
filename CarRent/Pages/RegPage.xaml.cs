@@ -18,6 +18,7 @@ namespace CarRent.Pages;
 public partial class RegPage : Page
 {
     private readonly List<Object> _requiredFields;
+    private CustomMessageBox? messageBox;
 
     public RegPage()
     {
@@ -32,8 +33,6 @@ public partial class RegPage : Page
             HiddenPasswordBox
         };
     }
-
-    private CustomMessageBox? messageBox;
 
     private async void RegButton_OnClick(object sender, RoutedEventArgs e)
     {
@@ -120,7 +119,7 @@ public partial class RegPage : Page
         var addr = new System.Net.Mail.MailAddress(email);
         if (addr.Address == email)
             return true;
-        CustomMessageBox messageBox = new CustomMessageBox(Icon.WarningIcon, "Почта не соответсвует формату!", Button.Ok);
+        CustomMessageBox messageBox = new CustomMessageBox(Icon.WarningIcon, "Почта не соответствует формату!", Button.Ok);
         messageBox.ShowDialog();
         return false;
     }
