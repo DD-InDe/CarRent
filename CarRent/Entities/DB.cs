@@ -1,4 +1,4 @@
-﻿using CarRent.Models;
+﻿using CarRent.Entities.Models;
 
 namespace CarRent.Entities;
 

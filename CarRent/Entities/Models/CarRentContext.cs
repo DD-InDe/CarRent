@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
-namespace CarRent.Models;
+namespace CarRent.Entities.Models;
 
 public partial class CarRentContext : DbContext
 {
@@ -15,9 +17,9 @@ public partial class CarRentContext : DbContext
 
     public virtual DbSet<Account> Accounts { get; set; }
 
-    public virtual DbSet<Brend> Brends { get; set; }
+    public virtual DbSet<Brand> Brands { get; set; }
 
-    public virtual DbSet<BrendModel> BrendModels { get; set; }
+    public virtual DbSet<BrandModel> BrandModels { get; set; }
 
     public virtual DbSet<Car> Cars { get; set; }
 
@@ -34,7 +36,8 @@ public partial class CarRentContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-OE4PBCI\\SQLEXPRESS;Database=CarRent;Trusted_connection=True;Encrypt=False");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-OE4PBCI\\SQLEXPRESS;Database=CarRent;Trusted_Connection=True;Encrypt=False");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -48,30 +51,30 @@ public partial class CarRentContext : DbContext
             entity.Property(e => e.Password).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<Brend>(entity =>
+        modelBuilder.Entity<Brand>(entity =>
         {
-            entity.HasKey(e => e.BrendId).HasName("PK__Brend__915DEEDC1ECCA3C9");
+            entity.HasKey(e => e.BrandId).HasName("PK__Brend__915DEEDC1ECCA3C9");
 
-            entity.ToTable("Brend");
+            entity.ToTable("Brand");
 
             entity.Property(e => e.Name).HasMaxLength(100);
         });
 
-        modelBuilder.Entity<BrendModel>(entity =>
+        modelBuilder.Entity<BrandModel>(entity =>
         {
-            entity.HasKey(e => e.BrendModelId).HasName("PK__BrendMod__E20FB2501D0E9D8D");
+            entity.HasKey(e => e.BrandModelId).HasName("PK__BrendMod__E20FB2501D0E9D8D");
 
-            entity.ToTable("BrendModel");
+            entity.ToTable("BrandModel");
 
-            entity.HasOne(d => d.Brend).WithMany(p => p.BrendModels)
-                .HasForeignKey(d => d.BrendId)
+            entity.HasOne(d => d.Brand).WithMany(p => p.BrandModels)
+                .HasForeignKey(d => d.BrandId)
                 .HasConstraintName("FK__BrendMode__Brend__3E52440B");
 
-            entity.HasOne(d => d.Class).WithMany(p => p.BrendModels)
+            entity.HasOne(d => d.Class).WithMany(p => p.BrandModels)
                 .HasForeignKey(d => d.ClassId)
                 .HasConstraintName("FK__BrendMode__Class__403A8C7D");
 
-            entity.HasOne(d => d.Model).WithMany(p => p.BrendModels)
+            entity.HasOne(d => d.Model).WithMany(p => p.BrandModels)
                 .HasForeignKey(d => d.ModelId)
                 .HasConstraintName("FK__BrendMode__Model__3F466844");
         });
@@ -82,10 +85,11 @@ public partial class CarRentContext : DbContext
 
             entity.ToTable("Car");
 
+            entity.Property(e => e.CarVin).HasMaxLength(17);
             entity.Property(e => e.Color).HasMaxLength(10);
 
-            entity.HasOne(d => d.BrendModel).WithMany(p => p.Cars)
-                .HasForeignKey(d => d.BrendModelId)
+            entity.HasOne(d => d.BrandModel).WithMany(p => p.Cars)
+                .HasForeignKey(d => d.BrandModelId)
                 .HasConstraintName("FK__Car__BrendModelI__4316F928");
 
             entity.HasOne(d => d.CarStatus).WithMany(p => p.Cars)

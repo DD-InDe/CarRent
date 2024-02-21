@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using CarRent.Models;
+using CarRent.Entities.Models;
 
 namespace CarRent
 {

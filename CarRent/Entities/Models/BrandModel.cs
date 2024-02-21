@@ -1,18 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
-namespace CarRent.Models;
+namespace CarRent.Entities.Models;
 
-public partial class BrendModel
+public partial class BrandModel
 {
-    public int BrendModelId { get; set; }
+    public int BrandModelId { get; set; }
 
-    public int? BrendId { get; set; }
+    public int? BrandId { get; set; }
 
     public int? ModelId { get; set; }
 
     public int? ClassId { get; set; }
 
-    public virtual Brend? Brend { get; set; }
+    public virtual Brand? Brand { get; set; }
 
     public virtual ICollection<Car> Cars { get; set; } = new List<Car>();
 

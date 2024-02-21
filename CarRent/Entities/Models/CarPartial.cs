@@ -1,4 +1,4 @@
-﻿namespace CarRent.Models;
+﻿namespace CarRent.Entities.Models;
 
 public partial class Car
 {

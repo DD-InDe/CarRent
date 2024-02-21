@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace CarRent.Entities.Models;
 
-public partial class Model
+public partial class Brand
 {
-    public int ModelId { get; set; }
+    public int BrandId { get; set; }
 
     public string? Name { get; set; }
 

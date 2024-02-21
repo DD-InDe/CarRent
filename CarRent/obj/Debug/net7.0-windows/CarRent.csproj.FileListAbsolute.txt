@@ -37,7 +37,6 @@ C:\Users\deer\Курсовая\CarRent\CarRent\bin\Debug\net7.0-windows\ro\Xceed
 C:\Users\deer\Курсовая\CarRent\CarRent\bin\Debug\net7.0-windows\ru\Xceed.Wpf.AvalonDock.NET5.resources.dll
 C:\Users\deer\Курсовая\CarRent\CarRent\bin\Debug\net7.0-windows\sv\Xceed.Wpf.AvalonDock.NET5.resources.dll
 C:\Users\deer\Курсовая\CarRent\CarRent\bin\Debug\net7.0-windows\zh-Hans\Xceed.Wpf.AvalonDock.NET5.resources.dll
-C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\CarRent.csproj.CopyComplete
 C:\Users\deer\Курсовая\CarRent\CarRent\bin\Debug\net7.0-windows\Azure.Core.dll
 C:\Users\deer\Курсовая\CarRent\CarRent\bin\Debug\net7.0-windows\Azure.Identity.dll
 C:\Users\deer\Курсовая\CarRent\CarRent\bin\Debug\net7.0-windows\Humanizer.dll
@@ -95,3 +94,7 @@ C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Windows\
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Windows\AccessWindow.baml
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Windows\MainWindow.g.cs
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Windows\MainWindow.baml
+C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\UserControls\CarInfoControl.g.cs
+C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\UserControls\CarInfoControl.baml
+C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\CarRent.sourcelink.json
+C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\CarRent.csproj.Up2Date

@@ -5,26 +5,58 @@
              xmlns:local="clr-namespace:CarRent"
              StartupUri="/Windows/AccessWindow.xaml">
     <Application.Resources>
+        <!-- <LinearGradientBrush x:Key="GradientBackground" -->
+        <!--                      StartPoint="0,0" -->
+        <!--                      EndPoint="1,1"> -->
+        <!--     <GradientStop Color="#00394D " -->
+        <!--                   Offset="0.5" /> -->
+        <!--     <GradientStop Color="#036182    " -->
+        <!--                   Offset="0" /> -->
+        <!--     <GradientStop Color="#D99EA9    " -->
+        <!--                   Offset="1" /> -->
+        <!-- </LinearGradientBrush> -->
+        
         <LinearGradientBrush x:Key="GradientBackground"
                              StartPoint="0,0"
                              EndPoint="1,1">
-            <GradientStop Color="#00394D "
-                          Offset="0.5" />
-            <GradientStop Color="#036182    "
+            <GradientStop Color="Black "
                           Offset="0" />
-            <GradientStop Color="#D99EA9    "
+            <GradientStop Color="#093342    "
+                          Offset="0.25" />
+            <GradientStop Color="Black    "
+                          Offset="0.50" />
+            <GradientStop Color="#093342    "
+                          Offset="0.75" />
+            <GradientStop Color="Black "
                           Offset="1" />
         </LinearGradientBrush>
+        
+        <!-- <LinearGradientBrush x:Key="GradientButtonBackground" -->
+        <!--                      StartPoint="0,0" -->
+        <!--                      EndPoint="1,1"> -->
+        <!--     <GradientStop Color="#D99EA9 " -->
+        <!--                   Offset="0" /> -->
+        <!--     <GradientStop Color="#036182    " -->
+        <!--                   Offset="0.5" /> -->
+        <!--     <GradientStop Color="#D99EA9    " -->
+        <!--                   Offset="1" /> -->
+        <!-- </LinearGradientBrush> -->
+        
         <LinearGradientBrush x:Key="GradientButtonBackground"
                              StartPoint="0,0"
                              EndPoint="1,1">
-            <GradientStop Color="#D99EA9 "
+            <GradientStop Color="White "
                           Offset="0" />
-            <GradientStop Color="#036182    "
-                          Offset="0.5" />
-            <GradientStop Color="#D99EA9    "
+            <GradientStop Color="#093342    "
+                          Offset="0.25" />
+            <GradientStop Color="White    "
+                          Offset="0.50" />
+            <GradientStop Color="#093342    "
+                          Offset="0.75" />
+            <GradientStop Color="White "
                           Offset="1" />
         </LinearGradientBrush>
+        
         <LinearGradientBrush x:Key="LineGradient"
                              StartPoint="0,0"
                              EndPoint="1,1">

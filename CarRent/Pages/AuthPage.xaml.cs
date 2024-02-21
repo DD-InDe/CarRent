@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using CarRent.Entities;
-using CarRent.Models;
+using CarRent.Entities.Models;
 using CarRent.Windows;
 using Microsoft.EntityFrameworkCore;
 using WpfAnimatedGif;
