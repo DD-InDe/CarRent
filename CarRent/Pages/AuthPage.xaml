@@ -25,8 +25,9 @@
                        HorizontalAlignment="Center">
                 Авторизируйтесь в системе или войдите как гость.
                 <LineBreak />
-                Если у Вас нет акккаунта, вы можете его
-                <Hyperlink NavigateUri="RegPage.xaml">создать</Hyperlink>.
+                Если у Вас нет акккаунта, вы можете его 
+                <Hyperlink NavigateUri="RegPage.xaml"
+                           Foreground="White">создать</Hyperlink>.
             </TextBlock>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">
@@ -46,7 +47,7 @@
                     <TextBlock Text="Логин:"
                                Grid.Row="0"
                                Grid.Column="1"
-                               Foreground="LightGray"
+                               Foreground="WhiteSmoke"
                                FontSize="16"
                                Style="{StaticResource MainLightText}" />
                     <Image Grid.Row="1"
@@ -61,7 +62,7 @@
                     <TextBlock Text="Пароль:"
                                Grid.Row="2"
                                Grid.Column="1"
-                               Foreground="LightGray"
+                               Foreground="WhiteSmoke"
                                FontSize="16"
                                Style="{StaticResource MainLightText}" />
                     <Image Grid.Row="3"

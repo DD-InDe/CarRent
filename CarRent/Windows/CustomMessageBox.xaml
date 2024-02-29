@@ -7,7 +7,7 @@
         Height="150" Width="400"
         WindowStyle="None"
         BorderBrush="{StaticResource DarkBrush}"
-        Background="{StaticResource GradientBackground}"
+        Background="#3a363c"
         BorderThickness="0.5"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
@@ -32,7 +32,7 @@
 
         <Image x:Name="IconImage"
                Width="50"
-               Height="50"/>
+               Height="50" />
 
         <StackPanel Orientation="Horizontal"
                     Grid.ColumnSpan="2"
@@ -42,12 +42,14 @@
                     Click="YesButton_OnClick"
                     Width="80"
                     Style="{StaticResource DefaultButton}"
+                    BorderBrush="White"
                     FontSize="16"
                     Visibility="Collapsed"
                     Content="Да" />
             <Button x:Name="NoButton"
                     Click="NoButton_OnClick"
                     Width="80"
+                    BorderBrush="White"
                     Style="{StaticResource DefaultButton}"
                     FontSize="16"
                     Visibility="Collapsed"
@@ -55,6 +57,7 @@
             <Button x:Name="OkButton"
                     Click="OkButton_OnClick"
                     Width="80"
+                    BorderBrush="White"
                     Style="{StaticResource DefaultButton}"
                     FontSize="16"
                     Visibility="Collapsed"

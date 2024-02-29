@@ -20,6 +20,8 @@
       <None Remove="Resources\Fregat.ttf" />
       <None Remove="Resources\MenuSwipe.png" />
       <None Remove="Resources\Menu.png" />
+      <Resource Include="Resources\Backgrounds\BackgroundRoad.png" />
+      <Resource Include="Resources\Backgrounds\BackgroundRoad2.jpg" />
       <Resource Include="Resources\Dark\MessageBoxIcons\ErrorIcon.png" />
       <Resource Include="Resources\Dark\MessageBoxIcons\QuestionIcon.png" />
       <Resource Include="Resources\Dark\MessageBoxIcons\SuccessIcon.png" />
@@ -41,7 +43,7 @@
       <Resource Include="Resources\Info.png" />
       <None Remove="Resources\ShowPassword.png" />
       <None Remove="Resources\loading.gif" />
-      <Resource Include="Resources\loading.gif" />
+      <Resource Include="Resources\Loading.gif" />
       <None Remove="Resources\MessageBoxIcons\ErrorIcon.png" />
       <None Remove="Resources\MessageBoxIcons\QuestionIcon.png" />
       <None Remove="Resources\MessageBoxIcons\SuccessIcon.png" />
@@ -67,7 +69,19 @@
       <None Remove="Resources\Light\MessageBoxIcons\icons8-пользователь-не-найден-48.png" />
       <Resource Include="Resources\Light\MessageBoxIcons\UserNotFoundIcon.png" />
       <None Remove="Resources\filter.png" />
-      <Resource Include="Resources\filter.png" />
+      <Resource Include="Resources\Filter.png" />
+      <None Remove="Resources\BackgroundAuto,.png" />
+      <None Remove="Resources\BackgroundRoad.jpg" />
+      <None Remove="Resources\BackgroundRoad.png" />
+      <None Remove="Resources\BackgroundRoad2.jpg" />
+      <None Remove="Resources\Backgrounds\BackgroundRoad3.jpg" />
+      <Resource Include="Resources\Backgrounds\BackgroundRoad3.jpg" />
+      <None Remove="Resources\Backgrounds\BackgroundRoad4.jpg" />
+      <Resource Include="Resources\Backgrounds\BackgroundRoad4.jpg" />
+      <None Remove="Resources\Backgrounds\BackgroundRoad5.jpg" />
+      <Resource Include="Resources\Backgrounds\BackgroundRoad5.jpg" />
+      <None Remove="Resources\Car.png" />
+      <Resource Include="Resources\Car.png" />
     </ItemGroup>
 
     <ItemGroup>
@@ -93,6 +107,21 @@
         <SubType>Designer</SubType>
       </Page>
       <Page Update="Windows\CustomMessageBox.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="UserControls\ClientPages\CarViewControl.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="UserControls\ClientPages\CarInfoControl.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="Windows\MainWindow.xaml">
         <Generator>MSBuild:Compile</Generator>
         <XamlRuntime>Wpf</XamlRuntime>
         <SubType>Designer</SubType>

@@ -14,7 +14,7 @@ namespace CarRent.Pages;
 public partial class AuthPage : Page
 {
     private CustomMessageBox? _messageBox;
-    
+
     public AuthPage()
     {
         InitializeComponent();
@@ -31,21 +31,25 @@ public partial class AuthPage : Page
             User? user = await DB._context.Users.Include(c => c.UserNavigation).FirstOrDefaultAsync(c => c.UserNavigation.Login == login);
             ImageBehavior.SetAnimatedSource(LoadingImage, null);
 
-            if (user != null && user.UserNavigation.Password != pass)
+            if (user != null)
             {
-                _messageBox = new CustomMessageBox(Icon.WrongPassIcon,
-                    "Вы ввели неверный пароль. Проверьте корректность Ваших данных!",
-                    Button.Ok);
-                _messageBox.ShowDialog();
+                if (user.UserNavigation.Password == pass)
+                {
+                    _messageBox = new CustomMessageBox(Icon.SuccessIcon,
+                        "Вы успешно авторизировались в системе!",
+                        Button.Ok);
+                    _messageBox.ShowDialog();
+                    AddWindow();
+                }
+                else
+                {
+                    _messageBox = new CustomMessageBox(Icon.WrongPassIcon,
+                        "Вы ввели неверный пароль. Проверьте корректность Ваших данных!",
+                        Button.Ok);
+                    _messageBox.ShowDialog();
+                }
             }
-            else if (user != null & user!.UserNavigation.Password == pass)
-            {
-                _messageBox = new CustomMessageBox(Icon.SuccessIcon,
-                    "Вы успешно авторизировались в системе!",
-                    Button.Ok);
-                _messageBox.ShowDialog();
-                AddWindow();
-            }
+
             else
             {
                 _messageBox = new CustomMessageBox(Icon.UserNotFoundIcon,
