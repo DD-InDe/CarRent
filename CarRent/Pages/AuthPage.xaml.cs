@@ -28,7 +28,7 @@ public partial class AuthPage : Page
         if (!String.IsNullOrWhiteSpace(login) && !String.IsNullOrWhiteSpace(pass))
         {
             ImageBehavior.SetAnimatedSource(LoadingImage, (BitmapImage)FindResource("Loading"));
-            User? user = await DB._context.Users.Include(c => c.UserNavigation).FirstOrDefaultAsync(c => c.UserNavigation.Login == login);
+            User? user = await DB.Context.Users.Include(c => c.UserNavigation).FirstOrDefaultAsync(c => c.UserNavigation.Login == login);
             ImageBehavior.SetAnimatedSource(LoadingImage, null);
 
             if (user != null)
@@ -39,7 +39,8 @@ public partial class AuthPage : Page
                         "Вы успешно авторизировались в системе!",
                         Button.Ok);
                     _messageBox.ShowDialog();
-                    AddWindow();
+                    ((App)App.Current).SetCurrentUser(user);
+                    AddWindow(user);
                 }
                 else
                 {
@@ -69,10 +70,13 @@ public partial class AuthPage : Page
 
     private void GuestButton_OnClick(object sender, RoutedEventArgs e) => AddWindow();
 
-    private void AddWindow()
+    private void AddWindow(User user = null)
     {
         var window = Application.Current.MainWindow;
-        Application.Current.MainWindow = new MainWindow();
+        if (user == null)
+            Application.Current.MainWindow = new MainWindow();
+        else
+            Application.Current.MainWindow = new MainWindow(user);
         Application.Current.MainWindow.Show();
         window.Close();
     }

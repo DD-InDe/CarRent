@@ -23,13 +23,15 @@ public partial class CarRentContext : DbContext
 
     public virtual DbSet<Car> Cars { get; set; }
 
-    public virtual DbSet<CarImage> CarImages { get; set; }
-
     public virtual DbSet<CarStatus> CarStatuses { get; set; }
 
     public virtual DbSet<Class> Classes { get; set; }
 
     public virtual DbSet<Model> Models { get; set; }
+
+    public virtual DbSet<Request> Requests { get; set; }
+
+    public virtual DbSet<RequestStatus> RequestStatuses { get; set; }
 
     public virtual DbSet<Role> Roles { get; set; }
 
@@ -97,17 +99,6 @@ public partial class CarRentContext : DbContext
                 .HasConstraintName("FK__Car__CarStatusId__440B1D61");
         });
 
-        modelBuilder.Entity<CarImage>(entity =>
-        {
-            entity.HasKey(e => e.CarImageId).HasName("PK__CarImage__614BE6AFB210917E");
-
-            entity.ToTable("CarImage");
-
-            entity.HasOne(d => d.Car).WithMany(p => p.CarImages)
-                .HasForeignKey(d => d.CarId)
-                .HasConstraintName("FK__CarImage__CarId__46E78A0C");
-        });
-
         modelBuilder.Entity<CarStatus>(entity =>
         {
             entity.HasKey(e => e.CarStatusId).HasName("PK__CarStatu__4A328CC6CD1EBD28");
@@ -131,6 +122,37 @@ public partial class CarRentContext : DbContext
             entity.HasKey(e => e.ModelId).HasName("PK__Model__E8D7A12CB81CE412");
 
             entity.ToTable("Model");
+
+            entity.Property(e => e.Name).HasMaxLength(100);
+        });
+
+        modelBuilder.Entity<Request>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Request__3214EC07469BF16E");
+
+            entity.ToTable("Request");
+
+            entity.Property(e => e.EndDate).HasColumnType("date");
+            entity.Property(e => e.StartDate).HasColumnType("date");
+
+            entity.HasOne(d => d.Car).WithMany(p => p.Requests)
+                .HasForeignKey(d => d.CarId)
+                .HasConstraintName("FK__Request__CarId__5EBF139D");
+
+            entity.HasOne(d => d.Client).WithMany(p => p.Requests)
+                .HasForeignKey(d => d.ClientId)
+                .HasConstraintName("FK__Request__ClientI__60A75C0F");
+
+            entity.HasOne(d => d.RequestStatus).WithMany(p => p.Requests)
+                .HasForeignKey(d => d.RequestStatusId)
+                .HasConstraintName("FK__Request__Request__5FB337D6");
+        });
+
+        modelBuilder.Entity<RequestStatus>(entity =>
+        {
+            entity.HasKey(e => e.RequestStatusId).HasName("PK__RequestS__7094B79B2B37ACB9");
+
+            entity.ToTable("RequestStatus");
 
             entity.Property(e => e.Name).HasMaxLength(100);
         });

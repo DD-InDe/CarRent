@@ -1,0 +1,38 @@
+﻿<Page x:Class="CarRent.Pages.InfoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:CarRent.Pages"
+      mc:Ignorable="d"
+      Title="InfoPage">
+    <Grid>
+        <Border Style="{StaticResource MainBorder}"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                Margin="50,0,50,0">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Style="{StaticResource MainLightText}"
+                           TextWrapping="Wrap">
+                    Добро пожаловать в "Люкс Аренда" - лидера в сфере аренды роскошных автомобилей. Мы предлагаем эксклюзивный парк элитных автомобилей премиум-брендов, таких как Mercedes-Benz, BMW, Audi и Porsche для полного удовлетворения потребностей наших клиентов.
+                </TextBlock>
+                <TextBlock Style="{StaticResource MainLightText}"
+                           TextWrapping="Wrap">
+                    С момента основания в 2010 году мы стремимся к безупречному сервису и высочайшему качеству. Каждый автомобиль содержится в идеальном состоянии, обеспечивая максимальный комфорт и наслаждение от вождения.
+                </TextBlock>
+                <TextBlock Style="{StaticResource MainLightText}"
+                           TextWrapping="Wrap">
+                    Независимо от случая - особое событие, деловая поездка или просто удовольствие, наша команда готова превзойти ваши ожидания. В "Люкс Аренда" мы делаем аренду люксовых авто простым и приятным опытом.
+                </TextBlock>
+                <TextBlock Style="{StaticResource MainLightText}"
+                           TextWrapping="Wrap">
+                    Найдите нас по адресу: ул. Тверская, 20, стр. 1, Москва, 123104.
+                </TextBlock>
+                <TextBlock Style="{StaticResource MainLightText}"
+                           TextWrapping="Wrap">
+                    Свяжитесь с нами, чтобы узнать об эксклюзивных предложениях.
+                </TextBlock>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

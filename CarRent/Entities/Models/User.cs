@@ -19,6 +19,8 @@ public partial class User
 
     public int? RoleId { get; set; }
 
+    public virtual ICollection<Request> Requests { get; set; } = new List<Request>();
+
     public virtual Role? Role { get; set; }
 
     public virtual Account UserNavigation { get; set; } = null!;

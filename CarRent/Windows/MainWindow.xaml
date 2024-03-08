@@ -123,8 +123,7 @@
                         </StackPanel>
                     </Button.Content>
                 </Button>
-                
-                
+
 
                 <!-- разделитель -->
                 <Line Style="{StaticResource DelimiterLine}" />
@@ -160,9 +159,8 @@
             </StackPanel>
         </Grid>
         
-        <ContentControl x:Name="ContentControlPage"
-                        Grid.Column="1">
-            <uc:CarViewControl/>
-        </ContentControl>
+        <Frame x:Name="MainFrame"
+               Grid.Column="1"
+               NavigationUIVisibility="Hidden" />
     </Grid>
 </Window>

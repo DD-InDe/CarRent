@@ -1,44 +1,42 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using CarRent.Entities;
 using CarRent.Entities.Models;
-using CarRent.Pages.ClientPages;
+using CarRent.UserControls.EmployeePages;
+using CarRent.Windows;
 using Microsoft.EntityFrameworkCore;
 using WpfAnimatedGif;
 
-namespace CarRent.Pages;
+namespace CarRent.UserControls;
 
-public partial class CatalogAutoPage : Page
+public partial class CarViewControl : UserControl
 {
     private List<Car>? _cars;
     private List<Brand> _brands;
     private List<Model> _models;
     private List<Class> _classes;
 
-    public CatalogAutoPage()
+    public CarViewControl()
     {
         InitializeComponent();
     }
 
-    private async void CatalogAutoPage_OnLoaded(object sender, RoutedEventArgs e)
+    private async void CarViewControl_OnLoaded(object sender, RoutedEventArgs e)
     {
-        if (CarListView.ItemsSource == null)
-        {
-            await LoadData();
-            BrandComboBox.ItemsSource = _brands;
-            ModelComboBox.ItemsSource = _models;
-            ClassComboBox.ItemsSource = _classes;
-            BrandComboBox.SelectedIndex = 0;
-            ModelComboBox.SelectedIndex = 0;
-            ClassComboBox.SelectedIndex = 0;
-        }
-        else
-            UpdateData();
+        await LoadData();
+        BrandComboBox.ItemsSource = _brands;
+        ModelComboBox.ItemsSource = _models;
+        ClassComboBox.ItemsSource = _classes;
+        BrandComboBox.SelectedIndex = 0;
+        ModelComboBox.SelectedIndex = 0;
+        ClassComboBox.SelectedIndex = 0;
     }
 
     private async Task LoadData()
@@ -93,7 +91,6 @@ public partial class CatalogAutoPage : Page
             .Include(c => c.BrandModel.Brand)
             .Include(c => c.BrandModel.Model)
             .Include(c => c.BrandModel.Class)
-            .Include(c => c.CarStatus)
             .Where(c => (c.BrandModel.Brand == selectedBrand || selectedBrand.Name == "Любая") &&
                         (c.BrandModel.Model == selectedModel || selectedModel.Name == "Любая") &&
                         (c.BrandModel.Class == selectedClass || selectedClass.Name == "Любой") &&
@@ -111,22 +108,22 @@ public partial class CatalogAutoPage : Page
         User user = ((App)App.Current).GetCurrentUser();
         if (user != null)
         {
-            switch (user.RoleId)
+            if (user.RoleId == 1)
             {
-                case 1:
-                    NavigationService.Navigate(new CarEditPage(CarListView.SelectedItem as Car));
-                    break;
-                case 3:
-                    NavigationService.Navigate(new CarInfoPage(CarListView.SelectedItem as Car));
-                    break;
+                NavigationService navigationService = NavigationService.GetNavigationService(this)!;
+                navigationService!.Navigate(new CarEditControl(CarListView.SelectedItem as Car));
             }
         }
         else
-            NavigationService.Navigate(new CarInfoPage(CarListView.SelectedItem as Car));
+        {
+            NavigationService navigationService = NavigationService.GetNavigationService(this)!;
+            navigationService!.Navigate(new CarViewControl());
+        }
     }
 
     private void AddButton_OnClick(object sender, RoutedEventArgs e)
     {
-        NavigationService.Navigate(new CarEditPage());
+        NavigationService navigationService = NavigationService.GetNavigationService(this);
+        navigationService.Navigate(new CarEditControl());
     }
 }

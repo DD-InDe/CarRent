@@ -50,10 +50,10 @@ public partial class RegPage : Page
                 try
                 {
                     Account account = new Account { Login = login, Password = password };
-                    DB._context.Accounts.Add(account);
-                    await DB._context.SaveChangesAsync();
+                    DB.Context.Accounts.Add(account);
+                    await DB.Context.SaveChangesAsync();
 
-                    account = await DB._context.Accounts.FirstAsync(c => c.Login == login && c.Password == password);
+                    account = await DB.Context.Accounts.FirstAsync(c => c.Login == login && c.Password == password);
                     User user = new User
                     {
                         FirstName = firstName,
@@ -64,8 +64,8 @@ public partial class RegPage : Page
                         RoleId = 3,
                         UserId = account.AccountId
                     };
-                    DB._context.Users.Add(user);
-                    await DB._context.SaveChangesAsync();
+                    DB.Context.Users.Add(user);
+                    await DB.Context.SaveChangesAsync();
 
                     messageBox = new CustomMessageBox(Icon.SuccessIcon, "Вы зарегистрировались!", Button.Ok);
                     messageBox.ShowDialog();
@@ -101,7 +101,7 @@ public partial class RegPage : Page
 
     private static bool CheckLogin(string login)
     {
-        bool exist = DB._context.Accounts.Any(c => c.Login == login);
+        bool exist = DB.Context.Accounts.Any(c => c.Login == login);
         if (exist)
         {
             CustomMessageBox messageBox = new CustomMessageBox(Icon.WarningIcon, "Этот логин уже занят, придумайте другой.", Button.Ok);

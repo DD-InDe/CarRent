@@ -95,6 +95,19 @@
             <Setter Property="FontFamily" Value="Resources/./#Fregat-Bold" />
             <Setter Property="Foreground" Value="{StaticResource DarkBrush}" />
         </Style>
+        
+        <Style TargetType="DatePicker" x:Key="MainDatePicker">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Padding" Value="2" />
+            <Setter Property="Width" Value="200" />
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="DarkGray" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Resources/./#Fregat-Bold" />
+            <Setter Property="Foreground" Value="{StaticResource DarkBrush}" />
+        </Style>
 
         <Style TargetType="olen:MaskedTextBox" x:Key="MaskTextBox">
             <Setter Property="Margin" Value="5" />

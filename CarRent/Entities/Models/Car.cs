@@ -19,9 +19,11 @@ public partial class Car
 
     public string? CarVin { get; set; }
 
+    public byte[]? Photo { get; set; }
+
     public virtual BrandModel? BrandModel { get; set; }
 
-    public virtual ICollection<CarImage> CarImages { get; set; } = new List<CarImage>();
-
     public virtual CarStatus? CarStatus { get; set; }
+
+    public virtual ICollection<Request> Requests { get; set; } = new List<Request>();
 }

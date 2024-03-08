@@ -77,18 +77,18 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">
-                <Button x:Name="GuestButton"
-                        Click="GuestButton_OnClick"
-                        Width="150"
-                        Foreground="White"
-                        Style="{StaticResource DefaultButton}"
-                        Content="Гость" />
             <Button x:Name="LoginButton"
                     Click="LoginButton_OnClick"
                     Width="150"
                     Foreground="White"
                     Style="{StaticResource DefaultButton}"
                     Content="Войти" />
+                <Button x:Name="GuestButton"
+                        Click="GuestButton_OnClick"
+                        Width="150"
+                        Foreground="White"
+                        Style="{StaticResource DefaultButton}"
+                        Content="Гость" />
             </StackPanel>
         </StackPanel>
         
