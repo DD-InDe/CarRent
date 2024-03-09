@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
-namespace CarRent.Models;
+namespace CarRent.Entities.Models;
 
 public partial class Model
 {
@@ -8,5 +9,5 @@ public partial class Model
 
     public string? Name { get; set; }
 
-    public virtual ICollection<BrendModel> BrendModels { get; set; } = new List<BrendModel>();
+    public virtual ICollection<BrandModel> BrandModels { get; set; } = new List<BrandModel>();
 }

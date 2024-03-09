@@ -1,8 +1,8 @@
-﻿using CarRent.Models;
+﻿using CarRent.Entities.Models;
 
 namespace CarRent.Entities;
 
 public class DB
 {
-    public static CarRentContext _context = new CarRentContext();
+    public static CarRentContext Context = new CarRentContext();
 }

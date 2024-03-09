@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="CarRent.UserControls.CarInfoControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:CarRent.UserControls"
+             mc:Ignorable="d">
+    <Grid>
+        <StackPanel Orientation="Vertical"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <Image x:Name="CarPhotoImage"
+                       Stretch="Uniform"
+                       Width="280"
+                       Height="250"
+                       Margin="0"
+                       Source="{Binding Photo}" />
+
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right">
+                        <TextBlock Text="Vin-номер:"
+                                   Style="{StaticResource MainLightText}" />
+                        <TextBlock Style="{StaticResource MainLightText}"
+                                   Text="{Binding CarVin}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right">
+                        <TextBlock Text="Бренд и модель:"
+                                   Style="{StaticResource MainLightText}" />
+                        <TextBlock Style="{StaticResource MainLightText}"
+                                   Text="{Binding BrandModel.NamesOnly}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right">
+                        <TextBlock Text="Стоимость авто:"
+                                   Style="{StaticResource MainLightText}" />
+                        <TextBlock Style="{StaticResource MainLightText}"
+                                    Text="{Binding CarPrice}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right">
+                        <TextBlock Text="Стоимость аренды (день):"
+                                   Style="{StaticResource MainLightText}" />
+                        <TextBlock Style="{StaticResource MainLightText}"
+                                   Text="{Binding RentPrice}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right">
+                        <TextBlock Text="Статус:"
+                                   Style="{StaticResource MainLightText}" />
+                        <TextBlock Style="{StaticResource MainLightText}"
+                                   Text="{Binding CarStatus.Name}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right">
+                        <TextBlock Text="Цвет:"
+                                   Style="{StaticResource MainLightText}" />
+                        <Ellipse Width="20"
+                                 Height="20"
+                            Fill="{Binding Color}" />
+                    </StackPanel>
+                </StackPanel>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Button x:Name="BackButton"
+                        Click="BackButton_OnClick"
+                        Width="200"
+                        Style="{StaticResource DefaultButton}"
+                        Content="Назад" />
+                <Button x:Name="AddRequestButton"
+                        Click="AddRequestButton_OnClick"
+                        Width="200"
+                        Style="{StaticResource DefaultButton}"
+                        Content="Сохранить" />
+            </StackPanel>
+        </StackPanel>
+        <Image x:Name="LoadingImage"
+               Width="50"
+               Height="50"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center" />
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,168 @@
+﻿<Page x:Class="CarRent.Pages.EmployeePage.RequestInfoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:CarRent.Pages.EmployeePage"
+      mc:Ignorable="d"
+      Title="Подробная информация о заявке">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+
+        <WrapPanel VerticalAlignment="Center"
+                   HorizontalAlignment="Center">
+            <Border Style="{StaticResource MainBorder}"
+                    Margin="20">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Информация о клиенте"
+                               Style="{StaticResource MainLightText}"
+                               FontWeight="Medium"
+                               FontSize="24"
+                               Margin="20"
+                               HorizontalAlignment="Center" />
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="ФИО:"
+                                       HorizontalAlignment="Right"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <TextBlock Text="Почта:"
+                                       HorizontalAlignment="Right"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <TextBlock Text="Телефон:"
+                                       HorizontalAlignment="Right"
+                                       Style="{StaticResource MainThinLightText}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding Client.FullName}"
+                                       Style="{StaticResource MainLightText}" />
+                            <TextBlock Text="{Binding Client.Email}"
+                                       Style="{StaticResource MainLightText}" />
+                            <TextBlock Text="{Binding Client.Phone}"
+                                       Style="{StaticResource MainLightText}" />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource MainBorder}"
+                    Margin="20">
+                <StackPanel Orientation="Vertical"
+                            HorizontalAlignment="Center">
+                    <TextBlock Text="Информация об аренде"
+                               Style="{StaticResource MainLightText}"
+                               FontWeight="Medium"
+                               FontSize="24"
+                               Margin="20"
+                               HorizontalAlignment="Center" />
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Полная стоимость:"
+                                       HorizontalAlignment="Right"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <TextBlock Text="Статус:"
+                                       HorizontalAlignment="Right"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <TextBlock Text="С:"
+                                       HorizontalAlignment="Right"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <TextBlock Text="По:"
+                                       HorizontalAlignment="Right"
+                                       Style="{StaticResource MainThinLightText}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding TotalPrice}"
+                                       Style="{StaticResource MainLightText}" />
+                            <TextBlock Text="{Binding RequestStatus.Name}"
+                                       Style="{StaticResource MainLightText}" />
+                            <TextBlock Text="{Binding StartDateOnly}"
+                                       Style="{StaticResource MainLightText}" />
+                            <TextBlock Text="{Binding EndDateOnly}"
+                                       Style="{StaticResource MainLightText}" />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource MainBorder}"
+                    Margin="20">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Информация об авто"
+                               Style="{StaticResource MainLightText}"
+                               FontWeight="Medium"
+                               FontSize="24"
+                               Margin="20"
+                               HorizontalAlignment="Center" />
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Модель:"
+                                       HorizontalAlignment="Right"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <TextBlock Text="VIN-номер:"
+                                       HorizontalAlignment="Right"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <TextBlock Text="Цвет:"
+                                       HorizontalAlignment="Right"
+                                       Style="{StaticResource MainThinLightText}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding Car.BrandModel.NamesOnly}"
+                                       Style="{StaticResource MainLightText}" />
+                            <TextBlock Text="{Binding Car.CarVin}"
+                                       Style="{StaticResource MainLightText}" />
+                            <Ellipse Fill="{Binding Car.Color}"
+                                     HorizontalAlignment="Left"
+                                     Width="20"
+                                     Height="20"
+                                     Margin="10" />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </WrapPanel>
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <Button x:Name="BackButton"
+                    Click="BackButton_OnClick"
+                    Content="Назад"
+                    Width="150"
+                    Style="{StaticResource DefaultButton}" />
+            <Button x:Name="AcceptButton"
+                    Click="AcceptButton_OnClick"
+                    Content="Принять"
+                    Visibility="Collapsed"
+                    Width="150"
+                    Style="{StaticResource DefaultButton}" />
+            <Button x:Name="RejectButton"
+                    Click="RejectButton_OnClick"
+                    Content="Отклонить"
+                    Visibility="Collapsed"
+                    Width="150"
+                    Style="{StaticResource DefaultButton}" />
+            <Button x:Name="InProgressButton"
+                    Click="InProgressButton_OnClick"
+                    Content="В процессе"
+                    Visibility="Collapsed"
+                    Width="150"
+                    Style="{StaticResource DefaultButton}" />
+            <Button x:Name="ExecuteButton"
+                    Click="ExecuteButton_OnClick"
+                    Visibility="Collapsed"
+                    Content="Завершить"
+                    Width="150"
+                    Style="{StaticResource DefaultButton}" />
+        </StackPanel>
+        
+        <Image x:Name="LoadingImage"
+               Grid.RowSpan="2"
+               Width="50"
+               Height="50"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center" />
+    </Grid>
+</Page>

@@ -1,4 +1,7 @@
-﻿namespace CarRent.Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace CarRent.Entities.Models;
 
 public partial class User
 {
@@ -15,6 +18,8 @@ public partial class User
     public string? Phone { get; set; }
 
     public int? RoleId { get; set; }
+
+    public virtual ICollection<Request> Requests { get; set; } = new List<Request>();
 
     public virtual Role? Role { get; set; }
 

@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
-namespace CarRent.Models;
+namespace CarRent.Entities.Models;
 
 public partial class Car
 {
@@ -12,13 +13,17 @@ public partial class Car
 
     public double? RentPrice { get; set; }
 
-    public int? BrendModelId { get; set; }
+    public int? BrandModelId { get; set; }
 
     public int? CarStatusId { get; set; }
 
-    public virtual BrendModel? BrendModel { get; set; }
+    public string? CarVin { get; set; }
 
-    public virtual ICollection<CarImage> CarImages { get; set; } = new List<CarImage>();
+    public byte[]? Photo { get; set; }
+
+    public virtual BrandModel? BrandModel { get; set; }
 
     public virtual CarStatus? CarStatus { get; set; }
+
+    public virtual ICollection<Request> Requests { get; set; } = new List<Request>();
 }

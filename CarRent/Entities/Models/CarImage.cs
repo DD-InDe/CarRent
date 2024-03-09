@@ -1,4 +1,7 @@
-﻿namespace CarRent.Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace CarRent.Entities.Models;
 
 public partial class CarImage
 {
