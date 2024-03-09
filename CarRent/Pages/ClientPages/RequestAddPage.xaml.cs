@@ -17,20 +17,6 @@ public partial class RequestAddPage : Page
     {
         _car = car;
         InitializeComponent();
-
-        switch (_car.CarStatusId)
-        {
-            case 1:
-                DateStartDatePicker.DisplayDateStart = DateTime.Today;
-                DateStartDatePicker.SelectedDate = DateTime.Today;
-                break;
-            case 2:
-                Request request =
-                    DB.Context.Requests.Last(c => c.CarId == _car.CarId && (c.RequestStatusId == 2 || c.RequestStatusId == 6));
-                DateStartDatePicker.DisplayDateStart = request.EndDate;
-                DateStartDatePicker.SelectedDate = request.EndDate;
-                break;
-        }
     }
 
     private async void SaveButton_OnClick(object sender, RoutedEventArgs e)
@@ -63,17 +49,59 @@ public partial class RequestAddPage : Page
 
     private void DateStartDatePicker_OnSelectedDateChanged(object? sender, SelectionChangedEventArgs e)
     {
-        DateEndDatePicker.DisplayDateStart = DateStartDatePicker.SelectedDate.Value.AddDays(1);
-        if (DateEndDatePicker.SelectedDate != null)
+        try
         {
-            TotalPriceTextBlock.Text =
-                ((DateEndDatePicker.SelectedDate - DateStartDatePicker.SelectedDate).Value.Days * _car.RentPrice).ToString();
+            DateEndDatePicker.DisplayDateStart = DateStartDatePicker.SelectedDate.Value.AddDays(1);
+            if (DateEndDatePicker.SelectedDate != null)
+            {
+                TotalPriceTextBlock.Text =
+                    ((DateEndDatePicker.SelectedDate - DateStartDatePicker.SelectedDate).Value.Days * _car.RentPrice).ToString();
+            }
+        }
+        catch (Exception exception)
+        {
+            CustomMessageBox messageBox = new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
+            messageBox.ShowDialog();
         }
     }
 
     private void DateEndDatePicker_OnSelectedDateChanged(object? sender, SelectionChangedEventArgs e)
     {
-        TotalPriceTextBlock.Text =
-            ((DateEndDatePicker.SelectedDate - DateStartDatePicker.SelectedDate).Value.Days * _car.RentPrice).ToString();
+        try
+        {
+            TotalPriceTextBlock.Text =
+                ((DateEndDatePicker.SelectedDate - DateStartDatePicker.SelectedDate).Value.Days * _car.RentPrice).ToString();
+        }
+        catch (Exception exception)
+        {
+            CustomMessageBox messageBox = new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
+            messageBox.ShowDialog();
+        }
+    }
+
+    private async void RequestAddPage_OnLoaded(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            switch (_car.CarStatusId)
+            {
+                case 1:
+                    DateStartDatePicker.DisplayDateStart = DateTime.Today;
+                    DateStartDatePicker.SelectedDate = DateTime.Today;
+                    break;
+                case 2:
+                    Request request =
+                        await DB.Context.Requests.LastAsync(
+                            c => c.CarId == _car.CarId && (c.RequestStatusId == 2 || c.RequestStatusId == 6));
+                    DateStartDatePicker.DisplayDateStart = request.EndDate;
+                    DateStartDatePicker.SelectedDate = request.EndDate;
+                    break;
+            }
+        }
+        catch (Exception exception)
+        {
+            CustomMessageBox messageBox = new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
+            messageBox.ShowDialog();
+        }
     }
 }

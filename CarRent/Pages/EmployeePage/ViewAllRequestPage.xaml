@@ -35,7 +35,7 @@
                        AllowsTransparency="True"
                        IsOpen="False">
                     <Border Style="{StaticResource DefaultBorder}"
-                            Background="{StaticResource BackgroundBrush}"
+                            Background="DimGray"
                             BorderBrush="Black">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal"
@@ -72,7 +72,7 @@
                   MouseDoubleClick="RequestListView_OnMouseDoubleClick">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
-                    <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+                    <Setter Property="Background" Value="{StaticResource BackgroundBrush}" />
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>

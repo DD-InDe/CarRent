@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -44,7 +45,7 @@ public partial class RegPage : Page
         string password = HiddenPasswordBox.Password;
 
         if (CheckFields(firstName, lastName, login, password))
-            if (CheckLogin(login) && CheckEmail(email))
+            if (await CheckLogin(login) && CheckEmail(email))
             {
                 ImageBehavior.SetAnimatedSource(LoadingImage, (BitmapImage)FindResource("Loading"));
                 try
@@ -73,7 +74,7 @@ public partial class RegPage : Page
                 }
                 catch (Exception exception)
                 {
-                    messageBox = new CustomMessageBox(Icon.ErrorIcon, exception.Message, Button.Ok);
+                    CustomMessageBox messageBox = new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
                     messageBox.ShowDialog();
                 }
 
@@ -83,44 +84,71 @@ public partial class RegPage : Page
 
     private bool CheckFields(string firstName, string lastName, string login, string password)
     {
-        if (!String.IsNullOrWhiteSpace(firstName) &&
-            !String.IsNullOrWhiteSpace(lastName) &&
-            !String.IsNullOrWhiteSpace(login) &&
-            !String.IsNullOrWhiteSpace(password) &&
-            PhoneTextBox.IsMaskCompleted)
-            return true;
+        try
+        {
+            if (!String.IsNullOrWhiteSpace(firstName) &&
+                !String.IsNullOrWhiteSpace(lastName) &&
+                !String.IsNullOrWhiteSpace(login) &&
+                !String.IsNullOrWhiteSpace(password) &&
+                PhoneTextBox.IsMaskCompleted)
+                return true;
 
-        messageBox = new CustomMessageBox(Icon.WarningIcon, "Пожалуйста, заполните все поля!", Button.Ok);
-        messageBox.ShowDialog();
+            messageBox = new CustomMessageBox(Icon.WarningIcon, "Пожалуйста, заполните все поля!", Button.Ok);
+            messageBox.ShowDialog();
 
-        foreach (var field in _requiredFields)
-            HighlightingFields(field);
+            foreach (var field in _requiredFields)
+                HighlightingFields(field);
+        }
+        catch (Exception exception)
+        {
+            CustomMessageBox messageBox = new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
+            messageBox.ShowDialog();
+        }
 
         return false;
     }
 
-    private static bool CheckLogin(string login)
+    private async Task<bool> CheckLogin(string login)
     {
-        bool exist = DB.Context.Accounts.Any(c => c.Login == login);
-        if (exist)
+        try
         {
-            CustomMessageBox messageBox = new CustomMessageBox(Icon.WarningIcon, "Этот логин уже занят, придумайте другой.", Button.Ok);
-            messageBox.Show();
-            return false;
+            bool exist = await DB.Context.Accounts.AnyAsync(c => c.Login == login);
+            if (exist)
+            {
+                CustomMessageBox messageBox = new CustomMessageBox(Icon.WarningIcon, "Этот логин уже занят, придумайте другой.", Button.Ok);
+                messageBox.Show();
+                return false;
+            }
+
+            return true;
+        }
+        catch (Exception exception)
+        {
+            CustomMessageBox messageBox = new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
+            messageBox.ShowDialog();
         }
 
-        return true;
+        return false;
     }
 
     private static bool CheckEmail(string email)
     {
-        if (String.IsNullOrWhiteSpace(email))
-            return true;
-        var addr = new System.Net.Mail.MailAddress(email);
-        if (addr.Address == email)
-            return true;
-        CustomMessageBox messageBox = new CustomMessageBox(Icon.WarningIcon, "Почта не соответствует формату!", Button.Ok);
-        messageBox.ShowDialog();
+        try
+        {
+            if (String.IsNullOrWhiteSpace(email))
+                return true;
+            var addr = new System.Net.Mail.MailAddress(email);
+            if (addr.Address == email)
+                return true;
+            CustomMessageBox messageBox = new CustomMessageBox(Icon.WarningIcon, "Почта не соответствует формату!", Button.Ok);
+            messageBox.ShowDialog();
+        }
+        catch (Exception exception)
+        {
+            CustomMessageBox messageBox = new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
+            messageBox.ShowDialog();
+        }
+
         return false;
     }
 
@@ -140,33 +168,41 @@ public partial class RegPage : Page
 
     private void HighlightingFields(object sender)
     {
-        string[] senderType = sender.GetType().ToString().Split(".");
-        switch (senderType[senderType.Length - 1])
+        try
         {
-            case "TextBox":
-                TextBox textBox = (sender as TextBox)!;
-                if (String.IsNullOrWhiteSpace(textBox.Text))
-                    textBox.BorderBrush = (Brush)TryFindResource("RedBrush");
-                else
-                    textBox.BorderBrush = Brushes.DarkGray;
+            string[] senderType = sender.GetType().ToString().Split(".");
+            switch (senderType[senderType.Length - 1])
+            {
+                case "TextBox":
+                    TextBox textBox = (sender as TextBox)!;
+                    if (String.IsNullOrWhiteSpace(textBox.Text))
+                        textBox.BorderBrush = (Brush)TryFindResource("RedBrush");
+                    else
+                        textBox.BorderBrush = Brushes.DarkGray;
 
-                break;
-            case "MaskedTextBox":
-                MaskedTextBox maskedTextBox = (sender as MaskedTextBox)!;
-                if (!maskedTextBox.IsMaskCompleted)
-                    maskedTextBox.BorderBrush = (Brush)TryFindResource("RedBrush");
-                else
-                    maskedTextBox.BorderBrush = Brushes.DarkGray;
+                    break;
+                case "MaskedTextBox":
+                    MaskedTextBox maskedTextBox = (sender as MaskedTextBox)!;
+                    if (!maskedTextBox.IsMaskCompleted)
+                        maskedTextBox.BorderBrush = (Brush)TryFindResource("RedBrush");
+                    else
+                        maskedTextBox.BorderBrush = Brushes.DarkGray;
 
-                break;
-            case "PasswordBox":
-                PasswordBox passwordBox = (sender as PasswordBox)!;
-                if (String.IsNullOrWhiteSpace(passwordBox.Password))
-                    passwordBox.BorderBrush = (Brush)TryFindResource("RedBrush");
-                else
-                    passwordBox.BorderBrush = Brushes.DarkGray;
+                    break;
+                case "PasswordBox":
+                    PasswordBox passwordBox = (sender as PasswordBox)!;
+                    if (String.IsNullOrWhiteSpace(passwordBox.Password))
+                        passwordBox.BorderBrush = (Brush)TryFindResource("RedBrush");
+                    else
+                        passwordBox.BorderBrush = Brushes.DarkGray;
 
-                break;
+                    break;
+            }
+        }
+        catch (Exception exception)
+        {
+            CustomMessageBox messageBox = new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
+            messageBox.ShowDialog();
         }
     }
 

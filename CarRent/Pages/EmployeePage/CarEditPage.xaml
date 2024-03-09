@@ -10,7 +10,7 @@
       Title="Редактирование авто">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -18,75 +18,76 @@
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
 
-
-        <StackPanel Orientation="Vertical"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Margin="10,0,10,0">
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Right">
-                <TextBlock Text="Vin-номер"
-                           Style="{StaticResource MainLightText}" />
-                <TextBox Style="{StaticResource MainTextBox}"
-                         Width="250"
-                         x:Name="VinNumTextBox"
-                         MaxLength="17"
-                         PreviewTextInput="VinNumTextBox_OnPreviewTextInput"
-                         Text="{Binding CarVin}" />
+        <Border Style="{StaticResource MainBorder}"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="10,0,10,0">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+                    <TextBlock Text="Vin-номер"
+                               Style="{StaticResource MainThinLightText}" />
+                    <TextBox Style="{StaticResource MainTextBox}"
+                             Width="250"
+                             x:Name="VinNumTextBox"
+                             MaxLength="17"
+                             PreviewTextInput="VinNumTextBox_OnPreviewTextInput"
+                             Text="{Binding CarVin}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+                    <TextBlock Text="Бренд и модель"
+                               Style="{StaticResource MainThinLightText}" />
+                    <ComboBox x:Name="BrandModelComboBox"
+                              Width="250"
+                              DisplayMemberPath="NamesOnly"
+                              SelectedItem="{Binding BrandModel}"
+                              Style="{StaticResource MainComboBox}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+                    <TextBlock Text="Стоимость авто:"
+                               Style="{StaticResource MainThinLightText}" />
+                    <TextBox x:Name="CarPriceTextBox"
+                             Width="250"
+                             MaxLength="10"
+                             Text="{Binding CarPrice}"
+                             PreviewTextInput="CarPriceTextBox_OnPreviewTextInput"
+                             Style="{StaticResource MainTextBox}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+                    <TextBlock Text="Стоимость аренды (день):"
+                               Style="{StaticResource MainThinLightText}" />
+                    <TextBox x:Name="RentPriceTextBox"
+                             Width="250"
+                             MaxLength="7"
+                             Text="{Binding RentPrice}"
+                             PreviewTextInput="CarPriceTextBox_OnPreviewTextInput"
+                             Style="{StaticResource MainTextBox}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+                    <TextBlock Text="Статус:"
+                               Style="{StaticResource MainThinLightText}" />
+                    <ComboBox x:Name="StatusComboBox"
+                              Width="250"
+                              DisplayMemberPath="Name"
+                              SelectedItem="{Binding CarStatus}"
+                              Style="{StaticResource MainComboBox}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+                    <TextBlock Text="Цвет:"
+                               Style="{StaticResource MainThinLightText}" />
+                    <olen:ColorPicker x:Name="ColorPicker"
+                                      Margin="5"
+                                      Height="30"
+                                      Width="250"
+                                      SelectedColor="{Binding Color}" />
+                </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Right">
-                <TextBlock Text="Бренд и модель"
-                           Style="{StaticResource MainLightText}" />
-                <ComboBox x:Name="BrandModelComboBox"
-                          Width="250"
-                          DisplayMemberPath="NamesOnly"
-                          SelectedItem="{Binding BrandModel}"
-                          Style="{StaticResource MainComboBox}" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Right">
-                <TextBlock Text="Стоимость авто:"
-                           Style="{StaticResource MainLightText}" />
-                <TextBox x:Name="CarPriceTextBox"
-                         Width="250"
-                         MaxLength="10"
-                         Text="{Binding CarPrice}"
-                         PreviewTextInput="CarPriceTextBox_OnPreviewTextInput"
-                         Style="{StaticResource MainTextBox}" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Right">
-                <TextBlock Text="Стоимость аренды (день):"
-                           Style="{StaticResource MainLightText}" />
-                <TextBox x:Name="RentPriceTextBox"
-                         Width="250"
-                         MaxLength="7"
-                         Text="{Binding RentPrice}"
-                         PreviewTextInput="CarPriceTextBox_OnPreviewTextInput"
-                         Style="{StaticResource MainTextBox}" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Right">
-                <TextBlock Text="Статус:"
-                           Style="{StaticResource MainLightText}" />
-                <ComboBox x:Name="StatusComboBox"
-                          Width="250"
-                          DisplayMemberPath="Name"
-                          SelectedItem="{Binding CarStatus}"
-                          Style="{StaticResource MainComboBox}" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Right">
-                <TextBlock Text="Цвет:"
-                           Style="{StaticResource MainLightText}" />
-                <olen:ColorPicker x:Name="ColorPicker"
-                                  Margin="5"
-                                  Height="30"
-                                  Width="250"
-                                  SelectedColor="{Binding Color}" />
-            </StackPanel>
-        </StackPanel>
+        </Border>
 
         <Image x:Name="CarPhotoImage"
                Grid.Column="1"
@@ -95,7 +96,7 @@
                Margin="10,0,10,0"
                MaxWidth="600"
                Source="{Binding Photo}" />
-        
+
         <StackPanel Orientation="Horizontal"
                     Grid.Row="1"
                     Grid.ColumnSpan="2"

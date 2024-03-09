@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:CarRent.Pages"
       mc:Ignorable="d"
-      Title="InfoPage">
+      Title="Информация о компании">
     <Grid>
         <Border Style="{StaticResource MainBorder}"
                 HorizontalAlignment="Stretch"
@@ -14,7 +14,7 @@
             <StackPanel Orientation="Vertical">
                 <TextBlock Style="{StaticResource MainLightText}"
                            TextWrapping="Wrap">
-                    Добро пожаловать в "Люкс Аренда" - лидера в сфере аренды роскошных автомобилей. Мы предлагаем эксклюзивный парк элитных автомобилей премиум-брендов, таких как Mercedes-Benz, BMW, Audi и Porsche для полного удовлетворения потребностей наших клиентов.
+                    Добро пожаловать в "Дорожный Компаньон" - лидера в сфере аренды роскошных автомобилей. Мы предлагаем эксклюзивный парк элитных автомобилей премиум-брендов, таких как Mercedes-Benz, BMW, Audi и Porsche для полного удовлетворения потребностей наших клиентов.
                 </TextBlock>
                 <TextBlock Style="{StaticResource MainLightText}"
                            TextWrapping="Wrap">
@@ -22,7 +22,7 @@
                 </TextBlock>
                 <TextBlock Style="{StaticResource MainLightText}"
                            TextWrapping="Wrap">
-                    Независимо от случая - особое событие, деловая поездка или просто удовольствие, наша команда готова превзойти ваши ожидания. В "Люкс Аренда" мы делаем аренду люксовых авто простым и приятным опытом.
+                    Независимо от случая - особое событие, деловая поездка или просто удовольствие, наша команда готова превзойти ваши ожидания. В "Дорожный Компаньон" мы делаем аренду люксовых авто простым и приятным опытом.
                 </TextBlock>
                 <TextBlock Style="{StaticResource MainLightText}"
                            TextWrapping="Wrap">

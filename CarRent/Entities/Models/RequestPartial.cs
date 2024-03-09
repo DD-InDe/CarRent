@@ -3,5 +3,5 @@
 public partial class Request
 {
     public string StartDateOnly => StartDate.Value.ToString("d");
-    public string EndDateOnly => StartDate.Value.ToString("d");
+    public string EndDateOnly => EndDate.Value.ToString("d");
 }

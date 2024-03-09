@@ -109,5 +109,5 @@ C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\Em
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\EmployeePage\ViewAllRequestPage.baml
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\InfoPage.g.cs
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\InfoPage.baml
-C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\EmployeePage\RequestEditPage.g.cs
-C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\EmployeePage\RequestEditPage.baml
+C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\EmployeePage\RequestInfoPage.g.cs
+C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\EmployeePage\RequestInfoPage.baml
