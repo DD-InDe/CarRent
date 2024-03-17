@@ -9,6 +9,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using CarRent.Entities.Models;
 using CarRent.Pages;
+using CarRent.Pages.ClientPages;
 using CarRent.Pages.EmployeePage;
 using CarRent.UserControls;
 using Rectangle = System.Windows.Shapes.Rectangle;
@@ -17,6 +18,8 @@ namespace CarRent.Windows;
 
 public partial class MainWindow : Window
 {
+    private User _user;
+
     public MainWindow()
     {
         InitializeComponent();
@@ -24,12 +27,14 @@ public partial class MainWindow : Window
 
         AllOrdersButton.Visibility = Visibility.Collapsed;
         UsersButton.Visibility = Visibility.Collapsed;
+        MyOrdersButton.Visibility = Visibility.Collapsed;
     }
 
     public MainWindow(User user)
     {
         InitializeComponent();
         MainFrame.Navigate(new CatalogAutoPage());
+        _user = user;
 
         switch (user.RoleId)
         {
@@ -70,12 +75,16 @@ public partial class MainWindow : Window
     private void CarCatalogButton_OnClick(object sender, RoutedEventArgs e)
     {
         ChangeBackground(sender);
-        MainFrame.Navigate(new CatalogAutoPage());
+        if (_user != null)
+            MainFrame.Navigate(new CatalogAutoPage(_user));
+        else
+            MainFrame.Navigate(new CatalogAutoPage());
     }
 
     private void MyOrdersButton_OnClick(object sender, RoutedEventArgs e)
     {
         ChangeBackground(sender);
+        MainFrame.Navigate(new ViewMyRequestPage(_user));
     }
 
     private void CompanyInfoButton_OnClick(object sender, RoutedEventArgs e)

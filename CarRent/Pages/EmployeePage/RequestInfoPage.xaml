@@ -156,6 +156,12 @@
                     Content="Завершить"
                     Width="150"
                     Style="{StaticResource DefaultButton}" />
+            <Button x:Name="CancelButton"
+                    Click="CancelButton_OnClick"
+                    Visibility="Collapsed"
+                    Content="Отменить"
+                    Width="150"
+                    Style="{StaticResource DefaultButton}" />
         </StackPanel>
         
         <Image x:Name="LoadingImage"

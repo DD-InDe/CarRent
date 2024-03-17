@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:CarRent.Pages"
       mc:Ignorable="d"
       Background="{StaticResource BackgroundBrush}"
-      Title="AuthPage">
+      Title="Авторизация">
     <Grid>
         <StackPanel Orientation="Vertical"
                     VerticalAlignment="Center"
@@ -25,9 +25,12 @@
                        HorizontalAlignment="Center">
                 Авторизируйтесь в системе или войдите как гость.
                 <LineBreak />
-                Если у Вас нет акккаунта, вы можете его 
-                <Hyperlink NavigateUri="RegPage.xaml"
-                           Foreground="White">создать</Hyperlink>.
+                Если у Вас нет акккаунта, вы можете его
+                <Hyperlink NavigateUri="/Pages/ClientPages/RegPage.xaml"
+                           Foreground="White">
+                    создать
+                </Hyperlink>
+                .
             </TextBlock>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">
@@ -52,7 +55,7 @@
                                Style="{StaticResource MainLightText}" />
                     <Image Grid.Row="1"
                            Source="../Resources/Light/Login.png"
-                           Width="30"/>
+                           Width="30" />
                     <TextBox x:Name="LoginTextBox"
                              Grid.Row="1"
                              Grid.Column="1"
@@ -67,7 +70,7 @@
                                Style="{StaticResource MainLightText}" />
                     <Image Grid.Row="3"
                            Source="../Resources/Light/Password.png"
-                           Width="30"/>
+                           Width="30" />
                     <PasswordBox x:Name="PasswordBox"
                                  Grid.Column="1"
                                  Grid.Row="3"
@@ -77,12 +80,12 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">
-            <Button x:Name="LoginButton"
-                    Click="LoginButton_OnClick"
-                    Width="150"
-                    Foreground="White"
-                    Style="{StaticResource DefaultButton}"
-                    Content="Войти" />
+                <Button x:Name="LoginButton"
+                        Click="LoginButton_OnClick"
+                        Width="150"
+                        Foreground="White"
+                        Style="{StaticResource DefaultButton}"
+                        Content="Войти" />
                 <Button x:Name="GuestButton"
                         Click="GuestButton_OnClick"
                         Width="150"
@@ -91,7 +94,7 @@
                         Content="Гость" />
             </StackPanel>
         </StackPanel>
-        
+
         <Image x:Name="LoadingImage"
                Width="50"
                Height="50"

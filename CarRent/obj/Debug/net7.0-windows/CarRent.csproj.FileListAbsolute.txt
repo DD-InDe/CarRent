@@ -111,3 +111,5 @@ C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\In
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\InfoPage.baml
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\EmployeePage\RequestInfoPage.g.cs
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\EmployeePage\RequestInfoPage.baml
+C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\ClientPages\ViewMyRequestPage.g.cs
+C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\ClientPages\ViewMyRequestPage.baml

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:CarRent.Pages"
       mc:Ignorable="d"
       Loaded="CatalogAutoPage_OnLoaded"
-      Title="CatalogAutoPage">
+      Title="Каталог авто">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -34,6 +34,7 @@
                             Click="AddButton_OnClick"
                             HorizontalAlignment="Left"
                             Width="200"
+                            Visibility="Collapsed"
                             Content="Добавить авто"
                             Style="{StaticResource DefaultButton}" />
                 </StackPanel>
@@ -41,7 +42,7 @@
                        AllowsTransparency="True"
                        IsOpen="False">
                     <Border Style="{StaticResource DefaultBorder}"
-                            Background="{StaticResource BackgroundBrush}"
+                            Background="DimGray"
                             BorderBrush="Black">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal">
