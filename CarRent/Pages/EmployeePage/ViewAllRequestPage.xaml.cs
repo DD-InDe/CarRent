@@ -75,7 +75,7 @@ public partial class ViewAllRequestPage : Page
 
     private void SearchTextBox_OnTextChanged(object sender, TextChangedEventArgs e) => UpdateData();
 
-    private void UpdateData()
+    private async void UpdateData()
     {
         try
         {
@@ -88,7 +88,7 @@ public partial class ViewAllRequestPage : Page
 
             string searchText = SearchTextBox.Text.ToLower();
 
-            _requests = DB.Context.Requests
+            _requests = await DB.Context.Requests
                 .Include(c => c.Car)
                 .Include(c => c.Car.BrandModel)
                 .Include(c => c.Car.BrandModel.Brand)
@@ -99,8 +99,11 @@ public partial class ViewAllRequestPage : Page
                             (c.RequestStatus == selectedStatus || selectedStatus.Name == "Все") &&
                             (c.Client.FirstName.ToLower().Contains(searchText) ||
                              c.Client.LastName.ToLower().Contains(searchText) ||
-                             c.Client.MiddleName.ToLower().Contains(searchText)))
-                .ToList();
+                             c.Client.MiddleName.ToLower().Contains(searchText) ||
+                             c.Car.BrandModel.Model.Name.ToLower().Contains(searchText) ||
+                             c.Car.BrandModel.Brand.Name.ToLower().Contains(searchText) ||
+                             c.Car.BrandModel.Class.Name.ToLower().Contains(searchText)))
+                .ToListAsync();
             RequestListView.ItemsSource = _requests;
 
             ImageBehavior.SetAnimatedSource(LoadingImage, null);

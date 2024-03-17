@@ -25,6 +25,18 @@ public partial class RequestInfoPage : Page
         CheckButtons();
     }
 
+    public RequestInfoPage(Request request, User user)
+    {
+        InitializeComponent();
+        _request = request;
+        DataContext = request;
+
+        if (request.RequestStatusId == 1 || _request.RequestStatusId == 2)
+            CancelButton.Visibility = Visibility.Visible;
+        else
+            CancelButton.Visibility = Visibility.Collapsed;
+    }
+
     private void CheckButtons()
     {
         try
@@ -161,6 +173,28 @@ public partial class RequestInfoPage : Page
                 DataContext = null;
                 DataContext = _request;
                 CheckButtons();
+            }
+        }
+        catch (Exception exception)
+        {
+            CustomMessageBox messageBox = new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
+            messageBox.ShowDialog();
+        }
+    }
+
+    private async void CancelButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            _messageBox = new CustomMessageBox(Icon.QuestionIcon, "Отменить заявку?", Button.YesNo);
+            _messageBox.ShowDialog();
+            if (_messageBox.Result == "Yes")
+            {
+                _request.RequestStatusId = 5;
+                await DB.Context.SaveChangesAsync();
+                DataContext = null;
+                DataContext = _request;
+                CancelButton.Visibility = Visibility.Collapsed;
             }
         }
         catch (Exception exception)

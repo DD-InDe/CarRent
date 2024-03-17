@@ -22,6 +22,14 @@ public partial class CatalogAutoPage : Page
     private List<Model> _models;
     private List<Class> _classes;
 
+    public CatalogAutoPage(User user)
+    {
+        InitializeComponent();
+
+        if (user.RoleId == 1)
+            AddButton.Visibility = Visibility.Visible;
+    }
+
     public CatalogAutoPage()
     {
         InitializeComponent();
@@ -102,7 +110,7 @@ public partial class CatalogAutoPage : Page
 
     private void SearchTextBox_OnTextChanged(object sender, TextChangedEventArgs e) => UpdateData();
 
-    private void UpdateData()
+    private async void UpdateData()
     {
         try
         {
@@ -116,7 +124,7 @@ public partial class CatalogAutoPage : Page
 
             string searchText = SearchTextBox.Text.ToLower();
 
-            _cars = DB.Context.Cars
+            _cars = await DB.Context.Cars
                 .Include(c => c.BrandModel)
                 .Include(c => c.BrandModel.Brand)
                 .Include(c => c.BrandModel.Model)
@@ -128,7 +136,7 @@ public partial class CatalogAutoPage : Page
                             (c.BrandModel.Brand.Name.ToLower().Contains(searchText) ||
                              c.BrandModel.Model.Name.ToLower().Contains(searchText) ||
                              c.BrandModel.Class.Name.ToLower().Contains(searchText)))
-                .ToList();
+                .ToListAsync();
             CarListView.ItemsSource = _cars;
 
             ImageBehavior.SetAnimatedSource(LoadingImage, null);

@@ -9,8 +9,14 @@
         WindowStartupLocation="CenterScreen"
         Width="700"
         Height="500"
-        Background="{StaticResource AccessWindowBackground}"
-        Title="AccessWindow">
+        Background="{StaticResource AccessWindowBackground}">
+
+    <Window.Title>
+        <MultiBinding StringFormat="{}Окно входа - {0}">
+            <Binding Binding.ElementName="MainFrame" Path="Content.Title" />
+        </MultiBinding>
+    </Window.Title>
+
     <Grid>
         <Frame x:Name="MainFrame"
                Source="../Pages/AuthPage.xaml"

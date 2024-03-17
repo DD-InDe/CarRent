@@ -4,9 +4,109 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:CarRent.Pages.ClientPages"
+      Loaded="ViewMyRequestPage_OnLoaded"
       mc:Ignorable="d"
-      Title="ViewMyRequestPage" Height="450" Width="800">
-    <Grid>
-        
+      Title="Мои заявки" >
+   <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Style="{StaticResource MainBorder}">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Поиск:"
+                               Style="{StaticResource MainLightText}" />
+                    <TextBox x:Name="SearchTextBox"
+                             Width="400"
+                             TextChanged="SearchTextBox_OnTextChanged"
+                             Style="{StaticResource MainTextBox}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="OpenFilter"
+                            Click="OpenFilter_OnClick"
+                            HorizontalAlignment="Left"
+                            Width="200"
+                            Content="Открыть фильтр"
+                            Style="{StaticResource DefaultButton}" />
+                </StackPanel>
+                <Popup x:Name="Popup"
+                       AllowsTransparency="True"
+                       IsOpen="False">
+                    <Border Style="{StaticResource DefaultBorder}"
+                            Background="DimGray"
+                            BorderBrush="Black">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Right">
+                                <TextBlock Text="Статус:"
+                                           Style="{StaticResource MainLightText}" />
+                                <ComboBox x:Name="StatusComboBox"
+                                          Width="300"
+                                          DisplayMemberPath="Name"
+                                          SelectionChanged="StatusComboBox_OnSelectionChanged"
+                                          Style="{StaticResource MainComboBox}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </Popup>
+            </StackPanel>
+        </Border>
+
+        <ListView x:Name="RequestListView"
+                  Background="Transparent"
+                  BorderThickness="0"
+                  Grid.Row="1"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  MouseDoubleClick="RequestListView_OnMouseDoubleClick">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Background" Value="{StaticResource BackgroundBrush}" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Style="{StaticResource MainLightText}">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}Клиент: {0}">
+                                    <Binding Path="Client.FullName" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                        <TextBlock Style="{StaticResource MainLightText}">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}Статус: {0}">
+                                    <Binding Path="RequestStatus.Name" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                        <TextBlock Style="{StaticResource MainLightText}">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}Срок: {0}-{1}">
+                                    <Binding Path="StartDateOnly" />
+                                    <Binding Path="EndDateOnly" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                        <TextBlock Style="{StaticResource MainLightText}">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}Авто: {0}">
+                                    <Binding Path="Car.BrandModel.NamesOnly" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Image x:Name="LoadingImage"
+               Grid.Row="1"
+               Width="50"
+               Height="50"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center" />
     </Grid>
 </Page>
