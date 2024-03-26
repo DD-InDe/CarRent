@@ -27,6 +27,7 @@ public partial class MainWindow : Window
         AllOrdersButton.Visibility = Visibility.Collapsed;
         UsersButton.Visibility = Visibility.Collapsed;
         MyOrdersButton.Visibility = Visibility.Collapsed;
+        PersonalAreaButton.Visibility = Visibility.Collapsed;
     }
 
     public MainWindow(User user)
@@ -95,6 +96,7 @@ public partial class MainWindow : Window
     private void PersonalAreaButton_OnClick(object sender, RoutedEventArgs e)
     {
         ChangeBackground(sender);
+        MainFrame.Navigate(new EditProfilePage(((App)App.Current).GetCurrentUser()));
     }
 
     private void ExitButton_OnClick(object sender, RoutedEventArgs e)

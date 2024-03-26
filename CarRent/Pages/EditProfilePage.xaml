@@ -6,9 +6,7 @@
       xmlns:olen="http://schemas.xceed.com/wpf/xaml/toolkit"
       xmlns:local="clr-namespace:CarRent.Pages"
       mc:Ignorable="d"
-      Loaded="EditProfilePage_OnLoaded"
-      Background="{StaticResource BackgroundBrush}"
-      Title="">
+      Title="Редактирование профиля">
 
     <Page.Resources>
         <Style TargetType="ToolTip">
@@ -25,7 +23,6 @@
                     <ToolTip>
                         <ToolTip.Content>
                             <TextBlock Style="{StaticResource NotificationText}"
-                                       VerticalAlignment="Center"
                                        Margin="0"
                                        FontSize="14"
                                        Text="Это обязательное поле!" />
@@ -73,134 +70,105 @@
 
 
     </Page.Resources>
-
     <Grid>
         <StackPanel Orientation="Vertical"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center">
-            <TextBlock Text="Регистрация"
-                       Style="{StaticResource MainLightText}"
-                       FontSize="24"
-                       Margin="10"
-                       HorizontalAlignment="Center" />
-            <TextBlock Style="{StaticResource MainLightText}"
-                       TextWrapping="Wrap"
-                       FontSize="16"
-                       Margin="10"
-                       Height="auto"
-                       Text="Заполните все поля, отмеченные звездочкой"
-                       HorizontalAlignment="Center"/>
-            
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right">
                 <TextBlock Text="Имя:*"
-                           Grid.Column="0"
-                           Grid.Row="0"
                            Style="{StaticResource MainThinLightText}" />
-                <TextBlock Text="Фамилия:*"
-                           Grid.Column="0"
-                           Grid.Row="1"
-                           Style="{StaticResource MainThinLightText}" />
-                <TextBlock Text="Отчество:"
-                           Grid.Column="0"
-                           Grid.Row="2"
-                           Style="{StaticResource MainThinLightText}" />
-                <TextBlock Text="Почта:"
-                           Grid.Column="0"
-                           Grid.Row="3"
-                           Style="{StaticResource MainThinLightText}" />
-                <TextBlock Text="Телефон:*"
-                           Grid.Column="0"
-                           Grid.Row="4"
-                           Style="{StaticResource MainThinLightText}" />
-                <TextBlock Text="Логин:*"
-                           Grid.Column="0"
-                           Grid.Row="5"
-                           Style="{StaticResource MainThinLightText}" />
-                <TextBlock Text="Пароль:*"
-                           Grid.Column="0"
-                           Grid.Row="6"
-                           Style="{StaticResource MainThinLightText}" />
-
                 <TextBox x:Name="FNameTextBox"
-                         Grid.Column="1"
-                         Grid.Row="0"
+                         Text="{Binding FirstName}"
                          Style="{StaticResource RequiredTextBox}"
                          PreviewTextInput="RusTextBox_OnPreviewTextInput"
-                         LostFocus="TextBox_OnLostFocus">
-                </TextBox>
+                         LostFocus="TextBox_OnLostFocus" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <TextBlock Text="Фамилия:*"
+                           Style="{StaticResource MainThinLightText}" />
                 <TextBox x:Name="LNameTextBox"
-                         Grid.Column="1"
-                         Grid.Row="1"
+                         Text="{Binding LastName}"
                          PreviewTextInput="RusTextBox_OnPreviewTextInput"
                          LostFocus="TextBox_OnLostFocus"
-                         Style="{StaticResource RequiredTextBox}">
-                </TextBox>
+                         Style="{StaticResource RequiredTextBox}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <TextBlock Text="Отчество:"
+                           Style="{StaticResource MainThinLightText}" />
                 <TextBox x:Name="MNameTextBox"
-                         Grid.Column="1"
-                         Grid.Row="2"
+                         Width="300"
+                         Text="{Binding MiddleName}"
                          PreviewTextInput="RusTextBox_OnPreviewTextInput"
-                         Style="{StaticResource MainTextBox}">
-                </TextBox>
-                <TextBox x:Name="EmailTextBox"
-                         Grid.Column="1"
-                         Grid.Row="3"
-                         PreviewTextInput="NoneRusTextBox_OnPreviewTextInput"
                          Style="{StaticResource MainTextBox}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <TextBlock Text="Почта:"
+                           Style="{StaticResource MainThinLightText}" />
+                <TextBox x:Name="EmailTextBox"
+                         Text="{Binding Email}"
+                         PreviewTextInput="NoneRusTextBox_OnPreviewTextInput"
+                         Width="300"
+                         Style="{StaticResource MainTextBox}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <TextBlock Text="Телефон:*"
+                           Style="{StaticResource MainThinLightText}" />
                 <olen:MaskedTextBox x:Name="PhoneTextBox"
-                                    Grid.Column="1"
-                                    Grid.Row="4"
                                     LostFocus="TextBox_OnLostFocus"
                                     Style="{StaticResource RequiredMaskTextBox}"
-                                    Mask="+7(000)000-00-00">
-                </olen:MaskedTextBox>
+                                    Mask="+7(000)000-00-00" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <TextBlock Text="Логин:*"
+                           Style="{StaticResource MainThinLightText}" />
                 <TextBox x:Name="LoginTextBox"
-                         Grid.Column="1"
-                         Grid.Row="5"
+                         Text="{Binding UserNavigation.Login}"
                          PreviewTextInput="NoneRusTextBox_OnPreviewTextInput"
                          LostFocus="TextBox_OnLostFocus"
-                         Style="{StaticResource RequiredTextBox}">
-                </TextBox>
+                         Style="{StaticResource RequiredTextBox}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <TextBlock Text="Пароль:*"
+                           Style="{StaticResource MainThinLightText}" />
                 <PasswordBox x:Name="HiddenPasswordBox"
-                             Grid.Column="1"
-                             Grid.Row="6"
+                             Width="270"
                              LostFocus="TextBox_OnLostFocus"
-                             Style="{StaticResource PassBox}">
-                </PasswordBox>
+                             Style="{StaticResource PassBox}" />
                 <TextBox x:Name="ShowedPasswordBox"
-                         Grid.Column="1"
-                         Grid.Row="6"
+                         Width="270"
                          Style="{StaticResource RequiredTextBox}"
-                         Visibility="Collapsed">
-                </TextBox>
-
+                         Visibility="Collapsed" />
                 <Image MouseLeftButtonUp="ShowPassImage_OnMouseLeftButtonUp"
                        MouseLeftButtonDown="ShowPassImage_OnMouseLeftButtonDown"
-                       Source="../Resources/ShowPasswordDark.png"
+                       Source="../Resources/Light/ShowPassword.png"
                        Stretch="Fill"
-                       Grid.Column="2"
-                       Grid.Row="6"
                        Width="30"
                        Height="30">
                     <Image.ToolTip>
                         <ToolTip Content="Зажмите чтобы увидеть пароль" />
                     </Image.ToolTip>
                 </Image>
-            </Grid>
+            </StackPanel>
+            <StackPanel x:Name="RolePanel"
+                        Visibility="Collapsed"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                <TextBlock Text="Роль:"
+                           Style="{StaticResource MainThinLightText}" />
+                <ComboBox x:Name="RoleComboBox"
+                          Width="300"
+                          Style="{StaticResource MainComboBox}"
+                          DisplayMemberPath="Name"
+                          SelectedItem="{Binding Role}" />
+            </StackPanel>
+
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">
                 <Button x:Name="BackButton"
@@ -208,14 +176,14 @@
                         Click="BackButton_OnClick"
                         Style="{StaticResource DefaultButton}"
                         Content="Назад" />
-                <Button x:Name="RegButton"
+                <Button x:Name="SaveButton"
                         Width="200"
-                        Click="RegButton_OnClick"
+                        Click="SaveButton_OnClick"
                         Style="{StaticResource DefaultButton}"
-                        Content="Зарегистрироваться" />
+                        Content="Сохранить" />
             </StackPanel>
         </StackPanel>
-        
+
         <Image x:Name="LoadingImage"
                Width="50"
                Height="50"

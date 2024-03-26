@@ -21,4 +21,16 @@ public partial class User
             }
         }
     }
+
+    public string PhoneOnlyNumbers
+    {
+        get
+        {
+            string temp = Phone;
+            temp = temp.Replace("+7", "");
+            temp = temp.Replace("(", "");
+            temp = temp.Replace(")", "");
+            return temp.Replace("-", "");
+        }
+    }
 }

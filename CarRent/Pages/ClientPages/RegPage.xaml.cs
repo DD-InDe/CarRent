@@ -16,31 +16,13 @@ using Xceed.Wpf.Toolkit;
 
 namespace CarRent.Pages;
 
-public partial class EditProfilePage : Page
+public partial class RegPage : Page
 {
     private readonly List<Object> _requiredFields;
     private CustomMessageBox? messageBox;
-    private User _user;
-    private Action action;
 
-    public EditProfilePage(User user, Action action)
+    public RegPage()
     {
-        _user = user;
-        InitializeComponent();
-
-        _requiredFields = new List<object>
-        {
-            FNameTextBox,
-            LNameTextBox,
-            PhoneTextBox,
-            LoginTextBox,
-            HiddenPasswordBox
-        };
-    }
-
-    public EditProfilePage(Action action)
-    {
-        _user = new User();
         InitializeComponent();
 
         _requiredFields = new List<object>
@@ -68,33 +50,24 @@ public partial class EditProfilePage : Page
                 ImageBehavior.SetAnimatedSource(LoadingImage, (BitmapImage)FindResource("Loading"));
                 try
                 {
-                    if (_user.UserId == 0)
-                    {
-                        Account account = new Account { Login = login, Password = password };
-                        DB.Context.Accounts.Add(account);
-                        await DB.Context.SaveChangesAsync();
+                    Account account = new Account { Login = login, Password = password };
+                    DB.Context.Accounts.Add(account);
+                    await DB.Context.SaveChangesAsync();
 
-                        account = await DB.Context.Accounts.FirstAsync(c => c.Login == login && c.Password == password);
-                        User user = new User
-                        {
-                            FirstName = firstName,
-                            LastName = lastName,
-                            MiddleName = middleName,
-                            Email = email,
-                            Phone = PhoneTextBox.Text,
-                            RoleId = 3,
-                            UserId = account.AccountId
-                        };
-                        DB.Context.Users.Add(user);
-                        await DB.Context.SaveChangesAsync();
+                    account = await DB.Context.Accounts.FirstAsync(c => c.Login == login && c.Password == password);
+                    User user = new User
+                    {
+                        FirstName = firstName,
+                        LastName = lastName,
+                        MiddleName = middleName,
+                        Email = email,
+                        Phone = PhoneTextBox.Text,
+                        RoleId = 3,
+                        UserId = account.AccountId
+                    };
+                    DB.Context.Users.Add(user);
+                    await DB.Context.SaveChangesAsync();
                     messageBox = new CustomMessageBox(Icon.SuccessIcon, "Вы зарегистрировались!", Button.Ok);
-                    }
-                    else
-                    {
-                        await DB.Context.SaveChangesAsync();
-                    }
-
-                    messageBox = new CustomMessageBox(Icon.SuccessIcon, "Данные обновлены!", Button.Ok);
                     messageBox.ShowDialog();
                     NavigationService.GoBack();
                 }
@@ -244,20 +217,5 @@ public partial class EditProfilePage : Page
     private void ShowPassImage_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e) => ChangeVisibility();
 
     private void BackButton_OnClick(object sender, RoutedEventArgs e) => NavigationService.GoBack();
-
-    private void EditProfilePage_OnLoaded(object sender, RoutedEventArgs e)
-    {
-        try
-        {
-            if (action == Action.Registration)
-            {
-                
-            }
-        }
-        catch (Exception exception)
-        {
-            CustomMessageBox messageBox = new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
-            messageBox.ShowDialog();
-        }
-    }
+    
 }
