@@ -85,13 +85,13 @@
                                 </MultiBinding>
                             </TextBlock.Text>
                         </TextBlock>
-                        <TextBlock Style="{StaticResource MainLightText}">
-                            <TextBlock.Text>
-                                <MultiBinding StringFormat="{}Статус: {0}">
-                                    <Binding Path="RequestStatus.Name" />
-                                </MultiBinding>
-                            </TextBlock.Text>
-                        </TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Статус:"
+                                       Style="{StaticResource MainLightText}" />
+                            <TextBlock Text="{Binding RequestStatus.Name}"
+                                       Foreground="{Binding RequestColor}"
+                                       Style="{StaticResource MainLightText}" />
+                        </StackPanel>
                         <TextBlock Style="{StaticResource MainLightText}">
                             <TextBlock.Text>
                                 <MultiBinding StringFormat="{}Срок: {0}-{1}">

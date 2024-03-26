@@ -91,12 +91,6 @@ C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Windows\
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Windows\MainWindow.baml
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\CarRent.sourcelink.json
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\CarRent.csproj.Up2Date
-C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\UserControls\ClientPages\CarInfoControl.g.cs
-C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\UserControls\ClientPages\CarInfoControl.baml
-C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\UserControls\EmployeePages\CarEditControl.g.cs
-C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\UserControls\EmployeePages\CarEditControl.baml
-C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\UserControls\CarViewControl.g.cs
-C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\UserControls\CarViewControl.baml
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\ClientPages\RegPage.g.cs
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\ClientPages\RegPage.baml
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\ClientPages\CarInfoPage.g.cs
@@ -113,3 +107,5 @@ C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\Em
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\EmployeePage\RequestInfoPage.baml
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\ClientPages\ViewMyRequestPage.g.cs
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\ClientPages\ViewMyRequestPage.baml
+C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\EmployeePage\ViewUserPage.g.cs
+C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\EmployeePage\ViewUserPage.baml

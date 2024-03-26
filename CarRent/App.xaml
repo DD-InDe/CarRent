@@ -22,6 +22,9 @@
         <SolidColorBrush x:Key="BackgroundBrush"
                          Opacity="0.3"
                          Color="Black" />
+        <SolidColorBrush x:Key="LightBlackBackgroundBrush"
+                         Opacity="0.2"
+                         Color="Black" />
         <SolidColorBrush x:Key="LightBackgroundBrush"
                          Opacity="0.5"
                          Color="White" />
@@ -158,6 +161,12 @@
         <Style TargetType="Border" x:Key="MainBorder">
             <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
             <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="CornerRadius" Value="5" />
+        </Style>
+        
+        <Style TargetType="Border" x:Key="LightBorder">
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="BorderThickness" Value="0.5"/>
             <Setter Property="CornerRadius" Value="5" />
         </Style>
 

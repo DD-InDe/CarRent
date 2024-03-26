@@ -26,7 +26,7 @@
                 Авторизируйтесь в системе или войдите как гость.
                 <LineBreak />
                 Если у Вас нет акккаунта, вы можете его
-                <Hyperlink NavigateUri="/Pages/ClientPages/RegPage.xaml"
+                <Hyperlink NavigateUri="/Pages/ClientPages/EditProfilePage.xaml"
                            Foreground="White">
                     создать
                 </Hyperlink>

@@ -11,7 +11,6 @@ using CarRent.Entities.Models;
 using CarRent.Pages;
 using CarRent.Pages.ClientPages;
 using CarRent.Pages.EmployeePage;
-using CarRent.UserControls;
 using Rectangle = System.Windows.Shapes.Rectangle;
 
 namespace CarRent.Windows;
@@ -124,5 +123,6 @@ public partial class MainWindow : Window
     private void UsersButton_OnClick(object sender, RoutedEventArgs e)
     {
         ChangeBackground(sender);
+        MainFrame.Navigate(new ViewUserPage());
     }
 }

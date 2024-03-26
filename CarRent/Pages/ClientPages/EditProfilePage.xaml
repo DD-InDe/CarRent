@@ -1,0 +1,225 @@
+﻿<Page x:Class="CarRent.Pages.EditProfilePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:olen="http://schemas.xceed.com/wpf/xaml/toolkit"
+      xmlns:local="clr-namespace:CarRent.Pages"
+      mc:Ignorable="d"
+      Loaded="EditProfilePage_OnLoaded"
+      Background="{StaticResource BackgroundBrush}"
+      Title="">
+
+    <Page.Resources>
+        <Style TargetType="ToolTip">
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+
+        <Style TargetType="TextBox" x:Key="RequiredTextBox" BasedOn="{StaticResource MainTextBox}">
+            <Setter Property="ToolTip.Placement" Value="Right" />
+            <Setter Property="Width" Value="300" />
+            <Setter Property="ToolTip">
+                <Setter.Value>
+                    <ToolTip>
+                        <ToolTip.Content>
+                            <TextBlock Style="{StaticResource NotificationText}"
+                                       VerticalAlignment="Center"
+                                       Margin="0"
+                                       FontSize="14"
+                                       Text="Это обязательное поле!" />
+                        </ToolTip.Content>
+                    </ToolTip>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="olen:MaskedTextBox" x:Key="RequiredMaskTextBox" BasedOn="{StaticResource MaskTextBox}">
+            <Setter Property="Width" Value="300" />
+            <Setter Property="ToolTip.Placement" Value="Right" />
+            <Setter Property="ToolTip">
+                <Setter.Value>
+                    <ToolTip>
+                        <ToolTip.Content>
+                            <TextBlock Style="{StaticResource NotificationText}"
+                                       VerticalAlignment="Center"
+                                       Margin="0"
+                                       FontSize="14"
+                                       Text="Это обязательное поле!" />
+                        </ToolTip.Content>
+                    </ToolTip>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="PasswordBox" x:Key="PassBox" BasedOn="{StaticResource MainPassBox}">
+            <Setter Property="Width" Value="300" />
+            <Setter Property="ToolTip.Placement" Value="Right" />
+            <Setter Property="ToolTip">
+                <Setter.Value>
+                    <ToolTip>
+                        <ToolTip.Content>
+                            <TextBlock Style="{StaticResource NotificationText}"
+                                       VerticalAlignment="Center"
+                                       Margin="0"
+                                       FontSize="14"
+                                       Text="Это обязательное поле!" />
+                        </ToolTip.Content>
+                    </ToolTip>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+    </Page.Resources>
+
+    <Grid>
+        <StackPanel Orientation="Vertical"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+            <TextBlock Text="Регистрация"
+                       Style="{StaticResource MainLightText}"
+                       FontSize="24"
+                       Margin="10"
+                       HorizontalAlignment="Center" />
+            <TextBlock Style="{StaticResource MainLightText}"
+                       TextWrapping="Wrap"
+                       FontSize="16"
+                       Margin="10"
+                       Height="auto"
+                       Text="Заполните все поля, отмеченные звездочкой"
+                       HorizontalAlignment="Center"/>
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Имя:*"
+                           Grid.Column="0"
+                           Grid.Row="0"
+                           Style="{StaticResource MainThinLightText}" />
+                <TextBlock Text="Фамилия:*"
+                           Grid.Column="0"
+                           Grid.Row="1"
+                           Style="{StaticResource MainThinLightText}" />
+                <TextBlock Text="Отчество:"
+                           Grid.Column="0"
+                           Grid.Row="2"
+                           Style="{StaticResource MainThinLightText}" />
+                <TextBlock Text="Почта:"
+                           Grid.Column="0"
+                           Grid.Row="3"
+                           Style="{StaticResource MainThinLightText}" />
+                <TextBlock Text="Телефон:*"
+                           Grid.Column="0"
+                           Grid.Row="4"
+                           Style="{StaticResource MainThinLightText}" />
+                <TextBlock Text="Логин:*"
+                           Grid.Column="0"
+                           Grid.Row="5"
+                           Style="{StaticResource MainThinLightText}" />
+                <TextBlock Text="Пароль:*"
+                           Grid.Column="0"
+                           Grid.Row="6"
+                           Style="{StaticResource MainThinLightText}" />
+
+                <TextBox x:Name="FNameTextBox"
+                         Grid.Column="1"
+                         Grid.Row="0"
+                         Style="{StaticResource RequiredTextBox}"
+                         PreviewTextInput="RusTextBox_OnPreviewTextInput"
+                         LostFocus="TextBox_OnLostFocus">
+                </TextBox>
+                <TextBox x:Name="LNameTextBox"
+                         Grid.Column="1"
+                         Grid.Row="1"
+                         PreviewTextInput="RusTextBox_OnPreviewTextInput"
+                         LostFocus="TextBox_OnLostFocus"
+                         Style="{StaticResource RequiredTextBox}">
+                </TextBox>
+                <TextBox x:Name="MNameTextBox"
+                         Grid.Column="1"
+                         Grid.Row="2"
+                         PreviewTextInput="RusTextBox_OnPreviewTextInput"
+                         Style="{StaticResource MainTextBox}">
+                </TextBox>
+                <TextBox x:Name="EmailTextBox"
+                         Grid.Column="1"
+                         Grid.Row="3"
+                         PreviewTextInput="NoneRusTextBox_OnPreviewTextInput"
+                         Style="{StaticResource MainTextBox}" />
+                <olen:MaskedTextBox x:Name="PhoneTextBox"
+                                    Grid.Column="1"
+                                    Grid.Row="4"
+                                    LostFocus="TextBox_OnLostFocus"
+                                    Style="{StaticResource RequiredMaskTextBox}"
+                                    Mask="+7(000)000-00-00">
+                </olen:MaskedTextBox>
+                <TextBox x:Name="LoginTextBox"
+                         Grid.Column="1"
+                         Grid.Row="5"
+                         PreviewTextInput="NoneRusTextBox_OnPreviewTextInput"
+                         LostFocus="TextBox_OnLostFocus"
+                         Style="{StaticResource RequiredTextBox}">
+                </TextBox>
+                <PasswordBox x:Name="HiddenPasswordBox"
+                             Grid.Column="1"
+                             Grid.Row="6"
+                             LostFocus="TextBox_OnLostFocus"
+                             Style="{StaticResource PassBox}">
+                </PasswordBox>
+                <TextBox x:Name="ShowedPasswordBox"
+                         Grid.Column="1"
+                         Grid.Row="6"
+                         Style="{StaticResource RequiredTextBox}"
+                         Visibility="Collapsed">
+                </TextBox>
+
+                <Image MouseLeftButtonUp="ShowPassImage_OnMouseLeftButtonUp"
+                       MouseLeftButtonDown="ShowPassImage_OnMouseLeftButtonDown"
+                       Source="../Resources/ShowPasswordDark.png"
+                       Stretch="Fill"
+                       Grid.Column="2"
+                       Grid.Row="6"
+                       Width="30"
+                       Height="30">
+                    <Image.ToolTip>
+                        <ToolTip Content="Зажмите чтобы увидеть пароль" />
+                    </Image.ToolTip>
+                </Image>
+            </Grid>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Button x:Name="BackButton"
+                        Width="200"
+                        Click="BackButton_OnClick"
+                        Style="{StaticResource DefaultButton}"
+                        Content="Назад" />
+                <Button x:Name="RegButton"
+                        Width="200"
+                        Click="RegButton_OnClick"
+                        Style="{StaticResource DefaultButton}"
+                        Content="Зарегистрироваться" />
+            </StackPanel>
+        </StackPanel>
+        
+        <Image x:Name="LoadingImage"
+               Width="50"
+               Height="50"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center" />
+    </Grid>
+</Page>
