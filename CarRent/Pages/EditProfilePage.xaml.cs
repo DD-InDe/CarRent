@@ -211,4 +211,9 @@ public partial class EditProfilePage : Page
     private void ShowPassImage_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e) => ChangeVisibility();
 
     private void BackButton_OnClick(object sender, RoutedEventArgs e) => NavigationService.GoBack();
+
+    private void PassPhotoButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        throw new NotImplementedException();
+    }
 }

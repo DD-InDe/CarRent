@@ -111,5 +111,3 @@ C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\Em
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\EmployeePage\ViewUserPage.baml
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\EditProfilePage.g.cs
 C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\EditProfilePage.baml
-C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\ClientPages\PersonalAreaPage.g.cs
-C:\Users\deer\Курсовая\CarRent\CarRent\obj\Debug\net7.0-windows\Pages\ClientPages\PersonalAreaPage.baml

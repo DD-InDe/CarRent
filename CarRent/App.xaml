@@ -78,7 +78,7 @@
         <Style TargetType="TextBox" x:Key="MainTextBox">
             <Setter Property="Margin" Value="5" />
             <Setter Property="Padding" Value="2" />
-            <Setter Property="MinWidth" Value="150" />
+            <Setter Property="Width" Value="300" />
             <Setter Property="Height" Value="30" />
             <Setter Property="BorderBrush" Value="DarkGray" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -117,6 +117,7 @@
         </Style>
 
         <Style TargetType="olen:MaskedTextBox" x:Key="MaskTextBox">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="Margin" Value="5" />
             <Setter Property="Padding" Value="2" />
             <Setter Property="MinWidth" Value="150" />

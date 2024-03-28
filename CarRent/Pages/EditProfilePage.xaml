@@ -7,8 +7,6 @@
       xmlns:local="clr-namespace:CarRent.Pages"
       mc:Ignorable="d"
       Background="DimGray"
-      Width="1500"
-      Height="500"
       Title="Редактирование профиля">
 
     <Page.Resources>
@@ -27,138 +25,247 @@
             </ToolTip.Content>
         </ToolTip>
     </Page.Resources>
+    
     <Grid>
-        <WrapPanel Orientation="Horizontal"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center">
-            <Border Style="{StaticResource LightBorder}"
+        <StackPanel Orientation="Vertical"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Text="Персональные данные"
-                               FontSize="24"
-                               HorizontalAlignment="Center"
-                               Style="{StaticResource MainLightText}" />
-
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Right">
-                        <TextBlock Text="Имя:*"
-                                   Style="{StaticResource MainThinLightText}" />
-                        <TextBox x:Name="FNameTextBox"
-                                 Text="{Binding FirstName}"
-                                 Style="{StaticResource MainTextBox}"
-                                 PreviewTextInput="RusTextBox_OnPreviewTextInput"
-                                 LostFocus="TextBox_OnLostFocus" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Right">
-                        <TextBlock Text="Фамилия:*"
-                                   Style="{StaticResource MainThinLightText}" />
-                        <TextBox x:Name="LNameTextBox"
-                                 Text="{Binding LastName}"
-                                 PreviewTextInput="RusTextBox_OnPreviewTextInput"
-                                 LostFocus="TextBox_OnLostFocus"
-                                 Style="{StaticResource RequiredTextBox}" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Right">
-                        <TextBlock Text="Отчество:"
-                                   Style="{StaticResource MainThinLightText}" />
-                        <TextBox x:Name="MNameTextBox"
-                                 Width="300"
-                                 Text="{Binding MiddleName}"
-                                 PreviewTextInput="RusTextBox_OnPreviewTextInput"
-                                 Style="{StaticResource MainTextBox}" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Right">
-                        <TextBlock Text="Почта:"
-                                   Style="{StaticResource MainThinLightText}" />
-                        <TextBox x:Name="EmailTextBox"
-                                 Text="{Binding Email}"
-                                 PreviewTextInput="NoneRusTextBox_OnPreviewTextInput"
-                                 Width="300"
-                                 Style="{StaticResource MainTextBox}" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Right">
-                        <TextBlock Text="Телефон:*"
-                                   Style="{StaticResource MainThinLightText}" />
-                        <olen:MaskedTextBox x:Name="PhoneTextBox"
-                                            LostFocus="TextBox_OnLostFocus"
-                                            Style="{StaticResource RequiredMaskTextBox}"
-                                            Mask="+7(000)000-00-00" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Right">
-                        <TextBlock Text="Логин:*"
-                                   Style="{StaticResource MainThinLightText}" />
-                        <TextBox x:Name="LoginTextBox"
-                                 Text="{Binding UserNavigation.Login}"
-                                 PreviewTextInput="NoneRusTextBox_OnPreviewTextInput"
-                                 LostFocus="TextBox_OnLostFocus"
-                                 Style="{StaticResource RequiredTextBox}" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Right">
-                        <TextBlock Text="Пароль:*"
-                                   Style="{StaticResource MainThinLightText}" />
-                        <PasswordBox x:Name="HiddenPasswordBox"
-                                     Width="270"
+            <WrapPanel Orientation="Horizontal"
+                       Margin="25"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center">
+                <Border Style="{StaticResource LightBorder}"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Персональные данные"
+                                   FontSize="24"
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource MainLightText}" />
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <TextBlock Text="Имя:*"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <TextBox x:Name="FNameTextBox"
+                                     Text="{Binding FirstName}"
+                                     Style="{StaticResource MainTextBox}"
+                                     PreviewTextInput="RusTextBox_OnPreviewTextInput"
+                                     LostFocus="TextBox_OnLostFocus" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <TextBlock Text="Фамилия:*"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <TextBox x:Name="LNameTextBox"
+                                     Text="{Binding LastName}"
+                                     PreviewTextInput="RusTextBox_OnPreviewTextInput"
                                      LostFocus="TextBox_OnLostFocus"
-                                     Style="{StaticResource PassBox}" />
-                        <TextBox x:Name="ShowedPasswordBox"
-                                 Width="270"
-                                 Style="{StaticResource RequiredTextBox}"
-                                 Visibility="Collapsed" />
-                        <Image MouseLeftButtonUp="ShowPassImage_OnMouseLeftButtonUp"
-                               MouseLeftButtonDown="ShowPassImage_OnMouseLeftButtonDown"
-                               Source="../Resources/Light/ShowPassword.png"
-                               Stretch="Fill"
-                               Width="30"
-                               Height="30">
-                            <Image.ToolTip>
-                                <ToolTip Content="Зажмите чтобы увидеть пароль" />
-                            </Image.ToolTip>
-                        </Image>
-                    </StackPanel>
-                    <StackPanel x:Name="RolePanel"
-                                Visibility="Collapsed"
-                                Orientation="Horizontal"
-                                HorizontalAlignment="Right">
-                        <TextBlock Text="Роль:"
-                                   Style="{StaticResource MainThinLightText}" />
-                        <ComboBox x:Name="RoleComboBox"
-                                  Width="300"
-                                  Style="{StaticResource MainComboBox}"
-                                  DisplayMemberPath="Name"
-                                  SelectedItem="{Binding Role}" />
-                    </StackPanel>
+                                     Style="{StaticResource MainTextBox}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <TextBlock Text="Отчество:"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <TextBox x:Name="MNameTextBox"
+                                     Text="{Binding MiddleName}"
+                                     PreviewTextInput="RusTextBox_OnPreviewTextInput"
+                                     Style="{StaticResource MainTextBox}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <TextBlock Text="Почта:"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <TextBox x:Name="EmailTextBox"
+                                     Text="{Binding Email}"
+                                     PreviewTextInput="NoneRusTextBox_OnPreviewTextInput"
+                                     Style="{StaticResource MainTextBox}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <TextBlock Text="Телефон:*"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <olen:MaskedTextBox x:Name="PhoneTextBox"
+                                                LostFocus="TextBox_OnLostFocus"
+                                                Width="300"
+                                                Style="{StaticResource MaskTextBox}"
+                                                Mask="+7(000)000-00-00" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <TextBlock Text="Логин:*"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <TextBox x:Name="LoginTextBox"
+                                     Text="{Binding UserNavigation.Login}"
+                                     PreviewTextInput="NoneRusTextBox_OnPreviewTextInput"
+                                     LostFocus="TextBox_OnLostFocus"
+                                     Style="{StaticResource MainTextBox}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <TextBlock Text="Пароль:*"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <PasswordBox x:Name="HiddenPasswordBox"
+                                         Width="270"
+                                         LostFocus="TextBox_OnLostFocus"
+                                         Style="{StaticResource PassBox}" />
+                            <TextBox x:Name="ShowedPasswordBox"
+                                     Width="270"
+                                     Style="{StaticResource MainTextBox}"
+                                     Visibility="Collapsed" />
+                            <Image MouseLeftButtonUp="ShowPassImage_OnMouseLeftButtonUp"
+                                   MouseLeftButtonDown="ShowPassImage_OnMouseLeftButtonDown"
+                                   Source="../Resources/Light/ShowPassword.png"
+                                   Stretch="Fill"
+                                   Width="30"
+                                   Height="30">
+                                <Image.ToolTip>
+                                    <ToolTip Content="Зажмите чтобы увидеть пароль" />
+                                </Image.ToolTip>
+                            </Image>
+                        </StackPanel>
+                        <StackPanel x:Name="RolePanel"
+                                    Visibility="Collapsed"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <TextBlock Text="Роль:"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <ComboBox x:Name="RoleComboBox"
 
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Center">
-                        <Button x:Name="BackButton"
-                                Width="200"
-                                Click="BackButton_OnClick"
-                                Style="{StaticResource DefaultButton}"
-                                Content="Назад" />
-                        <Button x:Name="SaveButton"
-                                Width="200"
-                                Click="SaveButton_OnClick"
-                                Style="{StaticResource DefaultButton}"
-                                Content="Сохранить" />
-                    </StackPanel>
-                </StackPanel>
-            </Border>
+                                      Style="{StaticResource MainComboBox}"
+                                      DisplayMemberPath="Name"
+                                      SelectedItem="{Binding Role}" />
+                        </StackPanel>
 
-            <Border Style="{StaticResource LightBorder}"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center">
-                <StackPanel Orientation="Vertical">
-                    
-                </StackPanel>
-            </Border>
-        </WrapPanel>
+
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource LightBorder}"
+                        Margin="25"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Паспортные данные"
+                                   FontSize="24"
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource MainLightText}" />
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <TextBlock Text="Серия паспорта:*"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <TextBox x:Name="PassSTextBox"
+                                     Text="{Binding Passport.PassS}"
+                                     Style="{StaticResource MainTextBox}"
+                                     PreviewTextInput="RusTextBox_OnPreviewTextInput"
+                                     LostFocus="TextBox_OnLostFocus" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <TextBlock Text="Номер паспорта:*"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <TextBox x:Name="PassNTextBox"
+                                     Text="{Binding Passport.PassN}"
+                                     PreviewTextInput="RusTextBox_OnPreviewTextInput"
+                                     LostFocus="TextBox_OnLostFocus"
+                                     Style="{StaticResource MainTextBox}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <TextBlock Text="Выдан:*"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <DatePicker x:Name="PassIssueDatePicker"
+                                        Width="300"
+                                        Style="{StaticResource MainDatePicker}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <TextBlock Text="Кем:*"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <TextBox x:Name="IssueByTextBox"
+                                     Style="{StaticResource MainTextBox}"
+                                     Text="{Binding Passport.IssueBy}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <Image Width="150"
+                                   Height="50"
+                                   Source="{Binding Passport.Photo}"
+                                   Stretch="Uniform" />
+                            <Button x:Name="PassPhotoButton"
+                                    Click="PassPhotoButton_OnClick"
+                                    Width="300"
+                                    Style="{StaticResource DefaultButton}"
+                                    Content="Добавить фото паспорта" />
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource LightBorder}"
+                        Margin="25"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Водительские права"
+                                   FontSize="24"
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource MainLightText}" />
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <TextBlock Text="Номер:*"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <TextBox x:Name="LicenseTextBox"
+                                     Text="{Binding Client.DriverLicense.Number}"
+                                     Style="{StaticResource MainTextBox}"
+                                     PreviewTextInput="RusTextBox_OnPreviewTextInput"
+                                     LostFocus="TextBox_OnLostFocus" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <TextBlock Text="Выданы:*"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <DatePicker x:Name="LicenseIssueDatePicker"
+                                        SelectedDate="{Binding Client.DriverLicense.IssueDate}"
+                                        Width="300"
+                                        Style="{StaticResource MainDatePicker}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <TextBlock Text="До:*"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <DatePicker x:Name="LicenseExpirationDatePicker"
+                                        SelectedDate="{Binding Client.DriverLicense.IssueDate}"
+                                        Width="300"
+                                        Style="{StaticResource MainDatePicker}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <Image Width="150"
+                                   Height="50"
+                                   Source="{Binding Client.License.Photo}"
+                                   Stretch="Uniform" />
+                            <Button x:Name="LicensePhotoButton"
+                                    Click="PassPhotoButton_OnClick"
+                                    Width="300"
+                                    Style="{StaticResource DefaultButton}"
+                                    Content="Добавить фото прав" />
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </WrapPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Button x:Name="BackButton"
+                        Width="200"
+                        Click="BackButton_OnClick"
+                        Style="{StaticResource DefaultButton}"
+                        Content="Назад" />
+                <Button x:Name="SaveButton"
+                        Width="200"
+                        Click="SaveButton_OnClick"
+                        Style="{StaticResource DefaultButton}"
+                        Content="Сохранить" />
+            </StackPanel>
+        </StackPanel>
 
         <Image x:Name="LoadingImage"
                Width="50"
