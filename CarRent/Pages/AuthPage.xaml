@@ -32,51 +32,33 @@
                 </Hyperlink>
                 .
             </TextBlock>
-            <StackPanel Orientation="Horizontal"
+            <StackPanel Orientation="Vertical"
                         HorizontalAlignment="Center">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-
-
-                    <TextBlock Text="Логин:"
-                               Grid.Row="0"
-                               Grid.Column="1"
-                               Foreground="WhiteSmoke"
-                               FontSize="16"
-                               Style="{StaticResource MainLightText}" />
-                    <Image Grid.Row="1"
-                           Source="../Resources/Light/Login.png"
+                <TextBlock Text="Логин:"
+                           Foreground="WhiteSmoke"
+                           FontSize="16"
+                           Style="{StaticResource MainLightText}" />
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <Image Source="../Resources/Light/Login.png"
                            Width="30" />
                     <TextBox x:Name="LoginTextBox"
-                             Grid.Row="1"
-                             Grid.Column="1"
                              Width="200"
                              Style="{StaticResource MainTextBox}" />
-
-                    <TextBlock Text="Пароль:"
-                               Grid.Row="2"
-                               Grid.Column="1"
-                               Foreground="WhiteSmoke"
-                               FontSize="16"
-                               Style="{StaticResource MainLightText}" />
-                    <Image Grid.Row="3"
-                           Source="../Resources/Light/Password.png"
+                </StackPanel>
+                <TextBlock Text="Пароль:"
+                           HorizontalAlignment="Left"
+                           Foreground="WhiteSmoke"
+                           FontSize="16"
+                           Style="{StaticResource MainLightText}" />
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <Image Source="../Resources/Light/Password.png"
                            Width="30" />
                     <PasswordBox x:Name="PasswordBox"
-                                 Grid.Column="1"
-                                 Grid.Row="3"
                                  Width="200"
                                  Style="{StaticResource PassBox}" />
-                </Grid>
+                </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">
