@@ -96,7 +96,7 @@ public partial class MainWindow : Window
     private void PersonalAreaButton_OnClick(object sender, RoutedEventArgs e)
     {
         ChangeBackground(sender);
-        MainFrame.Navigate(new EditProfilePage(((App)App.Current).GetCurrentUser()));
+        MainFrame.Navigate(new ProfileEditPage(((App)App.Current).GetCurrentUser()));
     }
 
     private void ExitButton_OnClick(object sender, RoutedEventArgs e)
