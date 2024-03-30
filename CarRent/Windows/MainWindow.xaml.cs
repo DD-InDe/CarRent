@@ -11,6 +11,7 @@ using CarRent.Entities.Models;
 using CarRent.Pages;
 using CarRent.Pages.ClientPages;
 using CarRent.Pages.EmployeePage;
+using Brushes = System.Windows.Media.Brushes;
 using Rectangle = System.Windows.Shapes.Rectangle;
 
 namespace CarRent.Windows;
@@ -96,7 +97,7 @@ public partial class MainWindow : Window
     private void PersonalAreaButton_OnClick(object sender, RoutedEventArgs e)
     {
         ChangeBackground(sender);
-        MainFrame.Navigate(new ProfileEditPage(((App)App.Current).GetCurrentUser()));
+        MainFrame.Navigate(new ProfileEditPage(((App)App.Current).GetCurrentUser(), false));
     }
 
     private void ExitButton_OnClick(object sender, RoutedEventArgs e)

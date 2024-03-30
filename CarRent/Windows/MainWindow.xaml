@@ -5,6 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:style="clr-namespace:CarRent.Windows"
         xmlns:carRent="clr-namespace:CarRent"
+        Icon="/Resources/Icon.png"
         Background="{StaticResource WindowBackground}"
         SizeChanged="Element_OnSizeChanged"
         mc:Ignorable="d"

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -9,28 +10,36 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using CarRent.Entities;
 using CarRent.Entities.Models;
+using CarRent.Pages.ClientPages;
 using CarRent.Windows;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Win32;
 using WpfAnimatedGif;
 using Xceed.Wpf.Toolkit;
+using MessageBox = System.Windows.MessageBox;
 
 namespace CarRent.Pages;
 
 public partial class ProfileEditPage : Page
 {
-    private readonly List<Object> _requiredFields;
+    private List<Object> _requiredFields;
     private CustomMessageBox? messageBox;
     private User _user;
+    private string oldLogin;
+    private bool _canGoBack;
 
-    public ProfileEditPage(User user)
+    public ProfileEditPage(bool canGoBack)
     {
-        _user = user;
+        _user = new User()
+        {
+            UserNavigation = new Account(),
+            Passport = new Passport()
+        };
+        _canGoBack = canGoBack;
+        DeleteButton.Visibility = Visibility.Hidden;
+
         InitializeComponent();
 
-        PhoneTextBox.Text = user.PhoneOnlyNumbers;
-        RoleComboBox.ItemsSource = DB.Context.Roles.ToList();
-
-        DataContext = user;
         _requiredFields = new List<object>
         {
             FNameTextBox,
@@ -41,9 +50,30 @@ public partial class ProfileEditPage : Page
             PassNTextBox,
             PassIssueDatePicker,
             IssueByTextBox,
-            LicenseNumTextBox,
-            LicenseExpirationDatePicker,
-            LicenseExpirationDatePicker
+            RoleComboBox
+        };
+    }
+
+    public ProfileEditPage(User user, bool canGoBack)
+    {
+        _user = user;
+        _canGoBack = canGoBack;
+        oldLogin = user.UserNavigation.Login;
+        InitializeComponent();
+
+        PhoneTextBox.Text = user.PhoneOnlyNumbers;
+        DeleteButton.Visibility = Visibility.Visible;
+
+        _requiredFields = new List<object>
+        {
+            FNameTextBox,
+            LNameTextBox,
+            PhoneTextBox,
+            LoginTextBox,
+            PassSTextBox,
+            PassNTextBox,
+            PassIssueDatePicker,
+            IssueByTextBox,
         };
     }
 
@@ -53,78 +83,61 @@ public partial class ProfileEditPage : Page
         string firstName = FNameTextBox.Text;
         string lastName = LNameTextBox.Text;
         string email = EmailTextBox.Text;
-        string login = LoginTextBox.Text;
+        string newLogin = LoginTextBox.Text;
         string password = HiddenPasswordBox.Password;
 
         if (ValidateData.CheckFields(_requiredFields))
-            if (await CheckLogin(login) && CheckEmail(email))
+            if (_user.UserId == 0)
             {
-                ImageBehavior.SetAnimatedSource(LoadingImage, (BitmapImage)FindResource("Loading"));
-                try
+                if (await ValidateData.CheckLogin(newLogin) && ValidateData.CheckEmail(email))
                 {
-                    _user.Phone = PhoneTextBox.Text;
-                    if (password != String.Empty)
-                        _user.UserNavigation.Password = password;
+                    ImageBehavior.SetAnimatedSource(LoadingImage, (BitmapImage)FindResource("Loading"));
+                    try
+                    {
+                        _user.Phone = PhoneTextBox.Text;
+                        _user.UserNavigation.Password = HiddenPasswordBox.Password;
+                        DB.Context.Users.Add(_user);
+                        await DB.Context.SaveChangesAsync();
+                        messageBox = new CustomMessageBox(Icon.SuccessIcon, "Пользователь добавлен!", Button.Ok);
+                        messageBox.ShowDialog();
+                    }
+                    catch (Exception exception)
+                    {
+                        CustomMessageBox messageBox =
+                            new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
+                        messageBox.ShowDialog();
+                    }
 
-                    await DB.Context.SaveChangesAsync();
-                    messageBox = new CustomMessageBox(Icon.SuccessIcon, "Данные обновлены!", Button.Ok);
-                    messageBox.ShowDialog();
-                    NavigationService.GoBack();
+                    ImageBehavior.SetAnimatedSource(LoadingImage, null);
                 }
-                catch (Exception exception)
-                {
-                    CustomMessageBox messageBox = new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
-                    messageBox.ShowDialog();
-                }
-
-                ImageBehavior.SetAnimatedSource(LoadingImage, null);
             }
-    }
-
-   
-
-    private async Task<bool> CheckLogin(string login)
-    {
-        try
-        {
-            bool exist = await DB.Context.Accounts.AnyAsync(c => c.Login == login);
-            if (exist)
+            else
             {
-                CustomMessageBox messageBox = new CustomMessageBox(Icon.WarningIcon, "Этот логин уже занят, придумайте другой.", Button.Ok);
-                messageBox.Show();
-                return false;
+                if (newLogin != oldLogin
+                        ? await ValidateData.CheckLogin(newLogin) && ValidateData.CheckEmail(email)
+                        : ValidateData.CheckEmail(email))
+                {
+                    ImageBehavior.SetAnimatedSource(LoadingImage, (BitmapImage)FindResource("Loading"));
+                    try
+                    {
+                        _user.Phone = PhoneTextBox.Text;
+                        if (password != String.Empty)
+                            _user.UserNavigation.Password = password;
+
+                        await DB.Context.SaveChangesAsync();
+                        messageBox = new CustomMessageBox(Icon.SuccessIcon, "Данные обновлены!", Button.Ok);
+                        messageBox.ShowDialog();
+                    }
+                    catch (Exception exception)
+                    {
+                        CustomMessageBox messageBox =
+                            new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
+                        messageBox.ShowDialog();
+                    }
+
+                    ImageBehavior.SetAnimatedSource(LoadingImage, null);
+                }
             }
-
-            return true;
-        }
-        catch (Exception exception)
-        {
-            CustomMessageBox messageBox = new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
-            messageBox.ShowDialog();
-        }
-
-        return false;
-    }
-
-    private static bool CheckEmail(string email)
-    {
-        try
-        {
-            if (String.IsNullOrWhiteSpace(email))
-                return true;
-            var addr = new System.Net.Mail.MailAddress(email);
-            if (addr.Address == email)
-                return true;
-            CustomMessageBox messageBox = new CustomMessageBox(Icon.WarningIcon, "Почта не соответствует формату!", Button.Ok);
-            messageBox.ShowDialog();
-        }
-        catch (Exception exception)
-        {
-            CustomMessageBox messageBox = new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
-            messageBox.ShowDialog();
-        }
-
-        return false;
     }
 
     private void RusTextBox_OnPreviewTextInput(object sender, TextCompositionEventArgs e) =>
@@ -156,11 +169,64 @@ public partial class ProfileEditPage : Page
 
     private void PassPhotoButton_OnClick(object sender, RoutedEventArgs e)
     {
-        
+        OpenFileDialog fileDialog = new OpenFileDialog
+        {
+            Filter = "Images (jpg, png, jpeg)| *.jpg; *.png; *.jpeg"
+        };
+        if (fileDialog.ShowDialog() == true)
+        {
+            _user.Passport.Photo = File.ReadAllBytes(fileDialog.FileName);
+            PassImage.Source = new BitmapImage(new Uri(fileDialog.FileName));
+        }
     }
 
-    private void LicensePhotoButton_OnClick(object sender, RoutedEventArgs e)
+    private void LicensePageButton_OnClick(object sender, RoutedEventArgs e) =>
+        NavigationService.Navigate(new ClientEditPage(_user.Client));
+
+    private void ProfileEditPage_OnLoaded(object sender, RoutedEventArgs e)
     {
-        
+        RoleComboBox.ItemsSource = DB.Context.Roles.ToList();
+
+        RolePanel.Visibility = ((App)App.Current).GetCurrentUser().RoleId == 1 && _user.RoleId != 1
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+        BackButton.Visibility = _canGoBack ? Visibility.Visible : Visibility.Collapsed;
+        LicensePageButton.Visibility = _user.RoleId == 3 ? Visibility.Visible : Visibility.Collapsed;
+
+        DataContext = _user;
+    }
+
+    private async void DeleteButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            if (_user.RoleId == 1)
+            {
+                messageBox =
+                    new CustomMessageBox(Icon.ErrorIcon, $"Нельзя удалить администратора!", Button.Ok);
+                messageBox.ShowDialog();
+            }
+
+            if (await DB.Context.Requests.FirstOrDefaultAsync(c =>
+                    c.ClientId == _user.UserId && (c.RequestStatusId != 2 && c.RequestStatusId != 6)) == null)
+            {
+                messageBox = new CustomMessageBox(Icon.QuestionIcon, "Вы точно хотите удалить пользователя?", Button.YesNo);
+                messageBox.ShowDialog();
+                if (messageBox.Result == "Yes")
+                {
+                    DB.Context.Accounts.Remove(_user.UserNavigation);
+                    await DB.Context.SaveChangesAsync();
+                    messageBox = new CustomMessageBox(Icon.SuccessIcon, "Пользователь удален!", Button.Ok);
+                    messageBox.ShowDialog();
+                    NavigationService.GoBack();
+                }
+            }
+        }
+        catch (Exception exception)
+        {
+            messageBox =
+                new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
+            messageBox.ShowDialog();
+        }
     }
 }

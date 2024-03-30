@@ -78,7 +78,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Style="{StaticResource MainLightText}">
+                        <TextBlock Style="{StaticResource MainLightText}">  
                             <TextBlock.Text>
                                 <MultiBinding StringFormat="{}Клиент: {0}">
                                     <Binding Path="Client.FullName" />

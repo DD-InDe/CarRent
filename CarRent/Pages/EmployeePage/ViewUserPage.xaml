@@ -30,6 +30,12 @@
                             Width="200"
                             Content="Открыть фильтр"
                             Style="{StaticResource DefaultButton}" />
+                    <Button x:Name="AddUserButton"
+                            Click="AddUserButton_OnClick"
+                            HorizontalAlignment="Left"
+                            Width="250"
+                            Content="Добавить пользователя"
+                            Style="{StaticResource DefaultButton}" />
                 </StackPanel>
                 <Popup x:Name="Popup"
                        AllowsTransparency="True"

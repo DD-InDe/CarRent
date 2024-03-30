@@ -70,8 +70,13 @@ public partial class ViewUserPage : Page
 
     private async void RoleComboBox_OnSelectionChanged(object sender, SelectionChangedEventArgs e) => await UpdateData();
 
-    private void UserListView_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+    private async void UserListView_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
+        User user = UserListView.SelectedItem as User;
+        if (user.RoleId == 3)
+            await DB.Context.Users.Include(c => c.UserNavigation).Include(c => c.Client).Include(c => c.Passport)
+                .Include(c => c.Client.DriverLicense).FirstAsync(c => c.UserId == user.UserId);
+        NavigationService.Navigate(new UserInfoPage(UserListView.SelectedItem as User, true));
     }
 
     private async void ViewUserPage_OnLoaded(object sender, RoutedEventArgs e)
@@ -85,7 +90,7 @@ public partial class ViewUserPage : Page
                 RoleComboBox.SelectedIndex = 0;
             }
             else
-             await   UpdateData();
+                await UpdateData();
         }
         catch (Exception exception)
         {
@@ -93,4 +98,6 @@ public partial class ViewUserPage : Page
             messageBox.ShowDialog();
         }
     }
+
+    private void AddUserButton_OnClick(object sender, RoutedEventArgs e) => NavigationService.Navigate(new ProfileEditPage(true));
 }

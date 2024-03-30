@@ -133,7 +133,6 @@ public partial class CarRentContext : DbContext
 
             entity.HasOne(d => d.IdNavigation).WithOne(p => p.Client)
                 .HasForeignKey<Client>(d => d.Id)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Client_User");
         });
 
@@ -150,7 +149,6 @@ public partial class CarRentContext : DbContext
 
             entity.HasOne(d => d.IdNavigation).WithOne(p => p.DriverLicense)
                 .HasForeignKey<DriverLicense>(d => d.Id)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_DriverLicense_Client");
         });
 
@@ -176,7 +174,6 @@ public partial class CarRentContext : DbContext
 
             entity.HasOne(d => d.IdNavigation).WithOne(p => p.Passport)
                 .HasForeignKey<Passport>(d => d.Id)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Passport_User");
         });
 
@@ -224,7 +221,7 @@ public partial class CarRentContext : DbContext
         {
             entity.HasKey(e => e.UserId).HasName("PK__User__1788CC4CD0105716");
 
-            entity.ToTable("User");
+            entity.ToTable("User", tb => tb.HasTrigger("create_rows_after_user_insert"));
 
             entity.Property(e => e.UserId).ValueGeneratedNever();
             entity.Property(e => e.Email).HasMaxLength(100);
@@ -239,7 +236,6 @@ public partial class CarRentContext : DbContext
 
             entity.HasOne(d => d.UserNavigation).WithOne(p => p.User)
                 .HasForeignKey<User>(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__User__UserId__2C3393D0");
         });
 

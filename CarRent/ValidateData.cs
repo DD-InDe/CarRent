@@ -14,44 +14,54 @@ namespace CarRent;
 public static class ValidateData
 {
     private static CustomMessageBox _messageBox;
-    
+
     public static bool CheckFields(List<object> fields)
     {
         try
         {
+            bool isFull = true;
+
             foreach (var item in fields)
             {
-                string[] senderType = item.GetType().ToString().Split(".");
-                switch (senderType[senderType.Length - 1])
+                if (isFull)
                 {
-                    case "TextBox":
-                        TextBox textBox = (item as TextBox)!;
-                        if (String.IsNullOrWhiteSpace(textBox.Text))
-                            return false;
-                        break;
-                    case "MaskedTextBox":
-                        MaskedTextBox maskedTextBox = (item as MaskedTextBox)!;
-                        if (!maskedTextBox.IsMaskCompleted)
-                            return false;
-                        break;
-                    case "PasswordBox":
-                        PasswordBox passwordBox = (item as PasswordBox)!;
-                        if (String.IsNullOrWhiteSpace(passwordBox.Password))
-                            return false;
-                        break;
-                    case "DatePicker":
-                        DatePicker datePicker = (item as DatePicker)!;
-                        if (datePicker.SelectedDate == null)
-                            return false;
-                        break;
+                    string[] senderType = item.GetType().ToString().Split(".");
+                    switch (senderType[senderType.Length - 1])
+                    {
+                        case "TextBox":
+                            TextBox textBox = (item as TextBox)!;
+                            if (String.IsNullOrWhiteSpace(textBox.Text))
+                                isFull = false;
+                            break;
+                        case "MaskedTextBox":
+                            MaskedTextBox maskedTextBox = (item as MaskedTextBox)!;
+                            if (!maskedTextBox.IsMaskCompleted)
+                                isFull = false;
+                            break;
+                        case "PasswordBox":
+                            PasswordBox passwordBox = (item as PasswordBox)!;
+                            if (String.IsNullOrWhiteSpace(passwordBox.Password))
+                                isFull = false;
+                            break;
+                        case "DatePicker":
+                            DatePicker datePicker = (item as DatePicker)!;
+                            if (datePicker.SelectedDate == null)
+                                isFull = false;
+                            break;
+                        case "ComboBox":
+                            ComboBox comboBox = (item as ComboBox)!;
+                            if (comboBox.SelectedItem == null)
+                                isFull = false;
+                            break;
+                    }
                 }
             }
 
-            _messageBox = new CustomMessageBox(Icon.WarningIcon, "Пожалуйста, заполните все поля, поменченные *!", Button.Ok);
+            if (isFull)
+                return true;
+            _messageBox = new CustomMessageBox(Icon.WarningIcon, "Пожалуйста, заполните все поля, помеченные *!", Button.Ok);
             _messageBox.ShowDialog();
-
-            foreach (var field in fields)
-                HighlightingFields(field);
+            return false;
         }
         catch (Exception exception)
         {
@@ -61,7 +71,7 @@ public static class ValidateData
 
         return false;
     }
-    
+
     public static void HighlightingFields(object sender)
     {
         try
@@ -92,10 +102,17 @@ public static class ValidateData
                     break;
                 case "DatePicker":
                     DatePicker datePicker = (sender as DatePicker)!;
-                    if (datePicker.SelectedDate != null)
+                    if (datePicker.SelectedDate == null)
                         datePicker.BorderBrush = Brushes.OrangeRed;
                     else
                         datePicker.BorderBrush = Brushes.DarkGray;
+                    break;
+                case "ComboBox":
+                    ComboBox comboBox = (sender as ComboBox)!;
+                    if (comboBox.SelectedItem == null)
+                        comboBox.BorderBrush = Brushes.OrangeRed;
+                    else
+                        comboBox.BorderBrush = Brushes.DarkGray;
                     break;
             }
         }
@@ -105,7 +122,7 @@ public static class ValidateData
             messageBox.ShowDialog();
         }
     }
-    
+
     public static async Task<bool> CheckLogin(string login)
     {
         try
@@ -128,7 +145,7 @@ public static class ValidateData
 
         return false;
     }
-    
+
     public static bool CheckEmail(string email)
     {
         try

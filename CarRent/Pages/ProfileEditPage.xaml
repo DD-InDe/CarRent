@@ -6,7 +6,7 @@
       xmlns:olen="http://schemas.xceed.com/wpf/xaml/toolkit"
       xmlns:local="clr-namespace:CarRent.Pages"
       mc:Ignorable="d"
-      Background="DimGray"
+      Loaded="ProfileEditPage_OnLoaded"
       Title="Редактирование профиля">
 
     <Page.Resources>
@@ -130,13 +130,12 @@
                             </Image>
                         </StackPanel>
                         <StackPanel x:Name="RolePanel"
-                                    Visibility="Collapsed"
                                     Orientation="Horizontal"
                                     HorizontalAlignment="Right">
                             <TextBlock Text="Роль:"
                                        Style="{StaticResource MainThinLightText}" />
                             <ComboBox x:Name="RoleComboBox"
-
+                                      Width="300"
                                       Style="{StaticResource MainComboBox}"
                                       DisplayMemberPath="Name"
                                       SelectedItem="{Binding Role}" />
@@ -184,6 +183,7 @@
                             <DatePicker x:Name="PassIssueDatePicker"
                                         Width="300"
                                         LostFocus="TextBox_OnLostFocus"
+                                        SelectedDate="{Binding Passport.IssueDate}"
                                         ToolTip="{StaticResource FieldToolTip}"
                                         Style="{StaticResource MainDatePicker}" />
                         </StackPanel>
@@ -200,7 +200,8 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Right">
-                            <Image Width="150"
+                            <Image x:Name="PassImage" 
+                                Width="150"
                                    Height="50"
                                    Source="{Binding Passport.Photo}"
                                    Stretch="Uniform" />
@@ -213,63 +214,7 @@
                     </StackPanel>
                 </Border>
 
-                <Border Style="{StaticResource LightBorder}"
-                        Margin="25"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="Водительские права"
-                                   FontSize="24"
-                                   HorizontalAlignment="Center"
-                                   Style="{StaticResource MainLightText}" />
-                        <StackPanel Orientation="Horizontal"
-                                    HorizontalAlignment="Right">
-                            <TextBlock Text="Номер:*"
-                                       Style="{StaticResource MainThinLightText}" />
-                            <olen:MaskedTextBox x:Name="LicenseNumTextBox"
-                                                Text="{Binding Client.DriverLicense.Number}"
-                                                ToolTip="{StaticResource FieldToolTip}"
-                                                Style="{StaticResource MainTextBox}"
-                                                Mask="0000000000"
-                                                PreviewTextInput="RusTextBox_OnPreviewTextInput"
-                                                LostFocus="TextBox_OnLostFocus" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal"
-                                    HorizontalAlignment="Right">
-                            <TextBlock Text="Выданы:*"
-                                       Style="{StaticResource MainThinLightText}" />
-                            <DatePicker x:Name="LicenseIssueDatePicker"
-                                        ToolTip="{StaticResource FieldToolTip}"
-                                        SelectedDate="{Binding Client.DriverLicense.IssueDate}"
-                                        Width="300"
-                                        LostFocus="TextBox_OnLostFocus"
-                                        Style="{StaticResource MainDatePicker}" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal"
-                                    HorizontalAlignment="Right">
-                            <TextBlock Text="До:*"
-                                       Style="{StaticResource MainThinLightText}" />
-                            <DatePicker x:Name="LicenseExpirationDatePicker"
-                                        ToolTip="{StaticResource FieldToolTip}"
-                                        SelectedDate="{Binding Client.DriverLicense.IssueDate}"
-                                        Width="300"
-                                        LostFocus="TextBox_OnLostFocus"
-                                        Style="{StaticResource MainDatePicker}" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal"
-                                    HorizontalAlignment="Right">
-                            <Image Width="150"
-                                   Height="50"
-                                   Source="{Binding Client.License.Photo}"
-                                   Stretch="Uniform" />
-                            <Button x:Name="LicensePhotoButton"
-                                    Click="LicensePhotoButton_OnClick"
-                                    Width="300"
-                                    Style="{StaticResource DefaultButton}"
-                                    Content="Добавить фото прав" />
-                        </StackPanel>
-                    </StackPanel>
-                </Border>
+             
             </WrapPanel>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center">
@@ -283,6 +228,16 @@
                         Click="SaveButton_OnClick"
                         Style="{StaticResource DefaultButton}"
                         Content="Сохранить" />
+                <Button x:Name="DeleteButton"
+                        Width="200"
+                        Click="DeleteButton_OnClick"
+                        Style="{StaticResource DefaultButton}"
+                        Content="Удалить" />
+                <Button x:Name="LicensePageButton"
+                        Width="200"
+                        Click="LicensePageButton_OnClick"
+                        Style="{StaticResource DefaultButton}"
+                        Content="Прочие данные" />
             </StackPanel>
         </StackPanel>
 
