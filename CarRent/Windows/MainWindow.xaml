@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:uc="clr-namespace:CarRent.UserControls"
         xmlns:style="clr-namespace:CarRent.Windows"
         xmlns:carRent="clr-namespace:CarRent"
+        Icon="/Resources/Icon.png"
         Background="{StaticResource WindowBackground}"
         SizeChanged="Element_OnSizeChanged"
         mc:Ignorable="d"
@@ -167,6 +167,7 @@
 
         <Frame x:Name="MainFrame"
                Grid.Column="1"
+               Background="{StaticResource LightBlackBackgroundBrush}"
                NavigationUIVisibility="Hidden" />
     </Grid>
 </Window>

@@ -8,13 +8,21 @@
       Title="Информация о компании">
     <Grid>
         <Border Style="{StaticResource MainBorder}"
+                Background="Transparent"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
                 Margin="50,0,50,0">
+
+
             <StackPanel Orientation="Vertical">
+                <Image Stretch="Uniform"
+                       Width="200"
+                       Height="200"
+                       Margin="10"
+                    Source="/Resources/Icon.png"/>
                 <TextBlock Style="{StaticResource MainLightText}"
                            TextWrapping="Wrap">
-                    Добро пожаловать в "Дорожный Компаньон" - лидера в сфере аренды роскошных автомобилей. Мы предлагаем эксклюзивный парк элитных автомобилей премиум-брендов, таких как Mercedes-Benz, BMW, Audi и Porsche для полного удовлетворения потребностей наших клиентов.
+                    "Дорожный Компаньон" - лидер в сфере аренды роскошных автомобилей. Мы предлагаем эксклюзивный парк элитных автомобилей премиум-брендов, таких как Mercedes-Benz, BMW, Audi и Porsche для полного удовлетворения потребностей наших клиентов.
                 </TextBlock>
                 <TextBlock Style="{StaticResource MainLightText}"
                            TextWrapping="Wrap">

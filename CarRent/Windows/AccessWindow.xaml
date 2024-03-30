@@ -9,6 +9,7 @@
         WindowStartupLocation="CenterScreen"
         Width="700"
         Height="500"
+        Icon="/Resources/Icon.png"
         Background="{StaticResource AccessWindowBackground}">
 
     <Window.Title>

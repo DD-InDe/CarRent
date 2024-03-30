@@ -164,7 +164,9 @@ public partial class RequestInfoPage : Page
     {
         try
         {
-            _messageBox = new CustomMessageBox(Icon.QuestionIcon, "Завершить аренду?", Button.YesNo);
+            _messageBox = _request.EndDate < DateTime.Now
+                ? new CustomMessageBox(Icon.QuestionIcon, "Завершить аренду досрочно?", Button.YesNo)
+                : new CustomMessageBox(Icon.QuestionIcon, "Завершить аренду?", Button.YesNo);
             _messageBox.ShowDialog();
             if (_messageBox.Result == "Yes")
             {

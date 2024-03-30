@@ -11,7 +11,7 @@ using CarRent.Entities.Models;
 using CarRent.Pages;
 using CarRent.Pages.ClientPages;
 using CarRent.Pages.EmployeePage;
-using CarRent.UserControls;
+using Brushes = System.Windows.Media.Brushes;
 using Rectangle = System.Windows.Shapes.Rectangle;
 
 namespace CarRent.Windows;
@@ -28,6 +28,7 @@ public partial class MainWindow : Window
         AllOrdersButton.Visibility = Visibility.Collapsed;
         UsersButton.Visibility = Visibility.Collapsed;
         MyOrdersButton.Visibility = Visibility.Collapsed;
+        PersonalAreaButton.Visibility = Visibility.Collapsed;
     }
 
     public MainWindow(User user)
@@ -96,6 +97,7 @@ public partial class MainWindow : Window
     private void PersonalAreaButton_OnClick(object sender, RoutedEventArgs e)
     {
         ChangeBackground(sender);
+        MainFrame.Navigate(new ProfileEditPage(((App)App.Current).GetCurrentUser(), false));
     }
 
     private void ExitButton_OnClick(object sender, RoutedEventArgs e)
@@ -124,5 +126,6 @@ public partial class MainWindow : Window
     private void UsersButton_OnClick(object sender, RoutedEventArgs e)
     {
         ChangeBackground(sender);
+        MainFrame.Navigate(new ViewUserPage());
     }
 }

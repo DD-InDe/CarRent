@@ -7,79 +7,87 @@
       mc:Ignorable="d"
       Title="Информация об авто">
     <Grid>
-        <StackPanel Orientation="Vertical"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center">
-            <StackPanel Orientation="Horizontal">
-                <StackPanel Orientation="Vertical"
-                            VerticalAlignment="Center">
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Right">
-                        <TextBlock Text="Vin-номер:"
-                                   Style="{StaticResource MainLightText}" />
-                        <TextBlock Style="{StaticResource MainLightText}"
-                                   Text="{Binding CarVin}" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Right">
-                        <TextBlock Text="Бренд и модель:"
-                                   Style="{StaticResource MainLightText}" />
-                        <TextBlock Style="{StaticResource MainLightText}"
-                                   Text="{Binding BrandModel.NamesOnly}" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Right">
-                        <TextBlock Text="Стоимость авто:"
-                                   Style="{StaticResource MainLightText}" />
-                        <TextBlock Style="{StaticResource MainLightText}"
-                                    Text="{Binding CarPrice}" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Right">
-                        <TextBlock Text="Стоимость аренды (день):"
-                                   Style="{StaticResource MainLightText}" />
-                        <TextBlock Style="{StaticResource MainLightText}"
-                                   Text="{Binding RentPrice}" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Right">
-                        <TextBlock Text="Статус:"
-                                   Style="{StaticResource MainLightText}" />
-                        <TextBlock Style="{StaticResource MainLightText}"
-                                   Text="{Binding CarStatus.Name}" />
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Right">
-                        <TextBlock Text="Цвет:"
-                                   Style="{StaticResource MainLightText}" />
-                        <Ellipse Width="20"
-                                 Height="20"
-                            Fill="{Binding Color}" />
-                    </StackPanel>
-                </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
 
-                <Image x:Name="CarPhotoImage"
-                       Stretch="Uniform"
-                       Width="300"
-                       Height="300"
-                       Margin="10"
-                       Source="{Binding Photo}" />
+        <Border Style="{StaticResource LightBorder}"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Margin="10,0,10,0">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Vin-номер:"
+                               Style="{StaticResource MainLightText}"
+                               HorizontalAlignment="Right" />
+                    <TextBlock Text="Бренд и модель:"
+                               Style="{StaticResource MainLightText}"
+                               HorizontalAlignment="Right" />
+                    <TextBlock Text="Стоимость авто:"
+                               Style="{StaticResource MainLightText}"
+                               HorizontalAlignment="Right" />
+                    <TextBlock Text="Стоимость аренды (день):"
+                               Style="{StaticResource MainLightText}"
+                               HorizontalAlignment="Right" />
+                    <TextBlock Text="Статус:"
+                               Style="{StaticResource MainLightText}"
+                               HorizontalAlignment="Right" />
+                    <TextBlock Text="Цвет:"
+                               Style="{StaticResource MainLightText}"
+                               HorizontalAlignment="Right" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Style="{StaticResource MainLightText}"
+                               Text="{Binding CarVin}" />
+                    <TextBlock Style="{StaticResource MainLightText}"
+                               Text="{Binding BrandModel.NamesOnly}" />
+                    <TextBlock Style="{StaticResource MainLightText}"
+                               Text="{Binding CarPrice}" />
+                    <TextBlock Style="{StaticResource MainLightText}"
+                               Text="{Binding RentPrice}" />
+                    <TextBlock Style="{StaticResource MainLightText}"
+                               Text="{Binding CarStatus.Name}" />
+                    <Ellipse Width="20"
+                             Height="20"
+                             Margin="5"
+                             HorizontalAlignment="Left"
+                             Fill="{Binding Color}" />
+                </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Center">
-                <Button x:Name="BackButton"
-                        Click="BackButton_OnClick"
-                        Width="200"
-                        Style="{StaticResource DefaultButton}"
-                        Content="Назад" />
-                <Button x:Name="AddRequestButton"
-                        Click="AddRequestButton_OnClick"
-                        Width="200"
-                        Style="{StaticResource DefaultButton}"
-                        Content="Оставить заявку" />
-            </StackPanel>
+        </Border>
+
+        <Image x:Name="CarPhotoImage"
+               Stretch="Uniform"
+               Grid.Column="1"
+               Margin="10,0,10,0"
+               MaxWidth="600"
+               Source="{Binding Photo}" />
+
+        <StackPanel Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="1"
+                    HorizontalAlignment="Center">
+            <Button x:Name="BackButton"
+                    Click="BackButton_OnClick"
+                    Width="200"
+                    Style="{StaticResource DefaultButton}"
+                    Content="Назад" />
+            <Button x:Name="AddRequestButton"
+                    Click="AddRequestButton_OnClick"
+                    Width="200"
+                    Style="{StaticResource DefaultButton}"
+                    Content="Оставить заявку" />
         </StackPanel>
+
         <Image x:Name="LoadingImage"
+               Grid.ColumnSpan="2"
+               Grid.RowSpan="2"
                Width="50"
                Height="50"
                VerticalAlignment="Center"

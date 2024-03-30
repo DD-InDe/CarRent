@@ -27,7 +27,13 @@ public partial class CarRentContext : DbContext
 
     public virtual DbSet<Class> Classes { get; set; }
 
+    public virtual DbSet<Client> Clients { get; set; }
+
+    public virtual DbSet<DriverLicense> DriverLicenses { get; set; }
+
     public virtual DbSet<Model> Models { get; set; }
+
+    public virtual DbSet<Passport> Passports { get; set; }
 
     public virtual DbSet<Request> Requests { get; set; }
 
@@ -117,6 +123,35 @@ public partial class CarRentContext : DbContext
             entity.Property(e => e.Name).HasMaxLength(100);
         });
 
+        modelBuilder.Entity<Client>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Client__3214EC0721256D43");
+
+            entity.ToTable("Client");
+
+            entity.Property(e => e.Id).ValueGeneratedNever();
+
+            entity.HasOne(d => d.IdNavigation).WithOne(p => p.Client)
+                .HasForeignKey<Client>(d => d.Id)
+                .HasConstraintName("FK_Client_User");
+        });
+
+        modelBuilder.Entity<DriverLicense>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__DriverLi__3214EC07A016B089");
+
+            entity.ToTable("DriverLicense");
+
+            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.Property(e => e.DataOfIssue).HasColumnType("datetime");
+            entity.Property(e => e.ExpirationData).HasColumnType("datetime");
+            entity.Property(e => e.Number).HasMaxLength(10);
+
+            entity.HasOne(d => d.IdNavigation).WithOne(p => p.DriverLicense)
+                .HasForeignKey<DriverLicense>(d => d.Id)
+                .HasConstraintName("FK_DriverLicense_Client");
+        });
+
         modelBuilder.Entity<Model>(entity =>
         {
             entity.HasKey(e => e.ModelId).HasName("PK__Model__E8D7A12CB81CE412");
@@ -124,6 +159,22 @@ public partial class CarRentContext : DbContext
             entity.ToTable("Model");
 
             entity.Property(e => e.Name).HasMaxLength(100);
+        });
+
+        modelBuilder.Entity<Passport>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Passport__3214EC076B0ADC59");
+
+            entity.ToTable("Passport");
+
+            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.Property(e => e.IssueDate).HasColumnType("datetime");
+            entity.Property(e => e.PassN).HasMaxLength(6);
+            entity.Property(e => e.PassS).HasMaxLength(4);
+
+            entity.HasOne(d => d.IdNavigation).WithOne(p => p.Passport)
+                .HasForeignKey<Passport>(d => d.Id)
+                .HasConstraintName("FK_Passport_User");
         });
 
         modelBuilder.Entity<Request>(entity =>
@@ -170,7 +221,7 @@ public partial class CarRentContext : DbContext
         {
             entity.HasKey(e => e.UserId).HasName("PK__User__1788CC4CD0105716");
 
-            entity.ToTable("User");
+            entity.ToTable("User", tb => tb.HasTrigger("create_rows_after_user_insert"));
 
             entity.Property(e => e.UserId).ValueGeneratedNever();
             entity.Property(e => e.Email).HasMaxLength(100);
@@ -185,7 +236,6 @@ public partial class CarRentContext : DbContext
 
             entity.HasOne(d => d.UserNavigation).WithOne(p => p.User)
                 .HasForeignKey<User>(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__User__UserId__2C3393D0");
         });
 

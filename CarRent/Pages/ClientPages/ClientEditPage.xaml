@@ -1,0 +1,146 @@
+﻿<Page x:Class="CarRent.Pages.ClientPages.ClientEditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:olen="http://schemas.xceed.com/wpf/xaml/toolkit"
+      xmlns:local="clr-namespace:CarRent.Pages.ClientPages"
+      mc:Ignorable="d"
+      Title="Редактирование профиля (Водительское удостоверение)">
+    <Page.Resources>
+        <Style TargetType="ToolTip">
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+
+        <ToolTip x:Key="FieldToolTip">
+            <ToolTip.Content>
+                <TextBlock Style="{StaticResource NotificationText}"
+                           Margin="0"
+                           FontSize="14"
+                           Text="Это обязательное поле!" />
+            </ToolTip.Content>
+        </ToolTip>
+    </Page.Resources>
+
+    <Grid>
+        <StackPanel Orientation="Vertical"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+            <WrapPanel Orientation="Horizontal">
+                <Border Style="{StaticResource LightBorder}"
+                        Margin="25"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Водительские права"
+                                   FontSize="24"
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource MainLightText}" />
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <TextBlock Text="Номер:*"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <olen:MaskedTextBox x:Name="LicenseNumTextBox"
+                                                Text="{Binding DriverLicense.Number}"
+                                                ToolTip="{StaticResource FieldToolTip}"
+                                                Style="{StaticResource MainTextBox}"
+                                                Mask="0000000000"
+                                                LostFocus="TextBox_OnLostFocus" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <TextBlock Text="Выданы:*"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <DatePicker x:Name="LicenseIssueDatePicker"
+                                        ToolTip="{StaticResource FieldToolTip}"
+                                        SelectedDate="{Binding DriverLicense.DataOfIssue}"
+                                        Width="300"
+                                        LostFocus="TextBox_OnLostFocus"
+                                        Style="{StaticResource MainDatePicker}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <TextBlock Text="До:*"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <DatePicker x:Name="LicenseExpirationDatePicker"
+                                        ToolTip="{StaticResource FieldToolTip}"
+                                        SelectedDate="{Binding DriverLicense.ExpirationData}"
+                                        Width="300"
+                                        LostFocus="TextBox_OnLostFocus"
+                                        Style="{StaticResource MainDatePicker}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <Image x:Name="LicenseImage"
+                                   Width="150"
+                                   Height="50"
+                                   Source="{Binding DriverLicense.Photo}"
+                                   Stretch="Uniform" />
+                            <Button x:Name="LicensePhotoButton"
+                                    Click="LicensePhotoButton_OnClick"
+                                    Width="300"
+                                    Style="{StaticResource DefaultButton}"
+                                    Content="Добавить фото прав" />
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <Border Style="{StaticResource LightBorder}"
+                        Margin="25"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Прочие данные"
+                                   FontSize="24"
+                                   HorizontalAlignment="Center"
+                                   Style="{StaticResource MainLightText}" />
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <TextBlock Text="Адрес:*"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <TextBox x:Name="AddressTextBox"
+                                     TextWrapping="Wrap"
+                                     Text="{Binding Address}"
+                                     ToolTip="{StaticResource FieldToolTip}"
+                                     Style="{StaticResource MainTextBox}"
+                                     LostFocus="TextBox_OnLostFocus" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
+                            <TextBlock Text="Почтовый индекс:*"
+                                       Style="{StaticResource MainThinLightText}" />
+                            <olen:MaskedTextBox x:Name="MailAddressTextBox"
+                                                ToolTip="{StaticResource FieldToolTip}"
+                                                Text="{Binding MailAddress}"
+                                                Width="300"
+                                                Height="auto"
+                                                PreviewTextInput="MailAddressTextBox_OnPreviewTextInput"
+                                                LostFocus="TextBox_OnLostFocus"
+                                                Style="{StaticResource MaskTextBox}" />
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </WrapPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Button x:Name="BackButton"
+                        Width="200"
+                        Click="BackButton_OnClick"
+                        Style="{StaticResource DefaultButton}"
+                        Content="Назад" />
+                <Button x:Name="SaveButton"
+                        Width="200"
+                        Click="SaveButton_OnClick"
+                        Style="{StaticResource DefaultButton}"
+                        Content="Сохранить" />
+            </StackPanel>
+        </StackPanel>
+        <Image x:Name="LoadingImage"
+               Width="50"
+               Height="50"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Center" />
+    </Grid>
+</Page>

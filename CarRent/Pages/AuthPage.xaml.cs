@@ -30,7 +30,7 @@ public partial class AuthPage : Page
             if (!String.IsNullOrWhiteSpace(login) && !String.IsNullOrWhiteSpace(pass))
             {
                 ImageBehavior.SetAnimatedSource(LoadingImage, (BitmapImage)FindResource("Loading"));
-                User? user = await DB.Context.Users.Include(c => c.UserNavigation)
+                User? user = await DB.Context.Users.Include(c => c.Passport).Include(c => c.UserNavigation)
                     .FirstOrDefaultAsync(c => c.UserNavigation.Login == login);
                 ImageBehavior.SetAnimatedSource(LoadingImage, null);
 
@@ -42,6 +42,12 @@ public partial class AuthPage : Page
                             "Вы успешно авторизировались в системе!",
                             Button.Ok);
                         _messageBox.ShowDialog();
+                        if (user.RoleId == 3)
+                        {
+                            user = await DB.Context.Users.Include(c => c.Client)
+                                .Include(c => c.Client.DriverLicense).FirstOrDefaultAsync(c=>c.UserId == user.UserId);
+                        }
+
                         ((App)App.Current).SetCurrentUser(user);
                         AddWindow(user);
                     }

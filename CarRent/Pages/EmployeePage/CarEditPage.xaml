@@ -10,7 +10,7 @@
       Title="Редактирование авто">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="0.5*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -18,7 +18,7 @@
             <RowDefinition Height="100" />
         </Grid.RowDefinitions>
 
-        <Border Style="{StaticResource MainBorder}"
+        <Border Style="{StaticResource LightBorder}"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 Margin="10,0,10,0">
@@ -93,8 +93,8 @@
                Grid.Column="1"
                Stretch="Uniform"
                MouseLeftButtonUp="CarPhotoImage_OnMouseLeftButtonUp"
-               Margin="10,0,10,0"
-               MaxWidth="600"
+                   Margin="10,0,10,0"
+                   MaxWidth="600"
                Source="{Binding Photo}" />
 
         <StackPanel Orientation="Horizontal"

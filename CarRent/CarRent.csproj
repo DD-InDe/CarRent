@@ -20,8 +20,6 @@
       <None Remove="Resources\Fregat.ttf" />
       <None Remove="Resources\MenuSwipe.png" />
       <None Remove="Resources\Menu.png" />
-      <Resource Include="Resources\Backgrounds\BackgroundRoad.png" />
-      <Resource Include="Resources\Backgrounds\BackgroundRoad2.jpg" />
       <Resource Include="Resources\Dark\MessageBoxIcons\ErrorIcon.png" />
       <Resource Include="Resources\Dark\MessageBoxIcons\QuestionIcon.png" />
       <Resource Include="Resources\Dark\MessageBoxIcons\SuccessIcon.png" />
@@ -84,6 +82,8 @@
       <Resource Include="Resources\Car.png" />
       <None Remove="Resources\Users.png" />
       <Resource Include="Resources\Users.png" />
+      <None Remove="Resources\icon.png" />
+      <Resource Include="Resources\Icon.png" />
     </ItemGroup>
 
     <ItemGroup>
@@ -99,6 +99,7 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+      <PackageReference Include="System.Drawing.Common" Version="8.0.3" />
       <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
     </ItemGroup>
 
@@ -113,17 +114,7 @@
         <XamlRuntime>Wpf</XamlRuntime>
         <SubType>Designer</SubType>
       </Page>
-      <Page Update="UserControls\ClientPages\CarInfoControl.xaml">
-        <Generator>MSBuild:Compile</Generator>
-        <XamlRuntime>Wpf</XamlRuntime>
-        <SubType>Designer</SubType>
-      </Page>
       <Page Update="Windows\MainWindow.xaml">
-        <Generator>MSBuild:Compile</Generator>
-        <XamlRuntime>Wpf</XamlRuntime>
-        <SubType>Designer</SubType>
-      </Page>
-      <Page Update="UserControls\CarViewControl.xaml">
         <Generator>MSBuild:Compile</Generator>
         <XamlRuntime>Wpf</XamlRuntime>
         <SubType>Designer</SubType>
