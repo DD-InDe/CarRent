@@ -27,7 +27,7 @@ public partial class RequestAddPage : Page
             Request request = new Request()
             {
                 Car = _car,
-                Client = ((App)Application.Current).GetCurrentUser(),
+                Client = App.GetCurrentUser(),
                 StartDate = DateStartDatePicker.SelectedDate,
                 EndDate = DateEndDatePicker.SelectedDate,
                 RequestStatusId = 1,

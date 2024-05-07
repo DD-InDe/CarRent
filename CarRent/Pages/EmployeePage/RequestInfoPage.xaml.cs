@@ -71,7 +71,8 @@ public partial class RequestInfoPage : Page
         }
         catch (Exception exception)
         {
-            CustomMessageBox messageBox = new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
+            CustomMessageBox messageBox =
+                new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
             messageBox.ShowDialog();
         }
     }
@@ -85,33 +86,34 @@ public partial class RequestInfoPage : Page
             ImageBehavior.SetAnimatedSource(LoadingImage, (BitmapImage)FindResource("Loading"));
             Request request =
                 await DB.Context.Requests.FirstOrDefaultAsync(
-                    c => c.CarId == _request.CarId && (c.RequestStatusId == 2 || c.RequestStatusId == 6) && c.EndDate > _request.StartDate);
+                    c => c.CarId == _request.CarId && (c.RequestStatusId == 2 || c.RequestStatusId == 6) &&
+                         c.EndDate > _request.StartDate);
             ImageBehavior.SetAnimatedSource(LoadingImage, null);
 
             if (request != null)
             {
-                _messageBox = new CustomMessageBox(Icon.ErrorIcon, "Данный автомобиль находится в аренде в этом промежутке времени!",
+                _messageBox = new CustomMessageBox(Icon.ErrorIcon,
+                    "Данный автомобиль находится в аренде в этом промежутке времени!",
                     Button.Ok);
                 _messageBox.ShowDialog();
                 return;
             }
-            else
+
+            _messageBox = new CustomMessageBox(Icon.QuestionIcon, "Подтвердить заявку на аренду?", Button.YesNo);
+            _messageBox.ShowDialog();
+            if (_messageBox.Result == "Yes")
             {
-                _messageBox = new CustomMessageBox(Icon.QuestionIcon, "Подтвердить заявку на аренду?", Button.YesNo);
-                _messageBox.ShowDialog();
-                if (_messageBox.Result == "Yes")
-                {
-                    _request.RequestStatusId = 2;
-                    await DB.Context.SaveChangesAsync();
-                    DataContext = null;
-                    DataContext = _request;
-                    CheckButtons();
-                }
+                _request.RequestStatusId = 2;
+                await DB.Context.SaveChangesAsync();
+                DataContext = null;
+                DataContext = _request;
+                CheckButtons();
             }
         }
         catch (Exception exception)
         {
-            CustomMessageBox messageBox = new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
+            CustomMessageBox messageBox =
+                new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
             messageBox.ShowDialog();
         }
     }
@@ -133,8 +135,9 @@ public partial class RequestInfoPage : Page
         }
         catch (Exception exception)
         {
-            CustomMessageBox messageBox = new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
-            messageBox.ShowDialog();
+            _messageBox =
+                new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
+            _messageBox.ShowDialog();
         }
     }
 
@@ -155,7 +158,8 @@ public partial class RequestInfoPage : Page
         }
         catch (Exception exception)
         {
-            CustomMessageBox messageBox = new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
+            CustomMessageBox messageBox =
+                new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
             messageBox.ShowDialog();
         }
     }
@@ -179,8 +183,9 @@ public partial class RequestInfoPage : Page
         }
         catch (Exception exception)
         {
-            CustomMessageBox messageBox = new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
-            messageBox.ShowDialog();
+            _messageBox =
+                new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
+            _messageBox.ShowDialog();
         }
     }
 
@@ -201,7 +206,8 @@ public partial class RequestInfoPage : Page
         }
         catch (Exception exception)
         {
-            CustomMessageBox messageBox = new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
+            CustomMessageBox messageBox =
+                new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
             messageBox.ShowDialog();
         }
     }

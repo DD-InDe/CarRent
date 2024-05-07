@@ -23,7 +23,7 @@ namespace CarRent.Pages;
 public partial class ProfileEditPage : Page
 {
     private List<Object> _requiredFields;
-    private CustomMessageBox? messageBox;
+    private CustomMessageBox? _messageBox;
     private User _user;
     private string oldLogin;
     private bool _canGoBack;
@@ -36,10 +36,10 @@ public partial class ProfileEditPage : Page
             Passport = new Passport()
         };
         _canGoBack = canGoBack;
-        DeleteButton.Visibility = Visibility.Hidden;
 
         InitializeComponent();
 
+        DeleteButton.Visibility = Visibility.Hidden;
         _requiredFields = new List<object>
         {
             FNameTextBox,
@@ -98,14 +98,14 @@ public partial class ProfileEditPage : Page
                         _user.UserNavigation.Password = HiddenPasswordBox.Password;
                         DB.Context.Users.Add(_user);
                         await DB.Context.SaveChangesAsync();
-                        messageBox = new CustomMessageBox(Icon.SuccessIcon, "Пользователь добавлен!", Button.Ok);
-                        messageBox.ShowDialog();
+                        _messageBox = new CustomMessageBox(Icon.SuccessIcon, "Пользователь добавлен!", Button.Ok);
+                        _messageBox.ShowDialog();
                     }
                     catch (Exception exception)
                     {
-                        CustomMessageBox messageBox =
+                        _messageBox =
                             new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
-                        messageBox.ShowDialog();
+                        _messageBox.ShowDialog();
                     }
 
                     ImageBehavior.SetAnimatedSource(LoadingImage, null);
@@ -125,14 +125,14 @@ public partial class ProfileEditPage : Page
                             _user.UserNavigation.Password = password;
 
                         await DB.Context.SaveChangesAsync();
-                        messageBox = new CustomMessageBox(Icon.SuccessIcon, "Данные обновлены!", Button.Ok);
-                        messageBox.ShowDialog();
+                        _messageBox = new CustomMessageBox(Icon.SuccessIcon, "Данные обновлены!", Button.Ok);
+                        _messageBox.ShowDialog();
                     }
                     catch (Exception exception)
                     {
-                        CustomMessageBox messageBox =
+                        _messageBox =
                             new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
-                        messageBox.ShowDialog();
+                        _messageBox.ShowDialog();
                     }
 
                     ImageBehavior.SetAnimatedSource(LoadingImage, null);
@@ -187,7 +187,7 @@ public partial class ProfileEditPage : Page
     {
         RoleComboBox.ItemsSource = DB.Context.Roles.ToList();
 
-        RolePanel.Visibility = ((App)App.Current).GetCurrentUser().RoleId == 1 && _user.RoleId != 1
+        RolePanel.Visibility = App.GetCurrentUser().RoleId == 1 && _user.RoleId != 1
             ? Visibility.Visible
             : Visibility.Collapsed;
         BackButton.Visibility = _canGoBack ? Visibility.Visible : Visibility.Collapsed;
@@ -202,31 +202,32 @@ public partial class ProfileEditPage : Page
         {
             if (_user.RoleId == 1)
             {
-                messageBox =
+                _messageBox =
                     new CustomMessageBox(Icon.ErrorIcon, $"Нельзя удалить администратора!", Button.Ok);
-                messageBox.ShowDialog();
+                _messageBox.ShowDialog();
             }
 
             if (await DB.Context.Requests.FirstOrDefaultAsync(c =>
                     c.ClientId == _user.UserId && (c.RequestStatusId != 2 && c.RequestStatusId != 6)) == null)
             {
-                messageBox = new CustomMessageBox(Icon.QuestionIcon, "Вы точно хотите удалить пользователя?", Button.YesNo);
-                messageBox.ShowDialog();
-                if (messageBox.Result == "Yes")
+                _messageBox = new CustomMessageBox(Icon.QuestionIcon, "Вы точно хотите удалить пользователя?",
+                    Button.YesNo);
+                _messageBox.ShowDialog();
+                if (_messageBox.Result == "Yes")
                 {
                     DB.Context.Accounts.Remove(_user.UserNavigation);
                     await DB.Context.SaveChangesAsync();
-                    messageBox = new CustomMessageBox(Icon.SuccessIcon, "Пользователь удален!", Button.Ok);
-                    messageBox.ShowDialog();
+                    _messageBox = new CustomMessageBox(Icon.SuccessIcon, "Пользователь удален!", Button.Ok);
+                    _messageBox.ShowDialog();
                     NavigationService.GoBack();
                 }
             }
         }
         catch (Exception exception)
         {
-            messageBox =
+            _messageBox =
                 new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
-            messageBox.ShowDialog();
+            _messageBox.ShowDialog();
         }
     }
 }

@@ -14,7 +14,7 @@ public partial class CarInfoPage : Page
 
         try
         {
-            if (((App)Application.Current).GetCurrentUser() == null)
+            if (App.GetCurrentUser() == null)
                 AddRequestButton.Visibility = Visibility.Collapsed;
             if (car.CarStatusId == 3)
                 AddRequestButton.IsEnabled = false;
@@ -23,7 +23,8 @@ public partial class CarInfoPage : Page
         }
         catch (Exception exception)
         {
-            CustomMessageBox messageBox = new CustomMessageBox(Icon.ErrorIcon,$"Произошла ошибка: {exception.Message}", Button.Ok);
+            CustomMessageBox messageBox =
+                new CustomMessageBox(Icon.ErrorIcon, $"Произошла ошибка: {exception.Message}", Button.Ok);
             messageBox.ShowDialog();
         }
     }
