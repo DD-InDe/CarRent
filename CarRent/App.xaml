@@ -5,12 +5,16 @@
              xmlns:local="clr-namespace:CarRent"
              StartupUri="/Windows/AccessWindow.xaml">
     <Application.Resources>
-        <ImageBrush x:Key="AccessWindowBackground" ImageSource="../Resources/Backgrounds/BackgroundRoad3.jpg"/>
-        
-        <ImageBrush x:Key="WindowBackground" ImageSource="../Resources/Backgrounds/BackgroundRoad5.jpg"/>
-        
-        <ImageBrush x:Key="MessageBoxBackground" ImageSource="../Resources/Backgrounds/BackgroundRoad4.jpg" Stretch="UniformToFill"/>
-        
+        <ImageBrush x:Key="AccessWindowBackground"
+                    ImageSource="../Resources/Backgrounds/BackgroundRoad3.jpg" />
+
+        <ImageBrush x:Key="WindowBackground"
+                    ImageSource="../Resources/Backgrounds/BackgroundRoad5.jpg" />
+
+        <ImageBrush x:Key="MessageBoxBackground"
+                    ImageSource="../Resources/Backgrounds/BackgroundRoad4.jpg"
+                    Stretch="UniformToFill" />
+
         <LinearGradientBrush x:Key="LineGradient"
                              StartPoint="0,0"
                              EndPoint="1,1">
@@ -51,144 +55,246 @@
                      UriSource="/Resources/Light/MessageBoxIcons/WrongPassIcon.png" />
 
 
-        <Style TargetType="TextBlock" x:Key="MainDarkText">
-            <Setter Property="Margin" Value="5" />
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="FontFamily" Value="Resources/./#Fregat-Bold" />
-            <Setter Property="Foreground" Value="{StaticResource DarkBrush}" />
+        <Style TargetType="TextBlock"
+               x:Key="MainDarkText">
+            <Setter Property="Margin"
+                    Value="5" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="FontFamily"
+                    Value="Resources/./#Fregat-Bold" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource DarkBrush}" />
         </Style>
 
-        <Style TargetType="TextBlock" x:Key="NotificationText" BasedOn="{StaticResource MainDarkText}">
-            <Setter Property="Foreground" Value="{StaticResource OrangeBrush}" />
+        <Style TargetType="TextBlock"
+               x:Key="NotificationText"
+               BasedOn="{StaticResource MainDarkText}">
+            <Setter Property="Foreground"
+                    Value="{StaticResource OrangeBrush}" />
         </Style>
 
-        <Style TargetType="TextBlock" x:Key="InfoText" BasedOn="{StaticResource MainDarkText}">
-            <Setter Property="Foreground" Value="{StaticResource BlueBrush}" />
+        <Style TargetType="TextBlock"
+               x:Key="InfoText"
+               BasedOn="{StaticResource MainDarkText}">
+            <Setter Property="Foreground"
+                    Value="{StaticResource BlueBrush}" />
         </Style>
 
-        <Style BasedOn="{StaticResource MainDarkText}" TargetType="TextBlock" x:Key="MainLightText">
-            <Setter Property="Foreground" Value="{StaticResource WhiteBrush}" />
-        </Style>
-        
-        <Style BasedOn="{StaticResource MainLightText}" TargetType="TextBlock" x:Key="MainThinLightText">
-            <Setter Property="FontWeight" Value="Light" />
-        </Style>
-
-        <Style TargetType="TextBox" x:Key="MainTextBox">
-            <Setter Property="Margin" Value="5" />
-            <Setter Property="Padding" Value="2" />
-            <Setter Property="Width" Value="300" />
-            <Setter Property="Height" Value="30" />
-            <Setter Property="BorderBrush" Value="DarkGray" />
-            <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="FontFamily" Value="Resources/./#Fregat-Bold" />
-            <Setter Property="Foreground" Value="{StaticResource DarkBrush}" />
-        </Style>
-        
-        <Style TargetType="ComboBox" x:Key="MainComboBox">
-            <Setter Property="Margin" Value="5" />
-            <Setter Property="Padding" Value="2" />
-            <Setter Property="MinWidth" Value="150" />
-            <Setter Property="Height" Value="30" />
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="IsEditable" Value="True"/>
-            <Setter Property="IsTextSearchEnabled" Value="True"/>
-            <Setter Property="IsTextSearchCaseSensitive" Value="False"/>
-            <Setter Property="BorderBrush" Value="DarkGray" />
-            <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="FontFamily" Value="Resources/./#Fregat-Bold" />
-            <Setter Property="Foreground" Value="{StaticResource DarkBrush}" />
-        </Style>
-        
-        <Style TargetType="DatePicker" x:Key="MainDatePicker">
-            <Setter Property="Margin" Value="5" />
-            <Setter Property="Padding" Value="2" />
-            <Setter Property="Width" Value="200" />
-            <Setter Property="Height" Value="30" />
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="BorderBrush" Value="DarkGray" />
-            <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="FontFamily" Value="Resources/./#Fregat-Bold" />
-            <Setter Property="Foreground" Value="{StaticResource DarkBrush}" />
+        <Style BasedOn="{StaticResource MainDarkText}"
+               TargetType="TextBlock"
+               x:Key="MainLightText">
+            <Setter Property="Foreground"
+                    Value="{StaticResource WhiteBrush}" />
         </Style>
 
-        <Style TargetType="olen:MaskedTextBox" x:Key="MaskTextBox">
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="Margin" Value="5" />
-            <Setter Property="Padding" Value="2" />
-            <Setter Property="MinWidth" Value="150" />
-            <Setter Property="Height" Value="30" />
-            <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="FontFamily" Value="Resources/./#Fregat-Bold" />
-            <Setter Property="Foreground" Value="{StaticResource DarkBrush}" />
+        <Style BasedOn="{StaticResource MainLightText}"
+               TargetType="TextBlock"
+               x:Key="MainThinLightText">
+            <Setter Property="FontWeight"
+                    Value="Light" />
         </Style>
 
-        <Style TargetType="PasswordBox" x:Key="MainPassBox">
-            <Setter Property="Margin" Value="5" />
-            <Setter Property="Padding" Value="2" />
-            <Setter Property="MinWidth" Value="150" />
-            <Setter Property="Height" Value="30" />
-            <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="Foreground" Value="{StaticResource DarkBrush}" />
+        <Style TargetType="TextBox"
+               x:Key="MainTextBox">
+            <Setter Property="Margin"
+                    Value="5" />
+            <Setter Property="Padding"
+                    Value="2" />
+            <Setter Property="Width"
+                    Value="300" />
+            <Setter Property="Height"
+                    Value="30" />
+            <Setter Property="BorderBrush"
+                    Value="DarkGray" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="FontFamily"
+                    Value="Resources/./#Fregat-Bold" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource DarkBrush}" />
         </Style>
 
-        <Style TargetType="PasswordBox" x:Key="PassBox">
-            <Setter Property="Margin" Value="5" />
-            <Setter Property="Padding" Value="2" />
-            <Setter Property="MinWidth" Value="150" />
-            <Setter Property="Height" Value="30" />
-            <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="FontFamily" Value="Resources/./#Fregat-Bold" />
-            <Setter Property="Foreground" Value="{StaticResource DarkBrush}" />
+        <Style TargetType="ComboBox"
+               x:Key="MainComboBox">
+            <Setter Property="Margin"
+                    Value="5" />
+            <Setter Property="Padding"
+                    Value="2" />
+            <Setter Property="MinWidth"
+                    Value="150" />
+            <Setter Property="Height"
+                    Value="30" />
+            <Setter Property="Background"
+                    Value="White" />
+            <Setter Property="IsEditable"
+                    Value="True" />
+            <Setter Property="IsTextSearchEnabled"
+                    Value="True" />
+            <Setter Property="IsTextSearchCaseSensitive"
+                    Value="False" />
+            <Setter Property="BorderBrush"
+                    Value="DarkGray" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="FontFamily"
+                    Value="Resources/./#Fregat-Bold" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource DarkBrush}" />
         </Style>
 
-        <Style TargetType="Border" x:Key="DefaultBorder">
-            <Setter Property="Background" Value="White" />
-            <Setter Property="Padding" Value="20" />
-            <Setter Property="CornerRadius" Value="5" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="BorderBrush" Value="{StaticResource DarkBrush}" />
-            <Setter Property="BorderThickness" Value="1" />
-        </Style>
-        
-        <Style TargetType="Border" x:Key="MainBorder">
-            <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
-            <Setter Property="BorderBrush" Value="Black"/>
-            <Setter Property="CornerRadius" Value="5" />
-        </Style>
-        
-        <Style TargetType="Border" x:Key="LightBorder">
-            <Setter Property="BorderBrush" Value="White"/>
-            <Setter Property="BorderThickness" Value="0.5"/>
-            <Setter Property="CornerRadius" Value="5" />
+        <Style TargetType="DatePicker"
+               x:Key="MainDatePicker">
+            <Setter Property="Margin"
+                    Value="5" />
+            <Setter Property="Padding"
+                    Value="2" />
+            <Setter Property="Width"
+                    Value="200" />
+            <Setter Property="Height"
+                    Value="30" />
+            <Setter Property="Background"
+                    Value="White" />
+            <Setter Property="BorderBrush"
+                    Value="DarkGray" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="FontFamily"
+                    Value="Resources/./#Fregat-Bold" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource DarkBrush}" />
         </Style>
 
-        <Style TargetType="Button" x:Key="DefaultButton">
-            <Setter Property="Margin" Value="5" />
-            <Setter Property="Padding" Value="10,0,10,0" />
-            <Setter Property="MinHeight" Value="35" />
-            <Setter Property="FontFamily" Value="Resources/./#Fregat-Bold" />
+        <Style TargetType="olen:MaskedTextBox"
+               x:Key="MaskTextBox">
+            <Setter Property="HorizontalAlignment"
+                    Value="Right" />
+            <Setter Property="Margin"
+                    Value="5" />
+            <Setter Property="Padding"
+                    Value="2" />
+            <Setter Property="MinWidth"
+                    Value="150" />
+            <Setter Property="Height"
+                    Value="30" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="FontFamily"
+                    Value="Resources/./#Fregat-Bold" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource DarkBrush}" />
+        </Style>
+
+        <Style TargetType="PasswordBox"
+               x:Key="MainPassBox">
+            <Setter Property="Margin"
+                    Value="5" />
+            <Setter Property="Padding"
+                    Value="2" />
+            <Setter Property="MinWidth"
+                    Value="150" />
+            <Setter Property="Height"
+                    Value="30" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource DarkBrush}" />
+        </Style>
+
+        <Style TargetType="PasswordBox"
+               x:Key="PassBox">
+            <Setter Property="Margin"
+                    Value="5" />
+            <Setter Property="Padding"
+                    Value="2" />
+            <Setter Property="MinWidth"
+                    Value="150" />
+            <Setter Property="Height"
+                    Value="30" />
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="FontFamily"
+                    Value="Resources/./#Fregat-Bold" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource DarkBrush}" />
+        </Style>
+
+        <Style TargetType="Border"
+               x:Key="DefaultBorder">
+            <Setter Property="Background"
+                    Value="White" />
+            <Setter Property="Padding"
+                    Value="20" />
+            <Setter Property="CornerRadius"
+                    Value="5" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+            <Setter Property="BorderBrush"
+                    Value="{StaticResource DarkBrush}" />
+            <Setter Property="BorderThickness"
+                    Value="1" />
+        </Style>
+
+        <Style TargetType="Border"
+               x:Key="MainBorder">
+            <Setter Property="Background"
+                    Value="{StaticResource BackgroundBrush}" />
+            <Setter Property="BorderBrush"
+                    Value="Black" />
+            <Setter Property="CornerRadius"
+                    Value="5" />
+        </Style>
+
+        <Style TargetType="Border"
+               x:Key="LightBorder">
+            <Setter Property="BorderBrush"
+                    Value="White" />
+            <Setter Property="BorderThickness"
+                    Value="0.5" />
+            <Setter Property="CornerRadius"
+                    Value="5" />
+        </Style>
+
+        <Style TargetType="Button"
+               x:Key="DefaultButton">
+            <Setter Property="Margin"
+                    Value="5" />
+            <Setter Property="MinHeight"
+                    Value="35" />
+            <Setter Property="FontFamily"
+                    Value="Resources/./#Fregat-Bold" />
             <Setter Property="Background">
                 <Setter.Value>
                     <SolidColorBrush Opacity="0.5"
                                      Color="Black" />
                 </Setter.Value>
             </Setter>
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="Foreground" Value="{StaticResource WhiteBrush}" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="Foreground"
+                    Value="{StaticResource WhiteBrush}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border x:Name="Border" 
-                            CornerRadius="5"
+                        <Border x:Name="Border"
+                                Padding="10,0,10,0"
+                                CornerRadius="5"
                                 BorderBrush="#2a242c"
                                 BorderThickness="1"
                                 Background="{TemplateBinding Background}">
@@ -196,8 +302,11 @@
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsFocused" Value="True">
-                                <Setter TargetName="Border" Property="BorderBrush" Value="White" />
+                            <Trigger Property="IsFocused"
+                                     Value="True">
+                                <Setter TargetName="Border"
+                                        Property="BorderBrush"
+                                        Value="White" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -205,23 +314,36 @@
             </Setter>
         </Style>
 
-        <Style TargetType="Button" x:Key="MenuButton">
-            <Setter Property="Margin" Value="0,10,0,10" />
-            <Setter Property="MinHeight" Value="35" />
-            <Setter Property="FontFamily" Value="Resources/./#Fregat-Bold" />
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Foreground" Value="White" />
+        <Style TargetType="Button"
+               x:Key="MenuButton">
+            <Setter Property="Margin"
+                    Value="0,10,0,10" />
+            <Setter Property="MinHeight"
+                    Value="35" />
+            <Setter Property="FontFamily"
+                    Value="Resources/./#Fregat-Bold" />
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="FontSize"
+                    Value="20" />
+            <Setter Property="BorderThickness"
+                    Value="0" />
+            <Setter Property="Foreground"
+                    Value="White" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <StackPanel Orientation="Vertical" Name="Panel">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <StackPanel Orientation="Vertical"
+                                    Name="Panel">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center" />
                         </StackPanel>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Panel" Property="Background" Value="Gray" />
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="Panel"
+                                        Property="Background"
+                                        Value="Gray" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

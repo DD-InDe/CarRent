@@ -30,6 +30,11 @@
                             Width="200"
                             Content="Открыть фильтр"
                             Style="{StaticResource DefaultButton}" />
+                    <Button x:Name="CreateDocButton"
+                            Click="CreateDocButton_OnClick"
+                            Content="Сформировать документ"
+                            Style="{StaticResource DefaultButton}">
+                    </Button>
                 </StackPanel>
                 <Popup x:Name="Popup"
                        AllowsTransparency="True"
@@ -72,13 +77,14 @@
                   MouseDoubleClick="RequestListView_OnMouseDoubleClick">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
-                    <Setter Property="Background" Value="{StaticResource BackgroundBrush}" />
+                    <Setter Property="Background"
+                            Value="{StaticResource BackgroundBrush}" />
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Style="{StaticResource MainLightText}">  
+                        <TextBlock Style="{StaticResource MainLightText}">
                             <TextBlock.Text>
                                 <MultiBinding StringFormat="{}Клиент: {0}">
                                     <Binding Path="Client.FullName" />

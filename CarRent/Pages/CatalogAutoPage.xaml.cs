@@ -152,7 +152,7 @@ public partial class CatalogAutoPage : Page
     {
         try
         {
-            User user = ((App)App.Current).GetCurrentUser();
+            User user = App.GetCurrentUser();
             if (user != null)
             {
                 switch (user.RoleId)
